@@ -1,0 +1,36 @@
+# Site settings
+title: "(in)security"
+header-img: img/bg.jpg
+email: santoru@pm.me
+copyright_name: ""
+description: "Yet another blog with some security related posts."
+baseurl: ""
+url: "https://insecurity.blog"
+twitter_username: _meliot
+github_username:  santoru
+
+# Google Analytics
+# To enable google analytics, uncomment below line with a valid Google Tracking ID
+google_tracking_id: UA-113317478-1
+
+
+disqus_shortname: insecurity-blog
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 5
+
+plugins: [jekyll-paginate, jekyll-feed]
+
+
+exclude:
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "*.gemspec"
+
+keep_files:
+  - "README.md"
+  - ".git"
+  - ".gitignore"

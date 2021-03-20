@@ -1,0 +1,116 @@
+ @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Montserrat');
+
+article {
+    font-family: 'Montserrat', sans-serif;
+    font-size:17px;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+}
+.intro-header .post-heading .subheading {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+}
+
+
+.intro-header .site-heading .subheading, .intro-header .page-heading .subheading {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+ }
+
+ .intro-header .post-heading .meta {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.navbar-custom {
+    font-family: 'Josefin Sans', sans-serif;
+}
+.post-preview > .post-meta {
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+::-moz-selection {
+  /*background: #4facd7; old color */
+  /*background: #f79e6b; */
+  background: #306951;
+}
+
+::selection {
+  /*background: #4facd7; old color */
+  /*background: #f79e6b; */
+  background: #306951;
+}
+
+.post-preview > a:hover, .post-preview > a:focus, a:hover, a:focus {
+  /*color: #4facd7; old color */
+  /*color: #f79e6b; */
+  color: #306951;
+}
+
+.pager {
+    margin: 20px 0 20px;
+}
+
+.pager li > a {
+    border-radius: 3px;
+}
+
+.pager li > a:focus, .pager li > a:hover {
+  /*background-color: #4facd7; old color */
+  /*border: 1px solid #2c91c0; old color */
+  /*background-color: #f79e6b; */
+  /*background-color: #783f43; */
+  background-color: #306951;
+  /*border: 1px solid #f47933; */
+  border: 1px solid #306951;
+
+}
+
+.twitter:hover {
+    color: #00aced;
+}
+.rss:hover {
+    color:#ee802f;
+}
+.mail:hover {
+    color:#1ccc81;
+}
+.github:hover {
+    color:#601bc6;
+}
+.linkedin:hover{
+	color:#0077b5;
+}
+.navbar-custom .nav li a {
+    font-size: 25px;
+}
+.mon {
+    font-family: monospace;
+}
+
+
+@media (max-width:767px){
+    .navbar-custom .nav li a {
+        text-align: center;
+    }
+}
+article a, p a {
+    color: #306951;
+}
+article a:hover, p a:hover {
+    /*color: #114638;*/
+    color: #306951;
+}
+.image, figcaption, text-center {
+    text-align: center;
+
+}
+figcaption {
+    font-style: italic;
+    font-size: 15px;
+    padding-bottom: 15px;
+}
