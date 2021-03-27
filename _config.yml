@@ -13,8 +13,7 @@ github_username:  santoru
 # To enable google analytics, uncomment below line with a valid Google Tracking ID
 google_tracking_id: UA-113317478-1
 
-
-disqus_shortname: insecurity-blog
+#disqus_shortname: insecurity-blog
 
 # Build settings
 markdown: kramdown
