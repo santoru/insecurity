@@ -109,8 +109,8 @@ article a:hover, p a:hover {
     text-align: center;
 }
 
-.image img {
-    width: 100%
+.full-width {
+    width: 100%;
 }
 
 figcaption {
