@@ -169,10 +169,11 @@ Usage: ./bin/filewatcher [OPTIONS]
   -d, --debug                Enable debugging messages to be saved into a file
   -h, --help                 Print this help and exit
 </pre>
-<p align="center">
-<img src="/img/filewatcher/screenshotsmall.png" alt="Output" />
 
-</p>
+{% include image.html 
+    url="img/filewatcher/screenshotsmall.png" 
+    description="An example of the output" 
+%}
 
 
 ## References
