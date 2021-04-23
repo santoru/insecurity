@@ -20,5 +20,5 @@ Hi, I'm an IT security enthusiast. I work as a Security Engineer in Berlin, whil
 
 ### Projects
 - [filewatcher](https://github.com/santoru/filewatcher) - A simple auditing utility for macOS.
-- [shcheck](https://github.com/santoru/shcheck) - Just a basic tool to check security headers.
-
+- [shcheck](https://github.com/santoru/shcheck) - A basic tool to check security headers.
+- [pihole-dashboard](https://github.com/santoru/pihole-dashboard) -  Minimal and clean dashboard to visualize some stats of Pi-Hole with an E-Ink display
