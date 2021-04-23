@@ -19,6 +19,6 @@ Hi, I'm an IT security enthusiast. I work as a Security Engineer in Berlin, whil
 - [CVE-2017-17663](https://acme.com/updates/archive/199.html) - Buffer overflow in *thttpd* and *mini_httpd* web server.
 
 ### Projects
-- [filewatcher](https://github.com/santoru/filewatcher) - A simple auditing utility for macOS.
-- [shcheck](https://github.com/santoru/shcheck) - A basic tool to check security headers.
+- [filewatcher](https://github.com/santoru/filewatcher) - A simple auditing utility for macOS
+- [shcheck](https://github.com/santoru/shcheck) - A basic tool to check security headers
 - [pihole-dashboard](https://github.com/santoru/pihole-dashboard) -  Minimal and clean dashboard to visualize some stats of Pi-Hole with an E-Ink display
