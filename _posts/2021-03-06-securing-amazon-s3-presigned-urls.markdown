@@ -128,8 +128,9 @@ and let them upload an arbitrary file.
 So be sure you threat model properly your feature to avoid logic
 vulnerabilities. If your service is generating a presigned URL valid for 10
 minutes to upload a file, that URL can be used by anyone, unless you
-authenticate the file in a different 
-TODO
+validate the request in a different way; A solution could be adding an
+additional signed header while building the presigned URL in a way that 
+only allowed clients can perform the request (Check point #8).
 
 ## 3. Presigned URLs do not provide authentication
 When your service returns a presigned URL to a user, the user will consume it
