@@ -350,5 +350,5 @@ or
 - <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-post-example.html" target="_blank">AWS Docs | Example: Browser-Based Upload using HTTP POST (Using AWS Signature Version 4)</a>
 - <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html" target="_blank">AWS Docs | Using cross-origin resource sharing (CORS)</a>
 - <a href="https://aws.amazon.com/premiumsupport/knowledge-center/secure-s3-resources/" target="_blank">How can I secure the files in my Amazon S3 bucket?</a>
-- <a href="https://twitter.com/santoru_" target="_blank">\santoru_ | Twitter</a>
+- <a href="https://twitter.com/santoru_" target="_blank">santoru_ | Twitter</a>
 - <a href="https://github.com/santoru" target="_blank">santoru | GitHub</a>
