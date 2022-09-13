@@ -13,6 +13,7 @@ Hi, I'm an IT security enthusiast. I work as a Security Engineer in Berlin, whil
 - July 2017 - Presented [filewatcher](https://github.com/santoru/filewatcher) for MacAdmins Meeting at the University of Utah
 
 ### My CVEs
+- [CVE-2022-2903](https://wpscan.com/vulnerability/255b98ba-5da9-4424-a7e9-c438d8905864) - PHP Objection Injection in WordPress Plugin (NinjaForms).
 - [CVE-2018-20122](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20122) - Remote code execution in Fastweb FASTgate router.
 - [CVE-2018-17172](https://securitydocs.business.xerox.com/wp-content/uploads/2018/12/cert_Security_Mini_Bulletin_XRX18AL_for_ALB80xx-C80xx_v1.1.pdf) - Remote code execution in Xerox Altalink printer.
 - [CVE-2018-7064](https://www.arubanetworks.com/assets/alert/ARUBA-PSA-2019-001.txt) - Cross-site scripting (XSS) Reflected in *Aruba Instant* web interface.
