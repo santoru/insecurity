@@ -18,7 +18,7 @@ Another common scenario is that you can use real-time auditing to build and run 
 
 In this blog post I will just explain how this auditing is possible thanks to OpenBSM, giving the reader some others resources for further "investigation" and publishing a small proof-of-concept of a basic implementation.
 
-If you spot a mistake, I'll be happy to fix it, just send an [email to me](mailto:{{ site.email | encode_email }}).
+If you spot a mistake, I'll be happy to fix it, just send an [email to me](mailto:{{ site.email }}).
 
 
 ## OpenBSM
