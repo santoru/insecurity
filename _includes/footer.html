@@ -40,7 +40,7 @@
                     {% endif %}
                     {% if site.email %}
                     <li>
-                        <a class="mail" href="mailto:{{ site.email }}">
+                        <a class="mail" href="mailto:{{ site.email | encode_email }}">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-envelope fa-stack-1x"></i>
                             </span>
