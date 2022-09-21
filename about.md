@@ -5,7 +5,13 @@ description: That's what I do. I drink, and I know things.
 background: '/img/bg-about.jpg'
 ---
 
-Hi, I'm an IT security enthusiast. I work as a Security Engineer in Berlin, while previously I worked as a penetration tester. I like computers, music, tv series and bikes.
+Hello There!\
+My name is Alessio, and I'm an IT security enthusiast working as a Security Engineer in Berlin, mostly with FinTech companies.\
+I previously worked as a penetration tester in Milan where I conducted several activities against web and mobile applications, networks and infrastructures, and devices too (smartphones, laptops, printers, routers, etc).
+
+I like to do security and vulnerability research, bug bounties and writing helpful tools to automate most of my work.
+
+You can find my contacts at the end of this page and a quick summary of my main achievements right above.
 
 ### Timeline
 
