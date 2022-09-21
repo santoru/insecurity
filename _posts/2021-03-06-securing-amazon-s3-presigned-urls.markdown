@@ -37,7 +37,7 @@ an S3 bucket in a safe(r) way.
 
 #### Disclaimer
 This is the result of my experience with S3 buckets, not an absolute truth.
-If you notice any error or inaccuracy [report it to me](mailto:santoru@pm.me),
+If you notice any error or inaccuracy [report it to me](mailto:{{ site.email | encode_email }}),
 I'll learn something new and I can make the article more accurate.
 
 ## Presigned URLs: What are these and some use cases
