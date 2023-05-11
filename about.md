@@ -6,7 +6,7 @@ background: '/img/bg-about.jpg'
 ---
 
 Hello There!\
-My name is Alessio, and I'm an IT security enthusiast working as a Security Engineer in Berlin, mostly with FinTech companies.\
+My name is Alessio, and I'm an IT security enthusiast working as a Security Engineer.\
 I previously worked as a penetration tester in Milan where I conducted several activities against web and mobile applications, networks and infrastructures, and devices too (smartphones, laptops, printers, routers, etc).
 
 I like to do security and vulnerability research, bug bounties and writing helpful tools to automate most of my work.
