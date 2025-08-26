@@ -22,7 +22,7 @@ highlighter: rouge
 permalink: pretty
 paginate: 5
 
-plugins: [jekyll-paginate, jekyll-feed]
+plugins: [jekyll-paginate, jekyll-feed, jekyll-toc]
 
 
 exclude:
