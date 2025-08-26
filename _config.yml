@@ -22,8 +22,10 @@ highlighter: rouge
 permalink: pretty
 paginate: 5
 
-plugins: [jekyll-paginate, jekyll-feed, jekyll-toc]
+plugins: [jekyll-paginate, jekyll-feed]
 
+kramdown:
+  parse_block_html: true
 
 exclude:
   - "Gemfile"
