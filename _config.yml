@@ -24,9 +24,6 @@ paginate: 5
 
 plugins: [jekyll-paginate, jekyll-feed]
 
-kramdown:
-  parse_block_html: true
-
 exclude:
   - "Gemfile"
   - "Gemfile.lock"
