@@ -115,7 +115,7 @@ where can be directly used to **read** or **write** the "signed" resource (Fig. 
 
 But let's go next with the recommendations, not sorted in any specific order.
 
-## 1. Presigned URLs can be reused
+## Presigned URLs can be reused
 Yes, these URLs are not one-shot and the only thing that can limit temporally
 a presigned URL is the `X-AMZ-Expires` parameter: once the presigned URL is
 generated, it will be valid for an unlimited amount of times before it expires.
@@ -125,7 +125,7 @@ This also means that if you grant write access via a presigned URL to a bucket
 for 1 day, anyone with the URL could upload whatever file they want, any time 
 they want.
 
-## 2. Anyone can use a valid presigned URL
+## Anyone can use a valid presigned URL
 Just to make sure this is clear: if you generate a presigned URL anyone can use
 this, the user generating this link could use it to _phish_ another user
 and let them upload an arbitrary file.
@@ -136,7 +136,7 @@ validate the request in a different way; A solution could be adding an
 additional signed header while building the presigned URL in a way that 
 only allowed clients can perform the request (Check point #8).
 
-## 3. Presigned URLs do not provide authentication
+## Presigned URLs do not provide authentication
 When your service returns a presigned URL to a user, the user will consume it
 to read / upload an object directly from / into the S3 bucket. This means
 that your service will not handle that file directly before it's uploaded.
@@ -158,7 +158,7 @@ filename for the object to be uploaded and store this UUID with the user
 identifier on your database, otherwise you can append the user identifier
 directly to the random UUID on the filename.
 
-## 4. Do not give full access to the bucket to the service creating presigned URLs
+## Do not give full access to the bucket to the service creating presigned URLs
 If the task of your back end service is to only upload files into a bucket,
 you probably don't need to configure an IAM role that is capable of reading
 all the objects in the bucket or to delete them, and you probably don't
@@ -182,7 +182,7 @@ when needed, and AWS itself has also a specific service to do that, called
 [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/), so don't 
 hard-code credentials and secret. 
 
-## 5. Enable server access logging on your exposed S3 bucket
+## Enable server access logging on your exposed S3 bucket
 This is a generic recommendation that applies even if you don't use presigned
 URL and should be followed for any S3 bucket, the explanation of this is clearly
 reported on the [Server Logs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html)
@@ -199,7 +199,7 @@ This is not enabled by default, as mentioned on the
 
 > By default, Amazon S3 doesn't collect server access logs.
 
-## 6. Path traversal can be a thing, sanitize that filename
+## Path traversal can be a thing, sanitize that filename
 Or even better, use a random UUID.
 Depending on your application's design, if the user can control the filename of
 the file being uploaded, you could be exposed to some threats like path
@@ -210,7 +210,7 @@ that filename before using it to generate the presigned URL. Another good
 solution would be to generate a random UUID and use that as a filename,
 completely discarding the user controlled input.
 
-## 7. Be careful with file-size, there's no built in functionality to limit it
+## Be careful with file-size, there's no built in functionality to limit it
 With presigned URL, 
 [you don't have an easy way to limit file size](https://github.com/aws/aws-sdk-net/issues/424)
 , and this can be a problem. S3 has a cap of 5GB per request so you shouldn't
@@ -224,7 +224,7 @@ parameter but there are some workaround to this, as you can see from #8 or #9.
 According to your infrastructure design, this could even not be a problem (but
 it's still good to keep this in mind).
 
-## 8. Using signed headers, you can add a file's hash and avoid uncontrolled file uploads
+## Using signed headers, you can add a file's hash and avoid uncontrolled file uploads
 As said before, once a presigned URL is generated, you don't have control over
 who can upload a file, but you can mitigated this by generating a presigned URL
 that checks for the file's md5 hash, how? By using `X-Amz-SignedHeaders`.
@@ -249,7 +249,7 @@ an arbitrary files (for example in a phishing scenario).
 You can use `SignedHeaders` also to enforce additional controls, for example on
 file size by signing the `content-length` header.
 
-## 9. You could use POST rather than PUT
+## You could use POST rather than PUT
 Amazon's AWS S3 documentation
 [mention that](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html):
 > When you create a presigned URL, you must provide your security
@@ -278,7 +278,7 @@ is less straightforward to implement in my opinion.
 Amazon seems to suggest using POST policy,
 [considering this article where they show an example of browser-based upload](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-post-example.html).
 
-## 10. Keep the expiration of the presigned URL low, especially for file write
+## Keep the expiration of the presigned URL low, especially for file write
 This is self-explanatory, keep the presigned URL as short-lived as you can.
 Most of the time, presigned URL are used to download a single file from a
 bucket, and then are discarded. In most scenarios, your front end does not even
@@ -289,7 +289,7 @@ requesting the presigned link and uploading the file, this shouldn't take
 long. If it's taking longer than expected, the presigned link could be requested
 again. There's no need to keep an upload link valid for hours.
 
-## 11. Don't forget to configure CORS
+## Don't forget to configure CORS
 If your front end is a web application served in a browser, you must configure
 CORS (Cross Origin Resource Sharing) otherwise your client's requests will fail
 due to browser's protection. CORS is intended to protect your customers from
