@@ -11,7 +11,8 @@
  h3,
  h4,
  h5,
- h6 {
+ h6,
+ .copyright {
      font-family: 'Josefin Sans', sans-serif;
      font-weight: 600;
  }
@@ -169,6 +170,6 @@
      display: inline-block;
  }
 
-.footer-nav li {
+ .footer-nav li {
      padding: 10px;
  }
