@@ -337,7 +337,7 @@ if you'd like to know more about how to secure files in S3 buckets.
 If you enjoyed this post, you can
 [follow me on Twitter](https://twitter.com/santoru_)
 or
-[check out my GitHub profile](https://github.com/santoru)
+[check out my GitHub profile](https://github.com/santoru).
 
 # References
 - <a href="https://aws.amazon.com/s3/" target="_blank">Amazon AWS S3</a>
