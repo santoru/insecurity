@@ -9,6 +9,9 @@ comments: true
 
 ---
 
+* table of context
+{:toc}
+
 ## Introduction
 Goal of this blog post is to explain how to use OpenBSM library to perform live audit on macOS to detect which files are open and by who.
 Everyday we install some program, or application, on our computer and they can basically have access to the most of files.

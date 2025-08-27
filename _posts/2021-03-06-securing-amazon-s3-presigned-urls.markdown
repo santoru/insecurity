@@ -8,6 +8,10 @@ visible: 1
 comments: true
 
 ---
+
+* table of context
+{:toc}
+
 # Abstract
 With the advent of the cloud, [Amazon AWS S3](https://aws.amazon.com/s3/)
 (Simple Storage Service) has become widely used in most companies to store
