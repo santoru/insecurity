@@ -7,11 +7,12 @@ author: "santoru"
 visible: 1
 comments: true
 ---
-* table of context
-{:toc}
 
 This blog post describes how I found a couple of vulnerabilities in the FASTGate modem/router provided by Fastweb, an Italian telecommunication company, to its clients. Thanks to these vulnerabilities I was able to bypass the authentication layer as well as execute arbitrary code via command injection and get a reverse shell back to the router.
 All vulnerabilities have been disclosed to Fastweb and are fixed in newer versions of the firmware.
+
+* table of context
+{:toc}
 
 ## FASTGate: the latest generation modem from Fastweb
 Fastweb[^1] is an Italian telecommunications company that provides internet services. Since around march 2017 the company started to ship a new modem to its client: the FASTGate[^2].
