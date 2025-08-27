@@ -175,7 +175,7 @@ Usage: ./bin/filewatcher [OPTIONS]
 
 {% include image.html 
     url="img/filewatcher/screenshotsmall.png" 
-    description="An example of the output" 
+    description="Figure 1 - An example of the output" 
 %}
 
 
