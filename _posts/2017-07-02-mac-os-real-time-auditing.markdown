@@ -9,7 +9,7 @@ comments: true
 
 ---
 
-* table of context
+1. table of context
 {:toc}
 
 ## Introduction
