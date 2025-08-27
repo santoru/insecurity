@@ -168,3 +168,7 @@
      list-style: decimal;
      display: inline-block;
  }
+
+ navbar-nav li {
+     padding: 10px;
+ }
