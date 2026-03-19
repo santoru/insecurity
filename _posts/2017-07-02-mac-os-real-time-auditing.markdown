@@ -13,13 +13,13 @@ comments: true
 {:toc}
 
 ## Introduction
-Goal of this blog post is to explain how to use OpenBSM library to perform live audit on macOS to detect which files are open and by who.
-Everyday we install some program, or application, on our computer and they can basically have access to the most of files.
-Real-time auditing can be useful for a lot of reasons: maybe you're just curious to see which files are opened by some applications or if some malicious process are reading your personal documents, or maybe opening your photos. Maybe you are not curious but you just want to detect possible ransom-ware activity to stop them.<br/>
+The goal of this blog post is to explain how to use OpenBSM library to perform live audit on macOS to detect which files are open and by whom.
+Every day we install a program, or application, on our computer and they can have access to most files.
+Real-time auditing can be useful for a lot of reasons: maybe you're just curious to see which files are opened by some applications or if some malicious processes are reading your personal documents, or maybe opening your photos. Maybe you are not curious but you just want to detect possible ransomware activity to stop them.<br/>
 The scenarios are infinite.<br/>
-Another common scenario is that you can use real-time auditing to build and run your personal Host-Based IDS by checking  modifications and accesses to sensible files.
+Another common scenario is that you can use real-time auditing to build and run your personal Host-Based IDS by checking  modifications and accesses to sensitive files.
 
-In this blog post I will just explain how this auditing is possible thanks to OpenBSM, giving the reader some others resources for further "investigation" and publishing a small proof-of-concept of a basic implementation.
+In this blog post I will just explain how this auditing is possible thanks to OpenBSM, giving the reader some other resources for further "investigation" and publishing a small proof-of-concept of a basic implementation.
 
 If you spot a mistake, I'll be happy to fix it, just send an [email to me](mailto:{{ site.email }}).
 
@@ -29,7 +29,7 @@ According to the Trusted BSD project, OpenBSM is an open-source implementation o
 
 This implementation provides a set of system calls and library interfaces for **managing audit records** but includes also some command line tools.
 
-As we can see from the configuration files located in <span class="mon">/etc/security</span>, by default macOS use two flags, <span class="mon">lo</span> and <span class="mon">aa</span>, to logs Login/Logout (lo) and Authorization/Authentication (aa) events on the <span class="mon">**/var/audit/**</span> directory.
+As we can see from the configuration files located in <span class="mon">/etc/security</span>, by default macOS uses two flags, <span class="mon">lo</span> and <span class="mon">aa</span>, to log Login/Logout (lo) and Authorization/Authentication (aa) events on the <span class="mon">**/var/audit/**</span> directory.
 
 <pre class="highlight">
 $ cat /etc/security/audit_control
@@ -91,16 +91,16 @@ In details, we have 4 functions to manipulate and interact with events:
 {% highlight c %}
 int au_read_rec(FILE *fp, u_char **buf);
 {% endhighlight %}
-This function let us read an event record from a file descriptor and put the content in the buffer <span class="mon">buf</span> passed as parameter (which **must** be freed after use).
-The function return the number of bytes read.
+This function lets us read an event record from a file descriptor and put the content in the buffer <span class="mon">buf</span> passed as parameter (which **must** be freed after use).
+The function returns the number of bytes read.
 
 #### au_fetch_tok()
 
 {% highlight c %}
 int au_fetch_tok(tokenstr_t *tok, u_char *buf, int len);
 {% endhighlight %}
-The buffer obtained from <span class="mon">au_read_rec</span> contains tokens, every token is a struct with different information, according to the token id.
-The first token of the buffer is always a <span class="mon">AUT_HEADER\*</span> token: it contains a field that indicate which kind of event is on the buffer. The next tokens contains information about the path of the process that raised the event, the path of the file interested by the event and other information like the user, the timestamp...
+The buffer obtained from <span class="mon">au_read_rec</span> contains tokens, each token is a struct with different information, according to the token id.
+The first token of the buffer is always a <span class="mon">AUT_HEADER\*</span> token: it contains a field that indicates which kind of event is on the buffer. The next tokens contain information about the path of the process that raised the event, the path of the file affected by the event and other information like the user, the timestamp...
 To read the buffer with the record inside we have to fetch every token on it sequentially, using the <span class="mon">au_fetch_tok</span>
 
 #### au_print_tok()
@@ -108,14 +108,14 @@ To read the buffer with the record inside we have to fetch every token on it seq
 {% highlight c %}
 void au_print_tok(FILE *outfp, tokenstr_t *tok, char *del, char raw, char sfrm);
 {% endhighlight %}
-Now that we have a token, we can print it on a  file descriptor.
+Now that we have a token, we can print it to a file descriptor.
 
 #### au_print_flags_tok()
 
 {% highlight c %}
 void au_print_flags_tok(FILE *outfp, tokenstr_t *tok, char *del, int oflags);
 {% endhighlight %}
-Another function to print token in a fancy way is to use <span class="mon">au_print_flags_tok</span> that accepts an additional parameter to specify different output formats (XML, raw, short..).
+Another function to print tokens in a more readable way is to use <span class="mon">au_print_flags_tok</span> that accepts an additional parameter to specify different output formats (XML, raw, short..).
 
 A typical use of these functions could be:
 - Open a file (usually an audit pipe) with <span class="mon">fopen()</span> and print records on a buffer from the file by calling <span class="mon">au_read_rec()</span>.
@@ -126,11 +126,11 @@ A typical use of these functions could be:
 
 
 There is only one problem I found while parsing these events with the functions provided: <span class="mon">au_print_tok()</span> and <span class="mon">au_print_flags_tok()</span> take as input a token from <span class="mon">au_fetch_tok()</span> and there is no way to parse or filter it, to have a nicer and more descriptive output of the token.
-My solution was to bypass the two functions and manually parse the token to get only the most interesting properties. But how this tokens are made?
-As said before, every event is made of some tokens. A token is just a C struct that contains some information according to the ID of the token.
-A read event, for example, has 3 main tokens: <span class="mon">AUT_HEADER</span> , <span class="mon">AUT_SUBJECT</span> and <span class="mon">AUT_PATH</span>.<br/>
-<span class="mon">AUT_HEADER</span> contains information about the event. In a read event, it display that the event is actually a file read (fr).<br/>
-<span class="mon">AUT_SUBJECT</span> define which process raised this event while <span class="mon">AUT_PATH</span> specify which path was read by the <span class="mon">AUT_SUBJECT</span>.
+My solution was to bypass the two functions and manually parse the token to get only the most interesting properties. But how are these tokens structured?
+As mentioned before, every event is composed of tokens. A token is just a C struct that contains some information according to the ID of the token.
+A read event, for example, has 3 main tokens: <span class="mon">AUT_HEADER</span>, <span class="mon">AUT_SUBJECT</span> and <span class="mon">AUT_PATH</span>.<br/>
+<span class="mon">AUT_HEADER</span> contains information about the event. In a read event, it indicates that the event is a file read (fr).<br/>
+<span class="mon">AUT_SUBJECT</span> defines which process raised this event while <span class="mon">AUT_PATH</span> specifies which path was read by the <span class="mon">AUT_SUBJECT</span>.
 
 We can manually parse the struct to print only useful information.
 
@@ -147,13 +147,13 @@ I wrote a small utility to monitor file or process activities using the <i>audit
 You can find it <a href="https://github.com/santoru/filewatcher" target="_blank">directly on GitHub</a><br/>
 To configure the <i>auditpipe</i> I used an example found <a href="https://github.com/ashish-gehani/SPADE/blob/master/src/spade/reporter/spadeOpenBSM.c" target="_blank">here</a>.<br/> To parse the token's structure I used the open source code from <a href="https://github.com/openbsm/bsmtrace/blob/master/bsm.c" target="_blank">OpenBSM</a>.<br/>
 The code is still pretty messy but it works!
-The options are not so much at the moment, but my goal is to improve it to have a fully-working auditing tool.
+There are not many options at the moment, but my goal is to improve it to have a fully-working auditing tool.
 At the moment it is possible to specify which process or which file to monitor.
 By default, only some events are displayed, like **open/read/write/close**. Anyway, it's possible to display all events thanks to an option. Check the help message!<br/>
 It's also possible, for now, to enable debug message logging into a file.
 
 #### Installation
-At the moment, There is only a line of code inside the <i>Makefile</i> to compile the tool, so you can just <span class="mon">make</span> and it will compile inside the <i>bin</i> folder.<br/>
+At the moment, there is only a line of code inside the <i>Makefile</i> to compile the tool, so you can just <span class="mon">make</span> and it will compile inside the <i>bin</i> folder.<br/>
 If you want to manually compile it, you need to include the bsm library:
 ```bash
 $ gcc -lbsm filewatcher.c lib/*.c -o bin/filewatcher
