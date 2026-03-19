@@ -30,13 +30,13 @@ this integration easier and safer, S3 provides the so-called
 [presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html).
 
 This blog post will briefly explain what a presigned URL is and will summarize
-the security considerations and tips I ended up writing after several time
-spent playing with them and threat modeling user's file upload features.
+the security considerations and tips I ended up writing after spending several hours
+playing with them and threat modeling user's file upload features.
 
 You will not find ready to copy-paste policy configuration for your S3 bucket
 or detailed explanation on how to secure your bucket, what you will find
 here is a list of good-to-know and good-to-remember considerations that you
-should keep in mind if your goal is to use presigned URLs to store object into
+should keep in mind if your goal is to use presigned URLs to store objects into
 an S3 bucket in a safe(r) way.
 
 #### Disclaimer
@@ -57,9 +57,7 @@ Now let's say you create a feature that involves the user uploading a document
 and that you want to store this file into an S3 bucket. 
 How do you handle this in a secure way?
 
-
-
-Here's were presigned URLs come in handy: AWS S3 provides an easy way to share
+Here's where presigned URLs come in handy: AWS S3 provides an easy way to share
 S3 objects by creating signed (with owner credentials) links to access them.
 [Amazon's documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html)
 explain this concept in a clear way:
@@ -105,20 +103,22 @@ resource "on behalf of" the credentials you used to generate it.
 Said that, the ideal setup would usually be to have a dedicated back end service
 with dedicated (and restricted) credentials to generate presigned URLs for
 specific resources and returning these to the front end or to the client,
-where can be directly used to **read** or **write** the "signed" resource (Fig. 1).
+where they can be directly used to **read** or **write** the "signed" resource (Fig. 1).
 
 {% include image.html 
     url="img/s3/upload_scenario.png" 
     description="Figure 1 - A very simplified schema that shows how presigned URLs are used" 
 %}
 
-
 But let's go next with the recommendations, not sorted in any specific order.
 
 ## Presigned URLs can be reused
-Yes, these URLs are not one-shot and the only thing that can limit temporally
-a presigned URL is the `X-AMZ-Expires` parameter: once the presigned URL is
-generated, it will be valid for an unlimited amount of times before it expires.
+Yes, these URLs are not one-shot and the primary parameter controlling a
+presigned URL's lifetime is `X-Amz-Expires`: once generated, it will be valid
+any number of times until it expires. Note that if the URL was generated using
+temporary credentials (e.g., an IAM role, Lambda execution role, or STS session),
+the URL will also expire when those credentials expire — which may be
+considerably sooner than the value set in `X-Amz-Expires`.
 This means that if you grant read access to an object in a bucket for 1 day,
 anyone with the link can access that object for the whole day, multiple times.
 This also means that if you grant write access via a presigned URL to a bucket
@@ -134,7 +134,7 @@ vulnerabilities. If your service is generating a presigned URL valid for 10
 minutes to upload a file, that URL can be used by anyone, unless you
 validate the request in a different way; A solution could be adding an
 additional signed header while building the presigned URL in a way that 
-only allowed clients can perform the request (Check point #8).
+only allowed clients can perform the request (see the signed headers section below).
 
 ## Presigned URLs do not provide authentication
 When your service returns a presigned URL to a user, the user will consume it
@@ -168,7 +168,7 @@ IAM role.
 
 Having your back-end service handling credentials that can do more than you want
 is a big risk for your infrastructure security and your users: let's say you
-configure your service to use bucket's owner credentials, what happen if the
+configure your service to use bucket's owner credentials, what happens if the
 keys get leaked or if a malicious actor can access them? You got this right,
 they have full access to the bucket and to its content. Now let's say your
 service is configured with an IAM role that can only read files under a specific
@@ -177,10 +177,10 @@ files, and this is still bad, but definitely better than having the attacker
 deleting all the files, or replacing some with malicious ones.
 
 Keep also in mind that credentials or keys shouldn't be hard coded,
-there are several alternative to safely store secret and retrieve them
+there are several alternatives to safely store secrets and retrieve them
 when needed, and AWS itself has also a specific service to do that, called
 [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/), so don't 
-hard-code credentials and secret. 
+hard-code credentials and secrets. 
 
 ## Enable server access logging on your exposed S3 bucket
 This is a generic recommendation that applies even if you don't use presigned
@@ -226,8 +226,8 @@ it's still good to keep this in mind).
 
 ## Using signed headers, you can add a file's hash and avoid uncontrolled file uploads
 As said before, once a presigned URL is generated, you don't have control over
-who can upload a file, but you can mitigated this by generating a presigned URL
-that checks for the file's md5 hash, how? By using `X-Amz-SignedHeaders`.
+who can upload a file, but you can mitigate this by generating a presigned URL
+that checks for the file's MD5 hash — by using `X-Amz-SignedHeaders`.
 
 By specifying the `Content-MD5` header while generating the presigned URL, your
 service can enforce the presigned URL to be valid only if the specified value
@@ -237,7 +237,7 @@ specific file, not for a generic one (Fig. 2).
 
 {% include image.html 
     url="img/s3/upload_md5.png" 
-    description="Figure 2 - Presigned URL generation by enforcing the md5 hash" 
+    description="Figure 2 - Presigned URL generation by enforcing the MD5 hash" 
 %}
 
 Keep in mind that this will not protect from a customer that want to upload
@@ -246,8 +246,11 @@ request the presigned link for this file, but will protect from scenarios
 where the user wants to use a presigned link and let someone else uploading
 an arbitrary files (for example in a phishing scenario).
 
-You can use `SignedHeaders` also to enforce additional controls, for example on
-file size by signing the `content-length` header.
+You can use `SignedHeaders` to enforce additional controls, for example by signing
+the `content-length` header. Note that for PUT requests, S3 does not enforce
+the `Content-Length` server-side even when it is a signed header — the reliable
+way to enforce file size limits is via a POST policy's `content-length-range`
+condition (see the next section).
 
 ## You could use POST rather than PUT
 Amazon's AWS S3 documentation
@@ -260,7 +263,7 @@ that you could get with POST, why? Because of
 [POST Policies](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-HTTPPOSTConstructPolicy.html).
 
 A POST Policy is a sequence of rules (called conditions) that must be met when
-performing a POST request to an S3 bucket in order for this request to success.
+performing a POST request to an S3 bucket in order for this request to succeed.
 You can configure these directly from the AWS console.
 
 One benefit, over the others, of using a POST policy is that the
@@ -268,19 +271,19 @@ One benefit, over the others, of using a POST policy is that the
 contains `content-length-range`, which can be used to easily solve the
 consideration #7.
 
-But can I still use PUT? 
+But can I still use PUT?
 
 It is still not clear to me what's the best solution is between POST and PUT, I
 saw both used in productions and I think that depends a lot on the specific use
 case: presigned URL uses PUT by default, and you don't need to write a policy,
-but you loose flexibility. On the other hands, POST give you more control but
+but you lose flexibility. On the other hand, POST gives you more control but
 is less straightforward to implement in my opinion.
 Amazon seems to suggest using POST policy,
 [considering this article where they show an example of browser-based upload](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-post-example.html).
 
 ## Keep the expiration of the presigned URL low, especially for file write
 This is self-explanatory, keep the presigned URL as short-lived as you can.
-Most of the time, presigned URL are used to download a single file from a
+Most of the time, presigned URLs are used to download a single file from a
 bucket, and then are discarded. In most scenarios, your front end does not even
 keep track of the link itself and, once the file is downloaded, is discarded.
 
@@ -293,7 +296,7 @@ again. There's no need to keep an upload link valid for hours.
 If your front end is a web application served in a browser, you must configure
 CORS (Cross Origin Resource Sharing) otherwise your client's requests will fail
 due to browser's protection. CORS is intended to protect your customers from
-malicious website that could perform actions on behalf of the customer.
+malicious websites that could perform actions on behalf of the customer.
 
 Even if your policies and permissions still apply when you configure
 CORS, blocking unauthorized websites to perform cross-origin requests to your
@@ -305,15 +308,18 @@ configuring CORS: only white-list websites that you have control over.
 
 If you want to know more about CORS and how to apply it, Amazon provides a
 [great documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html)
-on the topic with lot of examples and I suggest you to read it.
+on the topic with lots of examples and I suggest you read it.
 
 If your front end is a mobile application, then CORS won't apply, as CORS is
 enforced by browsers to avoid cross-origin and mobile applications are not
 considered a web origin (and are not susceptible to attacks that leverage 
 cross-origin requests). In this case you still want to ensure that websites 
 can't access your bucket and you can do this by ensuring that your CORS is
-enabled without any allowed origin or is disabled. If CORS is disabled,
-browsers will not perform any request.
+enabled without any allowed origin or is disabled. If CORS is disabled, 
+browsers will block cross-origin preflight requests (e.g., PUT)
+before sending them, and will block JavaScript from reading responses to simple
+requests (e.g., GET). In either case, your bucket remains inaccessible to
+unauthorized web origins.
 
 # Conclusion
 With this blog post I hope that I gave you an idea about what to keep in mind
@@ -324,13 +330,13 @@ I'm sure there are other valid recommendations that you can suggest, as I don't
 think I cover 100% of the things.
 
 File uploads can be very dangerous functionalities and the risks involved are
-multiple. Even if you follow these recommendation, you don't know if the file
+multiple. Even if you follow these recommendations, you don't know if the file
 being uploaded from a user is malicious or not, and processing it could have
 unwanted results. That's why it is suggested to process untrusted files in a
 restricted environment.
 
-Finally, AWS provides lot of documentation on S3 and how to secure it further,
-I suggest you to read
+Finally, AWS provides a lot of documentation on S3 and how to secure it further,
+I suggest you read
 [this document](https://aws.amazon.com/premiumsupport/knowledge-center/secure-s3-resources/)
 if you'd like to know more about how to secure files in S3 buckets.
 
