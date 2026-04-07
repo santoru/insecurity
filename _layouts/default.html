@@ -25,24 +25,21 @@
         var nav = document.getElementById('mainNav');
         var header = document.querySelector('.intro-header');
         var btn = document.getElementById('scrollTop');
-        var scrolling = false;
         if (!nav || !header) return;
-        function onScroll() {
-            if (scrolling) return;
-            var scrolled = window.scrollY > header.offsetHeight - nav.offsetHeight;
+        var threshold = function() { return header.offsetHeight - nav.offsetHeight; };
+        function update() {
+            var scrolled = window.scrollY > threshold();
             nav.classList.toggle('nav-scrolled', scrolled);
             if (btn) btn.classList.toggle('visible', scrolled);
         }
-        window.addEventListener('scroll', onScroll);
-        onScroll();
+        window.addEventListener('scroll', update);
+        update();
         if (btn) {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                scrolling = true;
                 btn.classList.remove('visible');
                 nav.classList.remove('nav-scrolled');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                setTimeout(function() { scrolling = false; }, 800);
+                window.scrollTo(0, 0);
             });
         }
     })();
