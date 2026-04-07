@@ -2,7 +2,7 @@
 title: "(in)security"
 header-img: img/bg.jpg
 email: santoru@pm.me
-copyright_name: ""
+copyright_name: "santoru"
 description: "Yet another blog with some security related posts."
 baseurl: ""
 url: "https://insecurity.blog"
@@ -22,7 +22,7 @@ highlighter: rouge
 permalink: pretty
 paginate: 5
 
-plugins: [jekyll-paginate, jekyll-feed]
+plugins: [jekyll-paginate, jekyll-feed, jekyll-sitemap]
 
 kramdown:
   parse_block_html: true

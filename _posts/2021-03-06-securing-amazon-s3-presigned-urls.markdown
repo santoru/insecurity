@@ -9,7 +9,7 @@ comments: true
 
 ---
 
-* table of context
+* table of contents
 {:toc}
 
 # Abstract
