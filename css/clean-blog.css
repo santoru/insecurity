@@ -231,3 +231,6 @@ footer .copyright { font-size: 14px; text-align: center; margin-bottom: 0; }
 }
 #scrollTop.visible { opacity: 1; pointer-events: auto; }
 #scrollTop:hover { opacity: 0.8; }
+@media (max-width: 767.98px) {
+  #scrollTop { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+}
