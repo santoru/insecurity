@@ -11,7 +11,7 @@
 
     {% include footer.html %}
 
-    <a href="#" id="scrollTop" aria-label="Scroll to top" style="display:none;">
+    <a href="#" id="scrollTop" aria-label="Scroll to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="m18 15-6-6-6 6"/>
@@ -29,7 +29,9 @@
         function onScroll() {
             var scrolled = window.scrollY > header.offsetHeight - nav.offsetHeight;
             nav.classList.toggle('nav-scrolled', scrolled);
-            if (btn) btn.style.display = scrolled ? 'flex' : 'none';
+            if (btn) {
+                btn.classList.toggle('visible', scrolled);
+            }
         }
         window.addEventListener('scroll', onScroll);
         onScroll();
