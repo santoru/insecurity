@@ -32,7 +32,7 @@ hr.small {
   background: #fff;
   opacity: 1;
 }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 article img { max-width: 100%; height: auto; }
 article table { width: 100%; margin-bottom: 1rem; border-collapse: collapse; }
 article table th, article table td { padding: 8px 12px; border: 1px solid #ddd; }
