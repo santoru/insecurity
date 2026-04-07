@@ -26,20 +26,47 @@
         var header = document.querySelector('.intro-header');
         var btn = document.getElementById('scrollTop');
         if (!nav || !header) return;
-        var threshold = function() { return header.offsetHeight - nav.offsetHeight; };
+
+        var isScrollingToTop = false;
+        var raf;
+
         function update() {
-            var scrolled = window.scrollY > threshold();
+            var scrolled = window.scrollY > header.offsetHeight - nav.offsetHeight;
             nav.classList.toggle('nav-scrolled', scrolled);
-            if (btn) btn.classList.toggle('visible', scrolled);
+            if (btn && !isScrollingToTop) {
+                btn.classList.toggle('visible', scrolled);
+            }
         }
-        window.addEventListener('scroll', update);
+
+        window.addEventListener('scroll', function() {
+            if (raf) return;
+            raf = requestAnimationFrame(function() {
+                update();
+                raf = null;
+            });
+        });
         update();
+
         if (btn) {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
+                isScrollingToTop = true;
                 btn.classList.remove('visible');
                 nav.classList.remove('nav-scrolled');
                 window.scrollTo(0, 0);
+                // Re-enable after scroll settles
+                var check = setInterval(function() {
+                    if (window.scrollY === 0) {
+                        clearInterval(check);
+                        isScrollingToTop = false;
+                    }
+                }, 100);
+                // Safety fallback
+                setTimeout(function() {
+                    clearInterval(check);
+                    isScrollingToTop = false;
+                    update();
+                }, 1500);
             });
         }
     })();
