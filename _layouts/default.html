@@ -29,12 +29,17 @@
         function onScroll() {
             var scrolled = window.scrollY > header.offsetHeight - nav.offsetHeight;
             nav.classList.toggle('nav-scrolled', scrolled);
-            if (btn) {
-                btn.classList.toggle('visible', scrolled);
-            }
+            if (btn) btn.classList.toggle('visible', scrolled);
         }
         window.addEventListener('scroll', onScroll);
         onScroll();
+        if (btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                btn.classList.remove('visible');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
     })();
     </script>
 
