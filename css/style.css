@@ -97,7 +97,6 @@ img + em {
   display: inline-block;
   font-size: 15px;
   line-height: 2;
-  box-shadow: 0 1px 3px rgba(0,0,0,.06);
 }
 #markdown-toc::before {
   content: "Contents";
