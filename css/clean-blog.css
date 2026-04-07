@@ -207,3 +207,21 @@ footer .copyright { font-size: 14px; text-align: center; margin-bottom: 0; }
 
 /* Selection */
 ::selection { color: #fff; text-shadow: none; background: #306951; }
+
+/* Scroll to top */
+#scrollTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  background: #306951;
+  color: #fff;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 1030;
+  transition: opacity .3s;
+}
+#scrollTop:hover { opacity: 0.8; }
