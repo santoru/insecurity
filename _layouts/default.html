@@ -13,6 +13,23 @@
 
     {% include ga.html %}
 
+    <script>
+    (function() {
+        var nav = document.getElementById('mainNav');
+        var header = document.querySelector('.intro-header');
+        if (!nav || !header) return;
+        function onScroll() {
+            if (window.scrollY > header.offsetHeight - nav.offsetHeight) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        }
+        window.addEventListener('scroll', onScroll);
+        onScroll();
+    })();
+    </script>
+
 </body>
 
 </html>
