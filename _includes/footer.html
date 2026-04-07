@@ -5,7 +5,7 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center footer-nav">
                     <li>
-                        <a class="rss" href="{{ " /feed.xml" | prepend: site.baseurl }}">
+                        <a class="rss" href="{{ "/feed.xml" | prepend: site.baseurl }}" aria-label="RSS Feed">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-rss-icon lucide-rss">
@@ -17,7 +17,7 @@
                     </li>
                     {% if site.twitter_username %}
                     <li>
-                        <a class="twitter" href="https://twitter.com/{{ site.twitter_username }}">
+                        <a class="twitter" href="https://twitter.com/{{ site.twitter_username }}" aria-label="Twitter">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-twitter-icon lucide-twitter">
@@ -38,7 +38,7 @@
                     {% endif %}
                     {% if site.github_username %}
                     <li>
-                        <a class="github" href="https://github.com/{{ site.github_username }}">
+                        <a class="github" href="https://github.com/{{ site.github_username }}" aria-label="GitHub">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-github-icon lucide-github">
@@ -51,7 +51,7 @@
                     {% endif %}
                     {% if site.email %}
                     <li>
-                        <a class="mail" href="mailto:{{ site.email }}">
+                        <a class="mail" href="mailto:{{ site.email }}" aria-label="Email">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail">
@@ -63,7 +63,7 @@
                     {% endif %}
                     {% if site.linkedin_username %}
                     <li>
-                        <a class="linkedin" href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
+                        <a class="linkedin" href="https://www.linkedin.com/in/{{ site.linkedin_username }}" aria-label="LinkedIn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-linkedin-icon lucide-linkedin">
@@ -78,6 +78,7 @@
                 </ul>
                 <p class="copyright text-muted">Copyright &copy; {{ site.copyright_name }} {{ site.time | date: '%Y' }}
                 </p>
+                <a rel="me" href="https://mstdn.social/@santoru" aria-label="Mastodon" style="display:none;"></a>
             </div>
         </div>
     </div>
