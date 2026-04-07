@@ -9,9 +9,12 @@
         content="{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}" />
     <meta property="og:description"
         content="{% if page.subtitle %}{{ page.subtitle }}{% else %}{{ site.description }}{% endif %}" />
-    <meta property="og:image" content="{{ " /img/logo.jpg" | prepend: site.baseurl }}" />
-    <link rel="shortcut icon" href="{{ " /favicon.ico" | prepend: site.baseurl }}" type="image/x-icon" />
-    <a rel="me" href="https://mstdn.social/@santoru"></a>
+    <meta property="og:image" content="{{ "/img/logo.jpg" | prepend: site.baseurl }}" />
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}" />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@{{ site.twitter_username }}" />
+    <link rel="shortcut icon" href="{{ "/favicon.ico" | prepend: site.baseurl }}" type="image/x-icon" />
     <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
 
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
