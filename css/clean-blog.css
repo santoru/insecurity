@@ -224,10 +224,10 @@ footer .copyright { font-size: 14px; text-align: center; margin-bottom: 0; }
   text-decoration: none;
   z-index: 1030;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity .3s, visibility .3s;
+  pointer-events: none;
+  transition: opacity .3s;
   line-height: 0;
   padding: 0;
 }
-#scrollTop.visible { opacity: 1; visibility: visible; }
+#scrollTop.visible { opacity: 1; pointer-events: auto; }
 #scrollTop:hover { opacity: 0.8; }
