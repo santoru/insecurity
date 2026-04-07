@@ -88,16 +88,39 @@ img + em {
 }
 
 /* Table of contents */
-#markdown-toc::before {
-  content: "Contents";
-  font-weight: bold;
-}
-#markdown-toc ul { list-style: decimal; }
 #markdown-toc {
-  border: 1px solid #aaa;
-  padding: 1.5em;
-  list-style: decimal;
+  background-color: #f8f9fa;
+  border-left: 4px solid #306951;
+  border-radius: 4px;
+  padding: 1.2em 1.5em;
+  list-style: none;
   display: inline-block;
+  font-size: 15px;
+  line-height: 1.8;
+}
+#markdown-toc::before {
+  content: "📑 Contents";
+  display: block;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 0.5em;
+  color: #306951;
+}
+#markdown-toc li { padding: 2px 0; }
+#markdown-toc a { color: #404040; text-decoration: none; }
+#markdown-toc a:hover { color: #306951; text-decoration: underline; }
+#markdown-toc ul {
+  list-style: none;
+  padding-left: 1.2em;
+  margin-top: 4px;
+}
+#markdown-toc > li { counter-increment: toc; }
+#markdown-toc > li::before {
+  content: counter(toc) ".";
+  color: #306951;
+  font-weight: 600;
+  margin-right: 6px;
 }
 
 /* Footer */
