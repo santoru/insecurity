@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
 a { color: #404040; text-decoration: none; }
 a:hover, a:focus { color: #0085a1; text-decoration: none; }
 a img:hover, a img:focus { cursor: zoom-in; }
-hr { opacity: 1; }
+hr { opacity: 1; border-color: #ddd; color: #ddd; }
 blockquote { color: gray; font-style: italic; border-left: 4px solid #306951; padding-left: 16px; margin-left: 0; }
 pre { padding: 16px; border-radius: 4px; overflow-x: auto; }
 .highlighter-rouge pre.highlight { padding: 16px; }
