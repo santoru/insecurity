@@ -23,7 +23,7 @@ blockquote { color: gray; font-style: italic; border-left: 4px solid #306951; pa
 pre { padding: 16px; border-radius: 4px; overflow-x: auto; }
 .highlighter-rouge pre.highlight { padding: 16px; }
 code.highlighter-rouge { padding: 2px 6px; background-color: #f5f5f5; border-radius: 3px; }
-hr.small { max-width: 100px; margin: 15px auto; border-width: 4px; border-color: #fff; }
+hr.small { max-width: 100px; margin: 15px auto; border-width: 4px; border-color: #fff; opacity: 1; }
 html { scroll-behavior: smooth; }
 article img { max-width: 100%; height: auto; }
 article table { width: 100%; margin-bottom: 1rem; border-collapse: collapse; }
