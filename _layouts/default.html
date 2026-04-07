@@ -25,8 +25,10 @@
         var nav = document.getElementById('mainNav');
         var header = document.querySelector('.intro-header');
         var btn = document.getElementById('scrollTop');
+        var scrolling = false;
         if (!nav || !header) return;
         function onScroll() {
+            if (scrolling) return;
             var scrolled = window.scrollY > header.offsetHeight - nav.offsetHeight;
             nav.classList.toggle('nav-scrolled', scrolled);
             if (btn) btn.classList.toggle('visible', scrolled);
@@ -36,8 +38,11 @@
         if (btn) {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
+                scrolling = true;
                 btn.classList.remove('visible');
+                nav.classList.remove('nav-scrolled');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(function() { scrolling = false; }, 800);
             });
         }
     })();
