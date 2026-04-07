@@ -1,23 +1,17 @@
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNav">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
-        </div>
+        <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="{{ site.baseurl }}/" aria-label="Home">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ site.baseurl }}/" aria-label="Home">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-house-icon lucide-house">
@@ -27,8 +21,8 @@
                         </svg>
                     </a>
                 </li>
-                <li>
-                    <a href="https://twitter.com/{{ site.twitter_username }}" aria-label="Twitter">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://twitter.com/{{ site.twitter_username }}" aria-label="Twitter">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-twitter-icon lucide-twitter">
@@ -37,8 +31,8 @@
                         </svg>
                     </a>
                 </li>
-                <li>
-                    <a href="https://github.com/{{ site.github_username }}" aria-label="GitHub">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/{{ site.github_username }}" aria-label="GitHub">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-github-icon lucide-github">
@@ -48,8 +42,8 @@
                         </svg>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ site.baseurl }}/about/" aria-label="About">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ site.baseurl }}/about/" aria-label="About">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-badge-info-icon lucide-badge-info">
@@ -60,8 +54,8 @@
                         </svg>
                     </a>
                 </li>
-                <li>
-                    <a href="mailto:{{ site.email }}" aria-label="Email">
+                <li class="nav-item">
+                    <a class="nav-link" href="mailto:{{ site.email }}" aria-label="Email">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                             class="lucide lucide-mail-icon lucide-mail">
@@ -72,7 +66,5 @@
                 </li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
 </nav>

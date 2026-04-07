@@ -2,9 +2,9 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">
                 <ul class="list-inline text-center footer-nav">
-                    <li>
+                    <li class="list-inline-item">
                         <a class="rss" href="{{ "/feed.xml" | prepend: site.baseurl }}" aria-label="RSS Feed">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
@@ -16,7 +16,7 @@
                         </a>
                     </li>
                     {% if site.twitter_username %}
-                    <li>
+                    <li class="list-inline-item">
                         <a class="twitter" href="https://twitter.com/{{ site.twitter_username }}" aria-label="Twitter">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
@@ -27,17 +27,8 @@
                         </a>
                     </li>
                     {% endif %}
-                    {% if site.facebook_username %}
-                    <li>
-                        <a class="facebook" href="https://www.facebook.com/{{ site.facebook_username }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-facebook fa-stack-1x"></i>
-                            </span>
-                        </a>
-                    </li>
-                    {% endif %}
                     {% if site.github_username %}
-                    <li>
+                    <li class="list-inline-item">
                         <a class="github" href="https://github.com/{{ site.github_username }}" aria-label="GitHub">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
@@ -50,7 +41,7 @@
                     </li>
                     {% endif %}
                     {% if site.email %}
-                    <li>
+                    <li class="list-inline-item">
                         <a class="mail" href="mailto:{{ site.email }}" aria-label="Email">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
@@ -62,7 +53,7 @@
                     </li>
                     {% endif %}
                     {% if site.linkedin_username %}
-                    <li>
+                    <li class="list-inline-item">
                         <a class="linkedin" href="https://www.linkedin.com/in/{{ site.linkedin_username }}" aria-label="LinkedIn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
@@ -83,9 +74,6 @@
         </div>
     </div>
 </footer>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
