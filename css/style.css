@@ -143,6 +143,21 @@ img + em {
   opacity: 0.5;
 }
 
+/* Section headings — subtle green accent */
+article h3 {
+  color: #306951;
+}
+
+article h3::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: rgba(48, 105, 81, 0.35);
+  margin-top: 0.35em;
+  border-radius: 1px;
+}
+
 /* Timeline */
 .timeline-list {
   list-style: none;
@@ -217,6 +232,10 @@ img + em {
   transition: border-color 0.22s, box-shadow 0.22s, transform 0.22s;
 }
 
+.project-list li a {
+  font-weight: 600;
+}
+
 .project-list li:hover {
   border-color: rgba(48, 105, 81, 0.45);
   box-shadow: 0 4px 18px rgba(48, 105, 81, 0.1);
@@ -243,6 +262,9 @@ img + em {
   flex: 1;
   max-width: 90px;
   height: 1px;
+  width: auto;
+  margin-top: 0;
+  border-radius: 0;
   background: linear-gradient(to right, transparent, rgba(48, 105, 81, 0.45));
 }
 
