@@ -145,31 +145,38 @@ img + em {
 
 /* Hall of Fame */
 .hof-title {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 1.3em;
+  letter-spacing: 5px;
+  font-size: 1em;
   color: #306951;
-  margin-top: 2.5em;
+  margin-top: 3.5em;
+  margin-bottom: 0.6em;
+}
+
+.hof-title::before,
+.hof-title::after {
+  content: '';
+  flex: 1;
+  max-width: 90px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(48, 105, 81, 0.45));
 }
 
 .hof-title::after {
-  content: '';
-  display: block;
-  width: 48px;
-  height: 3px;
-  background: #306951;
-  margin: 0.5em auto 0;
-  border-radius: 2px;
+  background: linear-gradient(to left, transparent, rgba(48, 105, 81, 0.45));
 }
 
 .hof-subtitle {
   text-align: center;
-  color: #999;
-  font-size: 0.92em;
-  font-style: italic;
-  margin-top: 0.5em;
-  margin-bottom: 2em;
+  color: #aaa;
+  font-size: 0.86em;
+  letter-spacing: 0.2px;
+  margin-top: 0;
+  margin-bottom: 2.4em;
 }
 
 .hof-list {
@@ -178,29 +185,36 @@ img + em {
   justify-content: center;
   list-style: none;
   padding: 0;
-  margin: 0;
-  gap: 12px;
+  margin: 0 0 1em;
+  gap: 14px;
 }
 
 .hof-list li { margin: 0; }
 
 .hof-list li a {
   display: inline-block;
-  padding: 9px 22px;
-  border: 2px solid #306951;
-  border-radius: 4px;
+  padding: 10px 26px;
+  background: transparent;
+  border: 1.5px solid rgba(48, 105, 81, 0.4);
+  border-radius: 50px;
   color: #306951 !important;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
-  font-size: 0.88em;
-  letter-spacing: 0.5px;
+  font-size: 0.8em;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
   text-decoration: none;
-  transition: background-color 0.2s, color 0.2s;
+  box-shadow: 0 2px 10px rgba(48, 105, 81, 0.07);
+  transition: background 0.22s ease, border-color 0.22s ease,
+              color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
 }
 
 .hof-list li a:hover {
-  background-color: #306951;
+  background: #306951;
+  border-color: #306951;
   color: #fff !important;
+  box-shadow: 0 6px 22px rgba(48, 105, 81, 0.2);
+  transform: translateY(-2px);
 }
 
 /* Footer */
