@@ -38,3 +38,14 @@ You can find my contacts at the bottom of this page, along with a summary of my 
 - [filewatcher](https://github.com/santoru/filewatcher) - A simple real-time auditing utility for macOS using OpenBSM
 - [shcheck](https://github.com/santoru/shcheck) - A basic tool to check HTTP security headers on web applications
 - [pihole-dashboard](https://github.com/santoru/pihole-dashboard) - A minimal and clean dashboard to visualize Pi-Hole stats on an E-Ink display
+
+---
+
+### Hall of Fame
+{: .hof-title}
+
+Companies that have acknowledged my security research and responsible disclosure efforts.
+{: .hof-subtitle}
+
+- [Telecom Italia](https://www.gruppotim.it/it/footer/responsible-disclosure.html)
+{: .hof-list}
