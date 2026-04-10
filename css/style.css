@@ -175,6 +175,11 @@ article h3::after {
 
 .timeline-list li:last-child { padding-bottom: 0; }
 
+.timeline-list li strong {
+  display: inline-block;
+  min-width: 10em;
+}
+
 .timeline-list li::before {
   content: '';
   position: absolute;
@@ -192,6 +197,13 @@ article h3::after {
 .cve-list {
   list-style: none;
   padding: 0;
+}
+
+.cve-list li a {
+  display: inline-block;
+  min-width: 15ch;
+  font-family: ui-monospace, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9em;
 }
 
 .cve-list li {

@@ -19,13 +19,13 @@ You can find my contacts at the bottom of this page, along with a summary of my 
 
 ### Timeline
 
-- February 2026 — Achieved the GIAC Exploit Researcher and Advanced Penetration Tester (GXPN) certification
-- December 2022 — Joined Amazon Web Services (AWS) as Senior Application Security Engineer
-- October 2021 — Joined Trade Republic (Berlin) as Senior Product Security Engineer
-- November 2019 — Joined N26 (Berlin) as Product Security Engineer
-- October 2018 — Became an Offensive Security Certified Professional (OSCP)
-- July 2017 — Presented [filewatcher](https://github.com/santoru/filewatcher) at the MacAdmins Meeting at the University of Utah
-- April 2017 — Joined Horizon Security as Security Consultant / Penetration Tester
+- **February 2026** — Achieved the GIAC Exploit Researcher and Advanced Penetration Tester (GXPN) certification
+- **December 2022** — Joined Amazon Web Services (AWS) as Senior Application Security Engineer
+- **October 2021** — Joined Trade Republic (Berlin) as Senior Product Security Engineer
+- **November 2019** — Joined N26 (Berlin) as Product Security Engineer
+- **October 2018** — Became an Offensive Security Certified Professional (OSCP)
+- **July 2017** — Presented [filewatcher](https://github.com/santoru/filewatcher) at the MacAdmins Meeting at the University of Utah
+- **April 2017** — Joined Horizon Security as Security Consultant / Penetration Tester
 {: .timeline-list}
 
 ### CVEs
