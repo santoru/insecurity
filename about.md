@@ -26,6 +26,7 @@ You can find my contacts at the bottom of this page, along with a summary of my 
 - October 2018 - Became an Offensive Security Certified Professional (OSCP)
 - July 2017 - Presented [filewatcher](https://github.com/santoru/filewatcher) at the MacAdmins Meeting at the University of Utah
 - April 2017 - Joined Horizon Security as Security Consultant / Penetration Tester
+{: .timeline-list}
 
 ### My CVEs
 - [CVE-2022-2903](https://wpscan.com/vulnerability/255b98ba-5da9-4424-a7e9-c438d8905864) - PHP Object Injection in the NinjaForms WordPress plugin.
@@ -33,11 +34,13 @@ You can find my contacts at the bottom of this page, along with a summary of my 
 - [CVE-2018-17172](https://securitydocs.business.xerox.com/wp-content/uploads/2018/12/cert_Security_Mini_Bulletin_XRX18AL_for_ALB80xx-C80xx_v1.1.pdf) - Command injection in the Xerox AltaLink web application.
 - [CVE-2018-7064](https://www.arubanetworks.com/assets/alert/ARUBA-PSA-2019-001.txt) - Reflected cross-site scripting (XSS) in the *Aruba Instant* web interface.
 - [CVE-2017-17663](https://acme.com/updates/archive/199.html) - Buffer overflow in the *thttpd* and *mini_httpd* web servers.
+{: .cve-list}
 
 ### Main Projects
 - [filewatcher](https://github.com/santoru/filewatcher) - A simple real-time auditing utility for macOS using OpenBSM
 - [shcheck](https://github.com/santoru/shcheck) - A basic tool to check HTTP security headers on web applications
 - [pihole-dashboard](https://github.com/santoru/pihole-dashboard) - A minimal and clean dashboard to visualize Pi-Hole stats on an E-Ink display
+{: .project-list}
 
 ---
 
