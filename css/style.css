@@ -331,5 +331,14 @@ article h3::after {
   transform: translateY(-2px);
 }
 
+/* Mobile: stack date/ID above description */
+@media (max-width: 768px) {
+  .timeline-list li strong,
+  .cve-list li a {
+    display: block;
+    min-width: auto;
+  }
+}
+
 /* Footer */
 .footer-nav li { padding: 10px; }
