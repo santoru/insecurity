@@ -207,6 +207,7 @@ article h3::after {
 }
 
 .cve-list li {
+  position: relative;
   padding: 11px 16px 11px 18px;
   margin-bottom: 8px;
   border-left: 3px solid rgba(48, 105, 81, 0.3);
@@ -215,6 +216,12 @@ article h3::after {
   font-size: 0.93em;
   line-height: 1.65;
   transition: background 0.2s, border-left-color 0.2s;
+}
+
+.cve-list li a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
 }
 
 .cve-list li:last-child { margin-bottom: 0; }
@@ -235,6 +242,7 @@ article h3::after {
 }
 
 .project-list li {
+  position: relative;
   padding: 18px 20px;
   border: 1.5px solid rgba(48, 105, 81, 0.18);
   border-radius: 10px;
@@ -246,6 +254,12 @@ article h3::after {
 
 .project-list li a {
   font-weight: 600;
+}
+
+.project-list li a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
 }
 
 .project-list li:hover {
