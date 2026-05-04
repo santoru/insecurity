@@ -44,11 +44,14 @@ You can find my contacts at the bottom of this page, along with a summary of my 
 - [pihole-dashboard](https://github.com/santoru/pihole-dashboard){:ext} A minimal and clean dashboard to visualize Pi-Hole stats on an E-Ink display.
 {: .project-list}
 
-### Hall of Fame
+### Acknowledgments
 {: .hof-title}
 
 Companies that have acknowledged my security research and responsible disclosure efforts.
 {: .hof-subtitle}
 
 - [Telecom Italia](https://www.gruppotim.it/it/footer/responsible-disclosure.html){:ext}
+- [Fastweb](https://www.fastweb.it/corporate/responsible-disclosure/?lng=EN){:ext}
+- [Broadcom](https://www.broadcom.com/support/security-center/security-thanks){:ext}
+
 {: .hof-list}
