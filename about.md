@@ -50,8 +50,7 @@ You can find my contacts at the bottom of this page, along with a summary of my 
 Companies that have acknowledged my security research and responsible disclosure efforts.
 {: .hof-subtitle}
 
-- [Telecom Italia](https://www.gruppotim.it/it/footer/responsible-disclosure.html){:ext}
-- [Fastweb](https://www.fastweb.it/corporate/responsible-disclosure/?lng=EN){:ext}
-- [Broadcom](https://www.broadcom.com/support/security-center/security-thanks){:ext}
-
+- [Telecom Italia](https://www.gruppotim.it/it/footer/responsible-disclosure.html){: target="_blank" rel="noopener noreferrer"}
+- [Fastweb](https://www.fastweb.it/corporate/responsible-disclosure/){: target="_blank" rel="noopener noreferrer"}
+- [Broadcom](https://www.broadcom.com/support/security-center/security-thanks){: target="_blank" rel="noopener noreferrer"}
 {: .hof-list}
