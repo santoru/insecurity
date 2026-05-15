@@ -439,7 +439,7 @@ article h3::after {
 }
 .toc-inline-toggle {
   position: absolute;
-  top: 1.2em;
+  top: 1.5em;
   right: 1.5em;
   background: none;
   border: none;
