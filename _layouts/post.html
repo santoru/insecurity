@@ -21,6 +21,19 @@ layout: default
     </div>
 </header>
 
+<!-- TOC Sidebar -->
+<aside id="toc-sidebar" class="toc-sidebar" aria-label="Table of Contents">
+    <nav id="toc-sidebar-nav"></nav>
+</aside>
+
+<!-- TOC Toggle Button -->
+<button id="toc-toggle" class="toc-toggle" aria-label="Toggle sidebar table of contents" title="Toggle TOC sidebar">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="10" y2="18"/>
+    </svg>
+</button>
+
 <!-- Post Content -->
 <article>
     <div class="container">
@@ -51,5 +64,67 @@ layout: default
         </div>
     </div>
 </article>
+
+<script>
+(function() {
+    var toc = document.getElementById('markdown-toc');
+    if (!toc) return;
+    document.body.classList.add('has-toc');
+
+    var sidebar = document.getElementById('toc-sidebar');
+    var nav = document.getElementById('toc-sidebar-nav');
+    var btn = document.getElementById('toc-toggle');
+    var active = false;
+
+    // Clone TOC into sidebar
+    var clone = toc.cloneNode(true);
+    clone.id = 'sidebar-toc';
+    nav.appendChild(clone);
+
+    // Collect all heading targets from TOC links
+    var links = clone.querySelectorAll('a');
+    var sections = [];
+    links.forEach(function(a) {
+        var id = a.getAttribute('href');
+        if (id && id.startsWith('#')) {
+            var el = document.getElementById(id.slice(1));
+            if (el) sections.push({ link: a, target: el });
+        }
+    });
+
+    // Toggle sidebar
+    btn.addEventListener('click', function() {
+        active = !active;
+        sidebar.classList.toggle('open', active);
+        btn.classList.toggle('active', active);
+        if (active) {
+            toc.style.display = 'none';
+            highlightCurrent();
+        } else {
+            toc.style.display = '';
+        }
+    });
+
+    // Highlight current section on scroll
+    function highlightCurrent() {
+        if (!active) return;
+        var scrollPos = window.scrollY + 100;
+        var current = null;
+        for (var i = 0; i < sections.length; i++) {
+            if (sections[i].target.offsetTop <= scrollPos) {
+                current = sections[i];
+            }
+        }
+        links.forEach(function(a) { a.classList.remove('toc-active'); });
+        if (current) current.link.classList.add('toc-active');
+    }
+
+    var raf;
+    window.addEventListener('scroll', function() {
+        if (raf) return;
+        raf = requestAnimationFrame(function() { highlightCurrent(); raf = null; });
+    });
+})();
+</script>
 
 <hr>
