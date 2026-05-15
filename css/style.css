@@ -367,6 +367,7 @@ article h3::after {
   border-right: 1px solid #e9ecef;
   padding: 1.5em 2em;
   z-index: 900;
+  font-family: 'Fira Sans', sans-serif;
   font-size: 15px;
   line-height: 2;
   display: none;
