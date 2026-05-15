@@ -6,5 +6,5 @@
 <a href="https://insecurity.blog"><img alt="Status" src="https://img.shields.io/website?up_message=online&url=https%3A%2F%2Finsecurity.blog"></a>
 <a href="https://jekyllrb.com/"><img alt="Powered-By" src="https://img.shields.io/badge/Powered%20by-Jekyll-1f425f"></a>
 <br/>
-<img src="/img/cover.png" alt="Insecurity" />
+<img src="/assets/img/cover.png" alt="Insecurity" />
 </p>

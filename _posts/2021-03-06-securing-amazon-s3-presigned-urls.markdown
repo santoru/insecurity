@@ -106,7 +106,7 @@ specific resources and returning these to the front end or to the client,
 where they can be directly used to **read** or **write** the "signed" resource (Fig. 1).
 
 {% include image.html 
-    url="img/s3/upload_scenario.png" 
+    url="assets/img/s3/upload_scenario.png" 
     description="Figure 1 - A very simplified schema that shows how presigned URLs are used" 
 %}
 
@@ -236,7 +236,7 @@ user while uploading a file. This way you can generate a presigned URL for a
 specific file, not for a generic one (Fig. 2).
 
 {% include image.html 
-    url="img/s3/upload_md5.png" 
+    url="assets/img/s3/upload_md5.png" 
     description="Figure 2 - Presigned URL generation by enforcing the MD5 hash" 
 %}
 

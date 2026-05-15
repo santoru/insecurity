@@ -2,7 +2,7 @@
 layout: page
 title: About me
 description: Security researcher, vulnerability hunter, tool builder.
-background: '/img/bg-about.jpg'
+background: '/assets/img/bg-about.jpg'
 ---
 
 Hi there!\

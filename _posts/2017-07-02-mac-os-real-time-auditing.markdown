@@ -174,7 +174,7 @@ Usage: ./bin/filewatcher [OPTIONS]
 </pre>
 
 {% include image.html 
-    url="img/filewatcher/screenshotsmall.png" 
+    url="assets/img/filewatcher/screenshotsmall.png" 
     description="Figure 1 - An example of the output" 
 %}
 

