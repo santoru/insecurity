@@ -360,15 +360,15 @@ article h3::after {
 /* TOC Sidebar */
 .toc-sidebar {
   position: fixed;
-  top: 70px;
+  top: 0;
   left: 0;
   width: 280px;
-  height: calc(100vh - 70px);
+  height: 100vh;
   overflow-y: auto;
   background: #fff;
   border-right: 1px solid #e9ecef;
-  padding: 1.5em 1.2em;
-  z-index: 1000;
+  padding: 80px 1.2em 1.5em;
+  z-index: 900;
   font-size: 14px;
   display: none;
 }
@@ -419,34 +419,41 @@ article h3::after {
   background: rgba(48, 105, 81, 0.06);
 }
 
-/* TOC Toggle Button */
-.toc-toggle {
-  position: fixed;
-  top: 80px;
-  left: 16px;
-  z-index: 1001;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+/* Inline toggle button inside #markdown-toc */
+.toc-inline-toggle {
+  float: right;
+  background: none;
   border: 1.5px solid rgba(48, 105, 81, 0.4);
-  background: #fff;
+  border-radius: 6px;
   color: #306951;
   cursor: pointer;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: background 0.2s, transform 0.2s;
+  padding: 4px 6px;
+  line-height: 1;
+  transition: background 0.2s;
 }
-.toc-toggle:hover { background: rgba(48, 105, 81, 0.08); }
-.toc-toggle.active {
-  background: #306951;
-  color: #fff;
+.toc-inline-toggle:hover { background: rgba(48, 105, 81, 0.08); }
+
+/* Shift content when sidebar is open */
+body.toc-sidebar-open article,
+body.toc-sidebar-open .intro-header {
+  margin-left: 280px;
 }
 
-/* Only show toggle when TOC exists (JS adds body class) */
-body.has-toc .toc-toggle { display: flex; }
+/* Header always above sidebar */
+.intro-header {
+  position: relative;
+  z-index: 950;
+}
 
+/* Navbar above everything */
+.navbar-custom {
+  z-index: 1100;
+}
+
+/* Disable TOC sidebar on mobile */
 @media (max-width: 991px) {
-  .toc-sidebar { width: 260px; }
+  .toc-sidebar { display: none !important; }
+  .toc-inline-toggle { display: none; }
+  body.toc-sidebar-open article,
+  body.toc-sidebar-open .intro-header { margin-left: 0; }
 }
