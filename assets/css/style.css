@@ -439,13 +439,13 @@ article h3::after {
 }
 .toc-inline-toggle {
   position: absolute;
-  top: 1.5em;
+  top: 1.2em;
   right: 1.5em;
   background: none;
   border: none;
   color: #306951;
   cursor: pointer;
-  padding: 4px;
+  padding: 0;
   line-height: 1;
   opacity: 0.5;
   transition: opacity 0.2s;
