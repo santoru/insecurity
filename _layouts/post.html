@@ -23,7 +23,10 @@ layout: default
 
 <!-- TOC Sidebar -->
 <aside id="toc-sidebar" class="toc-sidebar" aria-label="Table of Contents">
-    <div class="toc-sidebar-title">Contents</div>
+    <div class="toc-sidebar-header">
+        <span class="toc-sidebar-title">Contents</span>
+        <button id="toc-sidebar-close" class="toc-sidebar-close">✕ Close</button>
+    </div>
     <nav id="toc-sidebar-nav"></nav>
 </aside>
 
@@ -62,13 +65,13 @@ layout: default
 (function() {
     var toc = document.getElementById('markdown-toc');
     if (!toc) return;
-    // Don't activate on mobile
     if (window.innerWidth < 992) return;
 
     document.body.classList.add('has-toc');
 
     var sidebar = document.getElementById('toc-sidebar');
     var nav = document.getElementById('toc-sidebar-nav');
+    var closeBtn = document.getElementById('toc-sidebar-close');
     var active = false;
 
     // Clone TOC into sidebar
@@ -76,15 +79,15 @@ layout: default
     clone.id = 'sidebar-toc';
     nav.appendChild(clone);
 
-    // Add toggle button next to the inline TOC "Contents" heading
-    var toggleBtn = document.createElement('button');
-    toggleBtn.className = 'toc-inline-toggle';
-    toggleBtn.title = 'Pin TOC to sidebar';
-    toggleBtn.setAttribute('aria-label', 'Pin TOC to sidebar');
-    toggleBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><line x1="21" y1="3" x2="14" y2="10"/><polyline points="9 21 3 21 3 15"/><line x1="3" y1="21" x2="10" y2="14"/></svg>';
-    toc.insertBefore(toggleBtn, toc.firstChild);
+    // Add open button inside inline TOC
+    var openBtn = document.createElement('button');
+    openBtn.className = 'toc-inline-toggle';
+    openBtn.title = 'Pin TOC to sidebar';
+    openBtn.setAttribute('aria-label', 'Pin TOC to sidebar');
+    openBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><line x1="21" y1="3" x2="14" y2="10"/><polyline points="9 21 3 21 3 15"/><line x1="3" y1="21" x2="10" y2="14"/></svg>';
+    toc.insertBefore(openBtn, toc.firstChild);
 
-    // Collect all heading targets from TOC links
+    // Heading targets
     var links = clone.querySelectorAll('a');
     var sections = [];
     links.forEach(function(a) {
@@ -95,40 +98,44 @@ layout: default
         }
     });
 
-    // Toggle sidebar
-    toggleBtn.addEventListener('click', function() {
-        active = !active;
-        sidebar.classList.toggle('open', active);
-        document.body.classList.toggle('toc-sidebar-open', active);
-        if (active) {
-            toc.style.display = 'none';
-            positionSidebar();
-            highlightCurrent();
-        } else {
-            toc.style.display = '';
-        }
-    });
+    function openSidebar() {
+        active = true;
+        sidebar.classList.add('open');
+        document.body.classList.add('toc-sidebar-open');
+        toc.style.display = 'none';
+        positionSidebar();
+        highlightCurrent();
+    }
 
-    // Position sidebar below the header
+    function closeSidebar() {
+        active = false;
+        sidebar.classList.remove('open');
+        document.body.classList.remove('toc-sidebar-open');
+        toc.style.display = '';
+    }
+
+    openBtn.addEventListener('click', openSidebar);
+    closeBtn.addEventListener('click', closeSidebar);
+
+    // Position sidebar: starts below header, sticks at navbar bottom
     function positionSidebar() {
+        var navbar = document.getElementById('mainNav');
         var header = document.querySelector('.intro-header');
-        if (!header) return;
+        if (!navbar || !header) return;
+        var navH = navbar.offsetHeight;
         var headerBottom = header.offsetTop + header.offsetHeight;
         var scrollY = window.scrollY;
-        var top = Math.max(0, headerBottom - scrollY);
+        var top = Math.max(navH, headerBottom - scrollY);
         sidebar.style.top = top + 'px';
         sidebar.style.height = 'calc(100vh - ' + top + 'px)';
     }
 
-    // Highlight current section on scroll
     function highlightCurrent() {
         if (!active) return;
-        var scrollPos = window.scrollY + 100;
+        var scrollPos = window.scrollY + 120;
         var current = null;
         for (var i = 0; i < sections.length; i++) {
-            if (sections[i].target.offsetTop <= scrollPos) {
-                current = sections[i];
-            }
+            if (sections[i].target.offsetTop <= scrollPos) current = sections[i];
         }
         links.forEach(function(a) { a.classList.remove('toc-active'); });
         if (current) current.link.classList.add('toc-active');
@@ -138,8 +145,7 @@ layout: default
     window.addEventListener('scroll', function() {
         if (raf) return;
         raf = requestAnimationFrame(function() {
-            if (active) positionSidebar();
-            highlightCurrent();
+            if (active) { positionSidebar(); highlightCurrent(); }
             raf = null;
         });
     });
