@@ -2,8 +2,6 @@
     var toc = document.getElementById('markdown-toc');
     if (!toc || window.innerWidth < 992) return;
 
-    document.body.classList.add('has-toc');
-
     var sidebar = document.getElementById('toc-sidebar');
     var nav = document.getElementById('toc-sidebar-nav');
     var closeBtn = document.getElementById('toc-sidebar-close');
