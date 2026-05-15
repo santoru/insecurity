@@ -362,12 +362,12 @@ article h3::after {
   position: fixed;
   top: 0;
   left: 0;
-  width: 280px;
+  width: 320px;
   height: 100vh;
   overflow-y: auto;
   background: #fff;
   border-right: 1px solid #e9ecef;
-  padding: 80px 1.2em 1.5em;
+  padding: 1.5em 1.2em;
   z-index: 900;
   font-size: 14px;
   display: none;
@@ -434,9 +434,8 @@ article h3::after {
 .toc-inline-toggle:hover { background: rgba(48, 105, 81, 0.08); }
 
 /* Shift content when sidebar is open */
-body.toc-sidebar-open article,
-body.toc-sidebar-open .intro-header {
-  margin-left: 280px;
+body.toc-sidebar-open article {
+  margin-left: 320px;
 }
 
 /* Header always above sidebar */
@@ -454,6 +453,5 @@ body.toc-sidebar-open .intro-header {
 @media (max-width: 991px) {
   .toc-sidebar { display: none !important; }
   .toc-inline-toggle { display: none; }
-  body.toc-sidebar-open article,
-  body.toc-sidebar-open .intro-header { margin-left: 0; }
+  body.toc-sidebar-open article { margin-left: 0; }
 }

@@ -102,11 +102,23 @@ layout: default
         document.body.classList.toggle('toc-sidebar-open', active);
         if (active) {
             toc.style.display = 'none';
+            positionSidebar();
             highlightCurrent();
         } else {
             toc.style.display = '';
         }
     });
+
+    // Position sidebar below the header
+    function positionSidebar() {
+        var header = document.querySelector('.intro-header');
+        if (!header) return;
+        var headerBottom = header.offsetTop + header.offsetHeight;
+        var scrollY = window.scrollY;
+        var top = Math.max(0, headerBottom - scrollY);
+        sidebar.style.top = top + 'px';
+        sidebar.style.height = 'calc(100vh - ' + top + 'px)';
+    }
 
     // Highlight current section on scroll
     function highlightCurrent() {
@@ -125,7 +137,11 @@ layout: default
     var raf;
     window.addEventListener('scroll', function() {
         if (raf) return;
-        raf = requestAnimationFrame(function() { highlightCurrent(); raf = null; });
+        raf = requestAnimationFrame(function() {
+            if (active) positionSidebar();
+            highlightCurrent();
+            raf = null;
+        });
     });
 })();
 </script>
