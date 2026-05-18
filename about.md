@@ -5,6 +5,9 @@ description: Security researcher, vulnerability hunter, tool builder.
 background: '/assets/img/bg-about.jpg'
 ---
 
+<div class="about-hero">
+  <div class="about-hero__content">
+
 Hi there!\
 I'm Alessio — a Senior Application Security Engineer with a decade of experience breaking, securing, and rethinking complex systems.
 
@@ -16,6 +19,22 @@ My career started in the trenches as a penetration tester at **Horizon Security*
 
 Outside of my day job, I hunt for bugs, do vulnerability research, and build open-source tools to automate security work. I also write on this blog to share what I learn.\
 You can find my contacts at the bottom of this page, along with a summary of my main achievements below.
+
+  </div>
+
+  <aside class="about-hero__media">
+    <figure class="about-card">
+      <img
+        src="{{ '/assets/img/about-profile.jpg' | relative_url }}"
+        alt="Portrait of Alessio"
+        class="about-card__image"
+      />
+      <figcaption class="about-card__caption">
+        Security researcher, builder, and bug hunter.
+      </figcaption>
+    </figure>
+  </aside>
+</div>
 
 ### Timeline
 
