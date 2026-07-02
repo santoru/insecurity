@@ -1,0 +1,11 @@
+@startuml
+actor User as U
+participant "Api Gateway" as AG
+database S3 as S3
+U -> AG: GET uploadLink
+AG -> U: return presigned URL
+
+U -> S3: POST/PUT presigned URL
+
+S3 -> S3: check Signature and store if valid
+@enduml

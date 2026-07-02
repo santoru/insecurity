@@ -1,0 +1,6 @@
+_site
+node_modules
+Gemfile.lock
+.jekyll-cache/
+docker-run.sh
+.claude/

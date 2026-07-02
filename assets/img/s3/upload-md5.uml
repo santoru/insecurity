@@ -1,0 +1,12 @@
+@startuml
+actor User as U
+participant "Api Gateway" as AG
+database S3 as S3
+U -> AG: GET uploadLink(md5HashOfTheFile)
+AG -> AG: "create presigned URL with Content-MD5 as SignedHeader"
+AG -> U: return presigned URL
+
+U -> S3: POST/PUT presigned URL + Content-MD5
+
+S3 -> S3: check Signature (and hash) and store if valid
+@enduml

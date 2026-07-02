@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body>
+
+    {% include nav.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+
+    <a href="#" id="scrollTop" aria-label="Scroll to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6"/>
+        </svg>
+    </a>
+
+    {% include ga.html %}
+
+    <script>
+    (function() {
+        var nav = document.getElementById('mainNav');
+        var header = document.querySelector('.intro-header');
+        var btn = document.getElementById('scrollTop');
+        if (!nav || !header) return;
+
+        var isScrollingToTop = false;
+        var raf;
+
+        function update() {
+            var scrolled = window.scrollY > header.offsetHeight - nav.offsetHeight;
+            nav.classList.toggle('nav-scrolled', scrolled);
+            if (btn && !isScrollingToTop) {
+                btn.classList.toggle('visible', scrolled);
+            }
+        }
+
+        window.addEventListener('scroll', function() {
+            if (raf) return;
+            raf = requestAnimationFrame(function() {
+                update();
+                raf = null;
+            });
+        });
+        update();
+
+        if (btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                isScrollingToTop = true;
+                btn.classList.remove('visible');
+                nav.classList.remove('nav-scrolled');
+                window.scrollTo(0, 0);
+                // Re-enable after scroll settles
+                var check = setInterval(function() {
+                    if (window.scrollY === 0) {
+                        clearInterval(check);
+                        isScrollingToTop = false;
+                    }
+                }, 100);
+                // Safety fallback
+                setTimeout(function() {
+                    clearInterval(check);
+                    isScrollingToTop = false;
+                    update();
+                }, 1500);
+            });
+        }
+    })();
+    </script>
+
+</body>
+
+</html>
