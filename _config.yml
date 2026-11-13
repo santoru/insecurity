@@ -4,6 +4,7 @@ header-img: assets/img/bg.jpg
 email: santoru@pm.me
 copyright_name: "santoru"
 description: "Yet another blog with some security related posts."
+home_intro: "Notes from a decade of breaking and securing systems: vulnerability research, offensive security and cloud."
 baseurl: ""
 url: "https://insecurity.blog"
 twitter_username: santoru_
@@ -33,3 +34,4 @@ exclude:
   - "docker-run.sh"
   - "assets/img/cover.png"   # only used by the GitHub README
   - "assets/img/s3/*.uml"    # PlantUML sources of the S3 post diagrams
+  - "brand"                  # brand book: local only until the new identity ships

@@ -5,6 +5,7 @@ subtitle: "Security tips to consider while designing user's upload features usin
 date:   2021-03-06 18:20:24 +0100
 author: "santoru"
 visible: 1
+tags: [AWS, Cloud security]
 
 ---
 

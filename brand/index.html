@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Brand — (in)security</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B110E'/%3E%3Cpath d='M12 7c-4 4.5-4 13.5 0 18M20 7c4 4.5 4 13.5 0 18' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='2.8' fill='%233DDC97'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="brand.css">
+    <style>
+        /* Logo tiles */
+        .logo-tile { display: grid; place-items: center; min-height: 220px; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--white); position: relative; }
+        .logo-tile.ink { background: var(--ink-950); border-color: var(--ink-950); }
+        .logo-tile.moss { background: var(--moss); border-color: var(--moss); }
+        .logo-tile .cap { position: absolute; left: 16px; bottom: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-subtle); }
+        .logo-tile.ink .cap, .logo-tile.moss .cap { color: rgba(255,255,255,.55); }
+        .logo-xl .logo-mark { width: 56px; height: 56px; }
+        .logo-xl .logo-word { font-size: 40px; }
+        .logo-tile.moss .logo, .logo-tile.moss .logo:hover { color: #fff; }
+        .logo-tile.moss .logo-word .paren { color: var(--signal); }
+        .app-icons { display: flex; align-items: end; gap: 18px; }
+        .clearspace { display: inline-grid; place-items: center; padding: 28px; border: 1.5px dashed rgba(61,220,151,.5); border-radius: 12px; position: relative; }
+        .clearspace::after { content: 'x'; position: absolute; top: 6px; left: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--signal); }
+
+        /* Swatches */
+        .swatch { border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; background: var(--white); cursor: pointer; text-align: left; padding: 0; font: inherit; color: inherit; transition: transform .2s var(--ease), box-shadow .2s; }
+        .swatch:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+        .swatch-chip { height: 120px; display: flex; align-items: end; padding: 12px 14px; }
+        .swatch-chip span { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
+        .swatch-info { padding: 12px 14px 14px; }
+        .swatch-name { font-weight: 600; font-size: 15px; display: block; }
+        .swatch-hex { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); }
+        .swatch.copied .swatch-hex { color: var(--moss); }
+        .mini-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+        .mini-swatches .swatch-chip { height: 64px; }
+
+        /* Type specimens */
+        .specimen { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 28px 0; border-top: 1px solid var(--border); }
+        .specimen:first-child { border-top: 0; padding-top: 0; }
+        .specimen-aa { font-size: 88px; line-height: 1; letter-spacing: -0.04em; color: var(--text); }
+        .specimen-meta { font-size: 14px; color: var(--text-muted); }
+        .specimen-meta strong { display: block; color: var(--text); font-size: 16px; margin-bottom: 2px; }
+        .scale-row { display: grid; grid-template-columns: 110px 1fr; align-items: baseline; gap: 16px; padding: 10px 0; border-top: 1px dashed var(--border); }
+        .scale-row .label { color: var(--text-subtle); }
+
+        /* Voice */
+        .voice-card { padding: 24px; border-radius: var(--radius-lg); background: var(--paper); border: 1px solid var(--border); }
+        .voice-card h3 { font-size: 20px; }
+        .say { display: grid; gap: 8px; margin-top: 14px; font-size: 14.5px; line-height: 1.5; }
+        .say div { padding: 10px 12px; border-radius: 8px; }
+        .say .yes { background: var(--success-bg); color: var(--success-text); }
+        .say .no { background: var(--critical-bg); color: var(--critical-text); text-decoration: line-through; text-decoration-color: rgba(180,35,40,.4); }
+
+        @media (max-width: 600px) {
+            .specimen { grid-template-columns: 1fr; gap: 8px; }
+            .specimen-aa { font-size: 64px; }
+            .logo-xl .logo-word { font-size: 30px; }
+            .logo-xl .logo-mark { width: 44px; height: 44px; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Reusable logo mark -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="mark" viewBox="0 0 32 32">
+            <path d="M12 6c-4.6 4.8-4.6 15.2 0 20M20 6c4.6 4.8 4.6 15.2 0 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+            <circle cx="16" cy="16" r="3" fill="#3DDC97" />
+        </symbol>
+    </svg>
+
+    <nav class="bp-nav">
+        <div class="bp-wrap">
+            <a class="logo" href="./"><svg class="logo-mark"><use href="#mark" /></svg><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></a>
+            <div class="bp-nav-links">
+                <a href="./" aria-current="page">Identity</a>
+                <a href="brand-ui/">UI kit</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bp-hero on-ink">
+        <div class="bp-wrap">
+            <span class="label">Brand identity · v1.0 · 2026</span>
+            <h1 class="display" style="margin-top:18px">Signal in<br>the noise.</h1>
+            <p class="lead">A calm, precise identity for a blog about breaking and securing systems.
+                Dark ink, a heritage green, and one bright signal for the thing that matters.</p>
+            <div class="bp-row" style="margin-top:32px">
+                <a class="btn btn-signal btn-lg" href="brand-ui/">Explore the UI kit
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+                <a class="btn btn-outline-light btn-lg" href="#color">Colour palette</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 01 Concept -->
+        <section class="bp-section">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">01 — Concept</span>
+                    <div>
+                        <h2>The parentheses are the brand.</h2>
+                        <p>The name already contains the idea: <em>security</em>, with an <em>(in)</em> that reminds us nothing is fully secure.
+                            The mark keeps just the brackets — a scope, a lens — and puts a single green dot inside: the finding,
+                            the signal you are looking for in a sea of noise.</p>
+                    </div>
+                </div>
+                <div class="bp-grid-3">
+                    <div class="voice-card"><span class="label">Scope</span><h3 style="margin-top:8px">( )</h3><p class="muted small" style="margin:0">Brackets frame the work: a target, a boundary, a test case. Used as the mark and as a quiet typographic device.</p></div>
+                    <div class="voice-card"><span class="label">Signal</span><h3 style="margin-top:8px">●</h3><p class="muted small" style="margin:0">One bright mint accent, used sparingly: the active state, the key number, the focus ring. Never as a background for long text.</p></div>
+                    <div class="voice-card"><span class="label">Ink</span><h3 style="margin-top:8px">■</h3><p class="muted small" style="margin:0">A near-black with a hint of green. Gives the brand its terminal-at-night calm without the hacker clichés.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 Logo -->
+        <section class="bp-section" id="logo">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">02 — Logo</span>
+                    <div>
+                        <h2>Wordmark &amp; mark</h2>
+                        <p>Space Grotesk SemiBold, tight tracking. The parentheses take the brand green on light backgrounds and the signal mint on dark ones. The mark works alone from 16px.</p>
+                    </div>
+                </div>
+                <div class="bp-grid-2">
+                    <div class="logo-tile"><span class="logo logo-xl"><svg class="logo-mark"><use href="#mark" /></svg><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">Primary · on white</span></div>
+                    <div class="logo-tile ink on-ink"><span class="logo logo-xl"><svg class="logo-mark"><use href="#mark" /></svg><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">Primary · on ink</span></div>
+                    <div class="logo-tile moss"><span class="logo logo-xl"><svg class="logo-mark"><use href="#mark" /></svg><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">On moss</span></div>
+                    <div class="logo-tile">
+                        <div class="app-icons">
+                            <svg width="72" height="72" viewBox="0 0 32 32" aria-label="App icon 72px"><rect width="32" height="32" rx="8" fill="#0B110E" /><path d="M12 7c-4 4.5-4 13.5 0 18M20 7c4 4.5 4 13.5 0 18" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" /><circle cx="16" cy="16" r="2.8" fill="#3DDC97" /></svg>
+                            <svg width="44" height="44" viewBox="0 0 32 32" aria-label="App icon 44px"><rect width="32" height="32" rx="8" fill="#0B110E" /><path d="M12 7c-4 4.5-4 13.5 0 18M20 7c4 4.5 4 13.5 0 18" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" /><circle cx="16" cy="16" r="2.8" fill="#3DDC97" /></svg>
+                            <svg width="24" height="24" viewBox="0 0 32 32" aria-label="Favicon 24px"><rect width="32" height="32" rx="8" fill="#0B110E" /><path d="M12 7c-4 4.5-4 13.5 0 18M20 7c4 4.5 4 13.5 0 18" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" /><circle cx="16" cy="16" r="3.2" fill="#3DDC97" /></svg>
+                            <svg width="16" height="16" viewBox="0 0 32 32" aria-label="Favicon 16px"><rect width="32" height="32" rx="7" fill="#0B110E" /><path d="M12 7c-4 4.5-4 13.5 0 18M20 7c4 4.5 4 13.5 0 18" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" /><circle cx="16" cy="16" r="3.6" fill="#3DDC97" /></svg>
+                        </div>
+                        <span class="cap">App icon &amp; favicon · 72 / 44 / 24 / 16</span>
+                    </div>
+                </div>
+                <div class="bp-demo on-ink" style="margin-top:16px">
+                    <span class="label bp-demo-title">Clear space &amp; minimum size</span>
+                    <div class="bp-row" style="gap:32px">
+                        <span class="clearspace"><span class="logo"><svg class="logo-mark"><use href="#mark" /></svg><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span></span>
+                        <p class="small" style="margin:0;max-width:440px;color:var(--ink-300)">Keep at least one mark-height (<b style="color:#fff">x</b>) of space around the logo. Minimum wordmark width: 120px. Below that, use the mark alone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 Color -->
+        <section class="bp-section" id="color">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">03 — Colour</span>
+                    <div>
+                        <h2>Ink, moss &amp; one signal</h2>
+                        <p>Mostly white and ink, moss for actions and links, signal for emphasis. Status colours are reserved for alerts and severity. Click a swatch to copy its hex.</p>
+                    </div>
+                </div>
+                <div class="bp-grid-3">
+                    <button class="swatch" data-hex="#0B110E"><div class="swatch-chip" style="background:#0B110E;color:#fff"><span>Base · 60%</span></div><div class="swatch-info"><span class="swatch-name">Ink</span><span class="swatch-hex">#0B110E</span></div></button>
+                    <button class="swatch" data-hex="#306951"><div class="swatch-chip" style="background:#306951;color:#fff"><span>Primary · 30%</span></div><div class="swatch-info"><span class="swatch-name">Moss</span><span class="swatch-hex">#306951</span></div></button>
+                    <button class="swatch" data-hex="#3DDC97"><div class="swatch-chip" style="background:#3DDC97;color:#0B110E"><span>Accent · 10%</span></div><div class="swatch-info"><span class="swatch-name">Signal</span><span class="swatch-hex">#3DDC97</span></div></button>
+                </div>
+                <h4 style="margin:40px 0 14px">Neutrals</h4>
+                <div class="mini-swatches">
+                    <button class="swatch" data-hex="#18201C"><div class="swatch-chip" style="background:#18201C"></div><div class="swatch-info"><span class="swatch-name">Text</span><span class="swatch-hex">#18201C</span></div></button>
+                    <button class="swatch" data-hex="#526059"><div class="swatch-chip" style="background:#526059"></div><div class="swatch-info"><span class="swatch-name">Muted</span><span class="swatch-hex">#526059</span></div></button>
+                    <button class="swatch" data-hex="#7C8781"><div class="swatch-chip" style="background:#7C8781"></div><div class="swatch-info"><span class="swatch-name">Subtle</span><span class="swatch-hex">#7C8781</span></div></button>
+                    <button class="swatch" data-hex="#DDE3DF"><div class="swatch-chip" style="background:#DDE3DF"></div><div class="swatch-info"><span class="swatch-name">Border</span><span class="swatch-hex">#DDE3DF</span></div></button>
+                    <button class="swatch" data-hex="#F3F6F4"><div class="swatch-chip" style="background:#F3F6F4"></div><div class="swatch-info"><span class="swatch-name">Surface</span><span class="swatch-hex">#F3F6F4</span></div></button>
+                    <button class="swatch" data-hex="#FFFFFF"><div class="swatch-chip" style="background:#FFFFFF;border-bottom:1px solid var(--border)"></div><div class="swatch-info"><span class="swatch-name">White</span><span class="swatch-hex">#FFFFFF</span></div></button>
+                </div>
+                <h4 style="margin:32px 0 14px">Status</h4>
+                <div class="mini-swatches">
+                    <button class="swatch" data-hex="#2F6FEB"><div class="swatch-chip" style="background:#2F6FEB"></div><div class="swatch-info"><span class="swatch-name">Info</span><span class="swatch-hex">#2F6FEB</span></div></button>
+                    <button class="swatch" data-hex="#306951"><div class="swatch-chip" style="background:#306951"></div><div class="swatch-info"><span class="swatch-name">Success</span><span class="swatch-hex">#306951</span></div></button>
+                    <button class="swatch" data-hex="#D9932A"><div class="swatch-chip" style="background:#D9932A"></div><div class="swatch-info"><span class="swatch-name">Warning</span><span class="swatch-hex">#D9932A</span></div></button>
+                    <button class="swatch" data-hex="#C9302F"><div class="swatch-chip" style="background:#C9302F"></div><div class="swatch-info"><span class="swatch-name">Critical</span><span class="swatch-hex">#C9302F</span></div></button>
+                </div>
+                <p class="bp-note">All text pairings meet WCAG AA (4.5:1). <em>Subtle</em> is for decorative or large text only.</p>
+            </div>
+        </section>
+
+        <!-- 04 Typography -->
+        <section class="bp-section" id="type">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">04 — Typography</span>
+                    <div>
+                        <h2>Three voices, one rhythm</h2>
+                        <p>A geometric grotesk for headlines, a neutral sans for reading, and a mono for labels, code and data. All free on Google Fonts.</p>
+                    </div>
+                </div>
+                <div class="specimen">
+                    <div class="specimen-aa" style="font-family:var(--font-display);font-weight:600">Aa</div>
+                    <div><div class="specimen-meta"><strong>Space Grotesk</strong>Display &amp; headings · 500 / 600 · tracking −2%</div>
+                        <p style="font-family:var(--font-display);font-size:28px;line-height:1.3;letter-spacing:-.02em;margin:12px 0 0">Hacking into a router with a command injection</p></div>
+                </div>
+                <div class="specimen">
+                    <div class="specimen-aa" style="font-family:var(--font-body);font-weight:500">Aa</div>
+                    <div><div class="specimen-meta"><strong>Inter</strong>Body &amp; UI · 400 / 500 / 600 · 17px / 1.7</div>
+                        <p style="margin:12px 0 0;max-width:640px">Presigned URLs are authenticated on behalf of the credentials that generated them, so whoever holds the link holds the access — until it expires.</p></div>
+                </div>
+                <div class="specimen">
+                    <div class="specimen-aa" style="font-family:var(--font-mono);font-weight:500;letter-spacing:-.02em">Aa</div>
+                    <div><div class="specimen-meta"><strong>JetBrains Mono</strong>Labels, code &amp; data · 500 / 600 · uppercase labels +8%</div>
+                        <p style="font-family:var(--font-mono);font-size:15px;margin:12px 0 0">CVE-2018-20122 · <span style="color:var(--moss)">GET /status.cgi?nvget=pc_list</span></p></div>
+                </div>
+                <div style="margin-top:20px">
+                    <div class="scale-row"><span class="label">Display</span><span class="display" style="font-size:56px;margin:0">Signal</span></div>
+                    <div class="scale-row"><span class="label">H1 · 46</span><h1 style="margin:0">Signal in the noise</h1></div>
+                    <div class="scale-row"><span class="label">H2 · 32</span><h2 style="margin:0">Signal in the noise</h2></div>
+                    <div class="scale-row"><span class="label">H3 · 23</span><h3 style="margin:0">Signal in the noise</h3></div>
+                    <div class="scale-row"><span class="label">Lead · 20</span><p class="lead" style="margin:0">Signal in the noise</p></div>
+                    <div class="scale-row"><span class="label">Body · 17</span><p style="margin:0">Signal in the noise</p></div>
+                    <div class="scale-row"><span class="label">Label · 12</span><span class="label">Signal in the noise</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 Voice -->
+        <section class="bp-section" id="voice">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">05 — Voice</span>
+                    <div>
+                        <h2>How it sounds</h2>
+                        <p>Written by a practitioner for practitioners. Clear first, clever second.</p>
+                    </div>
+                </div>
+                <div class="bp-grid-3">
+                    <div class="voice-card"><h3>Direct</h3><p class="muted small">Lead with the finding. Short sentences, active voice.</p>
+                        <div class="say"><div class="yes">The login page runs your input as a shell command.</div><div class="no">It could potentially be argued that input handling may be suboptimal.</div></div></div>
+                    <div class="voice-card"><h3>Technical, not cryptic</h3><p class="muted small">Show the request, the payload, the fix. Explain jargon once.</p>
+                        <div class="say"><div class="yes">A presigned URL is a link that carries its own credentials.</div><div class="no">Leverage SigV4 PUT semantics for ephemeral object ACLs.</div></div></div>
+                    <div class="voice-card"><h3>Honest about risk</h3><p class="muted small">No fear-mongering, no hype. Say what is affected and what is not.</p>
+                        <div class="say"><div class="yes">Fixed in the latest firmware. Older versions are still exposed.</div><div class="no">This terrifying bug could destroy the internet!!!</div></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bp-footer">
+        <div class="bp-wrap">
+            <span>(in)security brand system · v1.0</span>
+            <a href="brand-ui/">UI kit →</a>
+        </div>
+    </footer>
+
+    <script>
+        // Click a swatch to copy its hex
+        document.querySelectorAll('.swatch').forEach(function (s) {
+            s.addEventListener('click', function () {
+                var hex = s.getAttribute('data-hex'), label = s.querySelector('.swatch-hex');
+                if (navigator.clipboard) navigator.clipboard.writeText(hex).catch(function () {});
+                s.classList.add('copied'); label.textContent = 'Copied ' + hex;
+                setTimeout(function () { s.classList.remove('copied'); label.textContent = hex; }, 1200);
+            });
+        });
+    </script>
+</body>
+</html>

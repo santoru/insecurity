@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>UI kit — (in)security</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B110E'/%3E%3Cpath d='M12 7c-4 4.5-4 13.5 0 18M20 7c4 4.5 4 13.5 0 18' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='2.8' fill='%233DDC97'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../brand.css">
+    <style>
+        .kit-toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+        .prose { max-width: 680px; }
+        .ink-toast { max-width: 420px; }
+    </style>
+</head>
+
+<body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="mark" viewBox="0 0 32 32">
+            <path d="M12 6c-4.6 4.8-4.6 15.2 0 20M20 6c4.6 4.8 4.6 15.2 0 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+            <circle cx="16" cy="16" r="3" fill="#3DDC97" />
+        </symbol>
+        <!-- Icons (Lucide, ISC licence) -->
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-rss" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9" /><path d="M4 4a16 16 0 0 1 16 16" /><circle cx="5" cy="19" r="1" /></g></symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></g></symbol>
+        <symbol id="i-trash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" /></g></symbol>
+        <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" /><path d="m16 6-4-4-4 4M12 2v13" /></g></symbol>
+        <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></g></symbol>
+        <symbol id="i-ok" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></g></symbol>
+        <symbol id="i-warn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3Z" /><path d="M12 9v4M12 17h.01" /></g></symbol>
+        <symbol id="i-crit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="M12 8v4M12 16h.01" /></g></symbol>
+    </svg>
+
+    <nav class="bp-nav">
+        <div class="bp-wrap">
+            <a class="logo" href="../"><svg class="logo-mark"><use href="#mark" /></svg><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></a>
+            <div class="bp-nav-links">
+                <a href="../">Identity</a>
+                <a href="./" aria-current="page">UI kit</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bp-hero on-ink" style="padding:88px 0 76px">
+        <div class="bp-wrap">
+            <span class="label">UI kit · v1.0</span>
+            <h1 style="margin-top:16px">Every component, one system.</h1>
+            <p class="lead">Built from the brand tokens in <code style="background:var(--ink-800);border-color:var(--ink-700);color:var(--signal)">brand.css</code>. No framework, no build step.</p>
+            <div class="kit-toc">
+                <a class="btn btn-sm btn-outline-light" href="#buttons">Buttons</a>
+                <a class="btn btn-sm btn-outline-light" href="#alerts">Alerts</a>
+                <a class="btn btn-sm btn-outline-light" href="#dropdowns">Dropdowns &amp; inputs</a>
+                <a class="btn btn-sm btn-outline-light" href="#badges">Badges &amp; tags</a>
+                <a class="btn btn-sm btn-outline-light" href="#text">Text</a>
+                <a class="btn btn-sm btn-outline-light" href="#images">Images &amp; cards</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Buttons -->
+        <section class="bp-section" id="buttons">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">01 — Buttons</span>
+                    <div><h2>Actions</h2><p>One primary action per view. Secondary for alternatives, ghost for low-emphasis actions, danger only for destructive ones. Hover brightens; press nudges down 1px.</p></div>
+                </div>
+                <div class="bp-demo">
+                    <span class="label bp-demo-title">Hierarchy</span>
+                    <div class="bp-row">
+                        <a class="btn btn-primary" href="#buttons">Read the post <svg><use href="#i-arrow" /></svg></a>
+                        <button class="btn btn-secondary" type="button"><svg><use href="#i-rss" /></svg> Subscribe</button>
+                        <button class="btn btn-ghost" type="button">Learn more</button>
+                        <button class="btn btn-danger" type="button"><svg><use href="#i-trash" /></svg> Delete</button>
+                    </div>
+                </div>
+                <div class="bp-demo">
+                    <span class="label bp-demo-title">Sizes, icon-only &amp; disabled</span>
+                    <div class="bp-row">
+                        <button class="btn btn-primary btn-sm" type="button">Small</button>
+                        <button class="btn btn-primary" type="button">Default</button>
+                        <button class="btn btn-primary btn-lg" type="button">Large</button>
+                        <button class="btn btn-secondary btn-icon" type="button" aria-label="Copy link"><svg><use href="#i-copy" /></svg></button>
+                        <button class="btn btn-secondary btn-icon" type="button" aria-label="Share"><svg><use href="#i-share" /></svg></button>
+                        <button class="btn btn-primary" type="button" disabled>Disabled</button>
+                    </div>
+                </div>
+                <div class="bp-demo on-ink">
+                    <span class="label bp-demo-title">On ink</span>
+                    <div class="bp-row">
+                        <button class="btn btn-signal" type="button">Get the PoC <svg><use href="#i-arrow" /></svg></button>
+                        <button class="btn btn-outline-light" type="button">View on GitHub</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <section class="bp-section" id="alerts">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">02 — Alerts</span>
+                    <div><h2>Callouts</h2><p>For notes inside posts and feedback in the UI. Tinted background, matching border, icon carries the colour; the text stays readable.</p></div>
+                </div>
+                <div class="bp-stack">
+                    <div class="alert alert-info" role="note"><svg><use href="#i-info" /></svg><div><span class="alert-title">Note</span><p>All tests were run against my own device, on my own network.</p></div></div>
+                    <div class="alert alert-success" role="status"><svg><use href="#i-ok" /></svg><div><span class="alert-title">Fixed</span><p>The vendor shipped a patched firmware. Update before reading further.</p></div></div>
+                    <div class="alert alert-warning" role="note"><svg><use href="#i-warn" /></svg><div><span class="alert-title">Heads up</span><p>Presigned URLs can be reused until they expire — keep the expiry short.</p></div></div>
+                    <div class="alert alert-critical" role="alert"><svg><use href="#i-crit" /></svg><div><span class="alert-title">Critical</span><p>Unauthenticated command injection in the login page. Remote code execution as root.</p></div></div>
+                </div>
+                <div class="bp-demo on-ink" style="margin-top:16px">
+                    <span class="label bp-demo-title">Toast on ink</span>
+                    <div class="alert alert-ink ink-toast" role="status"><svg><use href="#i-check" /></svg><div><span class="alert-title">Link copied</span><p style="color:var(--ink-300)">Share it with your team.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dropdowns & inputs -->
+        <section class="bp-section" id="dropdowns">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">03 — Dropdowns &amp; inputs</span>
+                    <div><h2>Choices</h2><p>A menu built on <code>&lt;details&gt;</code> (works without JavaScript), and native form controls dressed in the brand. Focus always shows the signal ring.</p></div>
+                </div>
+                <div class="bp-grid-2">
+                    <div class="bp-demo" style="min-height:330px">
+                        <span class="label bp-demo-title">Menu</span>
+                        <div class="bp-row">
+                            <details class="dropdown">
+                                <summary class="btn btn-secondary">Sort by <svg class="chev"><use href="#i-chev" /></svg></summary>
+                                <div class="dropdown-menu" role="menu">
+                                    <button class="dropdown-item is-active" role="menuitem" type="button"><svg><use href="#i-check" /></svg> Newest first</button>
+                                    <button class="dropdown-item" role="menuitem" type="button"><svg></svg> Oldest first</button>
+                                    <button class="dropdown-item" role="menuitem" type="button"><svg></svg> Reading time</button>
+                                </div>
+                            </details>
+                            <details class="dropdown">
+                                <summary class="btn btn-primary">Share <svg class="chev"><use href="#i-chev" /></svg></summary>
+                                <div class="dropdown-menu" role="menu">
+                                    <button class="dropdown-item" role="menuitem" type="button"><svg><use href="#i-copy" /></svg> Copy link <kbd>⌘C</kbd></button>
+                                    <a class="dropdown-item" role="menuitem" href="#dropdowns"><svg><use href="#i-share" /></svg> Share on Mastodon</a>
+                                    <a class="dropdown-item" role="menuitem" href="#dropdowns"><svg><use href="#i-rss" /></svg> RSS feed</a>
+                                    <div class="dropdown-sep"></div>
+                                    <button class="dropdown-item is-danger" role="menuitem" type="button"><svg><use href="#i-trash" /></svg> Report an issue</button>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="bp-demo">
+                        <span class="label bp-demo-title">Form controls</span>
+                        <div class="bp-stack">
+                            <label class="field"><span class="field-label">Email</span><input class="input" type="email" placeholder="you@example.com"></label>
+                            <label class="field"><span class="field-label">Topic</span>
+                                <select class="select">
+                                    <option>All topics</option><option>Cloud security</option><option>IoT</option><option>macOS</option>
+                                </select>
+                            </label>
+                            <button class="btn btn-primary" type="button" style="justify-self:start">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Badges & tags -->
+        <section class="bp-section" id="badges">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">04 — Badges &amp; tags</span>
+                    <div><h2>Labels</h2><p>Severity badges use the mono face and a status dot — like a finding in a report. Tags are soft pills for topics.</p></div>
+                </div>
+                <div class="bp-demo">
+                    <span class="label bp-demo-title">Severity</span>
+                    <div class="bp-row">
+                        <span class="badge badge-critical">Critical</span>
+                        <span class="badge badge-high">High</span>
+                        <span class="badge badge-medium">Medium</span>
+                        <span class="badge badge-low">Low</span>
+                        <span class="badge badge-fixed">Fixed</span>
+                    </div>
+                </div>
+                <div class="bp-demo">
+                    <span class="label bp-demo-title">Topic tags</span>
+                    <div class="bp-row" style="gap:8px">
+                        <a class="tag" href="#badges">AWS</a><a class="tag" href="#badges">Cloud security</a><a class="tag" href="#badges">IoT</a><a class="tag" href="#badges">Exploitation</a><a class="tag" href="#badges">macOS</a><a class="tag" href="#badges">Tooling</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Text -->
+        <section class="bp-section" id="text">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">05 — Text</span>
+                    <div><h2>Reading</h2><p>A 680px measure, 17px Inter at 1.7 line-height. Headlines in Space Grotesk, labels and code in JetBrains Mono.</p></div>
+                </div>
+                <article class="prose">
+                    <span class="label">Cloud security · 16 min read</span>
+                    <h1 style="margin-top:12px">Securing your S3 presigned URLs</h1>
+                    <p class="lead">Presigned URLs are convenient, fast and easy to get wrong. Here is what to check before you ship one.</p>
+                    <p>A presigned URL is a link that carries its own credentials. Whoever holds it can <a href="#text">read or write the object</a> on behalf of the identity that signed it, until it expires. That makes the <strong>signing service</strong> the real security boundary, not the bucket policy.</p>
+                    <h2>Keep the expiry short</h2>
+                    <p>There is no built-in way to revoke a single URL. Set <code>ExpiresIn</code> to the shortest value your users can live with:</p>
+                    <pre><code><span class="k">$</span> aws s3 presign s3://my-bucket/upload.png <span class="k">--expires-in</span> 300
+<span class="c"># → valid for 5 minutes, then useless</span>
+url = s3.generate_presigned_url(<span class="s">"put_object"</span>, ExpiresIn=<span class="s">300</span>)</code></pre>
+                    <h3>Checklist</h3>
+                    <ul class="list">
+                        <li>Sign with a dedicated, least-privilege role</li>
+                        <li>Sanitise the object key — path traversal is a thing</li>
+                        <li>Enable server access logging on exposed buckets</li>
+                    </ul>
+                    <ol class="list">
+                        <li>Generate the URL server-side</li>
+                        <li>Return it to the client</li>
+                        <li>Upload directly to S3</li>
+                    </ol>
+                    <blockquote>Security is a process, not a product.<cite>— Bruce Schneier</cite></blockquote>
+                    <p class="small muted">Small text — captions, footnotes and metadata. Updated March 6, 2021.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Images & cards -->
+        <section class="bp-section" id="images">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">06 — Images &amp; cards</span>
+                    <div><h2>Media</h2><p>Screenshots get a 12px radius, a hairline border and a soft shadow. Captions start with a mono figure label. Cards lift on hover.</p></div>
+                </div>
+                <div class="prose">
+                    <figure class="figure">
+                        <img src="../../assets/img/fastgate/login.png" width="895" height="666" alt="FASTGate router login panel">
+                        <figcaption><b>Fig. 1</b>The FASTGate login panel — the entry point for the command injection.</figcaption>
+                    </figure>
+                </div>
+                <div class="bp-grid-3" style="margin-top:32px">
+                    <a class="card" href="#images">
+                        <img class="card-cover" src="../../assets/img/bg.jpg" alt="" loading="lazy">
+                        <div class="card-body">
+                            <div class="card-meta"><span class="badge badge-fixed">Fixed</span><span>Oct 2018</span></div>
+                            <h3 class="card-title">Hacking into a FASTGate router</h3>
+                            <p class="card-text">Missing authentication, command injection in the login page and a buffer overflow.</p>
+                        </div>
+                    </a>
+                    <a class="card" href="#images">
+                        <img class="card-cover" src="../../assets/img/s3/upload_scenario.png" alt="" loading="lazy" style="object-fit:contain;background:var(--white);padding:16px;border-bottom:1px solid var(--border)">
+                        <div class="card-body">
+                            <div class="card-meta"><span class="tag">AWS</span><span>Mar 2021 · 16 min</span></div>
+                            <h3 class="card-title">Securing S3 presigned URLs</h3>
+                            <p class="card-text">Security tips for designing upload features with presigned URLs.</p>
+                        </div>
+                    </a>
+                    <a class="card" href="#images">
+                        <img class="card-cover" src="../../assets/img/filewatcher/screenshotsmall.png" alt="" loading="lazy">
+                        <div class="card-body">
+                            <div class="card-meta"><span class="tag">macOS</span><span>Jul 2017 · 7 min</span></div>
+                            <h3 class="card-title">Real-time auditing on macOS</h3>
+                            <p class="card-text">Monitoring file system access for every application with OpenBSM.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="bp-demo" style="margin-top:32px">
+                    <span class="label bp-demo-title">Author</span>
+                    <div class="bp-row" style="gap:16px">
+                        <img class="avatar avatar-lg" src="../../assets/img/about-profile-sd.jpg" alt="Alessio">
+                        <div>
+                            <h4 style="margin:0">Alessio</h4>
+                            <p class="small muted" style="margin:0 0 10px">Senior Application Security Engineer</p>
+                            <div class="bp-row" style="gap:8px"><a class="btn btn-secondary btn-sm" href="#images">About me</a><a class="btn btn-ghost btn-sm" href="#images"><svg><use href="#i-rss" /></svg> RSS</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bp-footer">
+        <div class="bp-wrap">
+            <a href="../">← Brand identity</a>
+            <span>(in)security brand system · v1.0</span>
+        </div>
+    </footer>
+
+    <script>
+        // Dropdowns: one open at a time, close on outside click / Escape / item click
+        (function () {
+            var dds = document.querySelectorAll('.dropdown');
+            dds.forEach(function (d) {
+                d.addEventListener('toggle', function () {
+                    if (d.open) dds.forEach(function (o) { if (o !== d) o.open = false; });
+                });
+                d.querySelectorAll('.dropdown-item').forEach(function (i) {
+                    i.addEventListener('click', function () { d.open = false; d.querySelector('summary').focus(); });
+                });
+            });
+            document.addEventListener('click', function (e) {
+                dds.forEach(function (d) { if (!d.contains(e.target)) d.open = false; });
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key !== 'Escape') return;
+                dds.forEach(function (d) { if (d.open) { d.open = false; d.querySelector('summary').focus(); } });
+            });
+        })();
+    </script>
+</body>
+</html>

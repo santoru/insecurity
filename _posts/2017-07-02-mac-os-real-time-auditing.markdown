@@ -5,6 +5,7 @@ subtitle: "developing an application to monitor file system accesses and activit
 date:   2017-07-02 21:05:24 +0100
 author: "santoru"
 visible: 1
+tags: [macOS, Tooling]
 
 ---
 
