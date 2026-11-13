@@ -2,32 +2,18 @@
 layout: default
 ---
 
-<!-- Page Header -->
-<header class="intro-header"
-    style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">
-                <div class="site-heading">
-                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-                    <hr class="small">
-                    <span class="subheading">{% if page.description %}{{ page.description }}{% else %}{{
-                        site.description }}{% endif %}</span>
-                </div>
-            </div>
-        </div>
+<!-- Page Header (keeps .intro-header for the navbar script) -->
+<header class="intro-header brand-header">
+    <div class="measure header-inner">
+        {% if page.kicker %}<span class="label header-kicker">{{ page.kicker }}</span>{% endif %}
+        <h1>{{ page.title | default: site.title }}</h1>
+        <p class="header-lead">{{ page.description | default: site.description }}</p>
     </div>
 </header>
 
 <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">
-            <article>
-                {{ content }}
-            </article>
-        </div>
-    </div>
-</div>
-
-<hr>
+<main class="page">
+    <article class="measure page-body">
+        {{ content }}
+    </article>
+</main>

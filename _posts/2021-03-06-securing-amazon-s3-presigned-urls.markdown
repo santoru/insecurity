@@ -5,6 +5,7 @@ subtitle: "Security tips to consider while designing user's upload features usin
 date:   2021-03-06 18:20:24 +0100
 author: "santoru"
 visible: 1
+tags: [AWS, Cloud security]
 
 ---
 
@@ -342,7 +343,7 @@ I suggest you read
 if you'd like to know more about how to secure files in S3 buckets.
 
 If you enjoyed this post, you can
-[follow me on Twitter](https://twitter.com/santoru_)
+[follow me on X](https://x.com/santoru_)
 or
 [check out my GitHub profile](https://github.com/santoru).
 
@@ -361,5 +362,5 @@ or
 - <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-post-example.html" target="_blank" rel="noopener noreferrer">AWS Docs | Example: Browser-Based Upload using HTTP POST (Using AWS Signature Version 4)</a>
 - <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html" target="_blank" rel="noopener noreferrer">AWS Docs | Using cross-origin resource sharing (CORS)</a>
 - <a href="https://aws.amazon.com/premiumsupport/knowledge-center/secure-s3-resources/" target="_blank" rel="noopener noreferrer">How can I secure the files in my Amazon S3 bucket?</a>
-- <a href="https://twitter.com/santoru_" target="_blank" rel="noopener noreferrer">santoru_ | Twitter</a>
+- <a href="https://x.com/santoru_" target="_blank" rel="noopener noreferrer">santoru_ | X</a>
 - <a href="https://github.com/santoru" target="_blank" rel="noopener noreferrer">santoru | GitHub</a>

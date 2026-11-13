@@ -1,14 +1,15 @@
 # Site settings
 title: "(in)security"
-header-img: assets/img/bg.jpg
 email: santoru@pm.me
 copyright_name: "santoru"
-description: "Yet another blog with some security related posts."
+description: "Security research, vulnerability write-ups and notes on breaking and securing systems."
+home_intro: "Notes from a decade of breaking and securing systems: vulnerability research, offensive security and cloud."
 baseurl: ""
 url: "https://insecurity.blog"
 twitter_username: santoru_
 github_username:  santoru
 linkedin_username: santoru
+mastodon_url: https://mstdn.social/@santoru
 
 # Google Analytics
 # To enable google analytics, uncomment below line with a valid Google Tracking ID
@@ -22,6 +23,10 @@ paginate: 5
 
 plugins: [jekyll-paginate, jekyll-feed, jekyll-sitemap]
 
+# Compile assets/css/*.scss from _sass/ into minified CSS
+sass:
+  style: compressed
+
 kramdown:
   parse_block_html: true
 
@@ -32,4 +37,9 @@ exclude:
   - "README.md"
   - "docker-run.sh"
   - "assets/img/cover.png"   # only used by the GitHub README
+  - "assets/img/about-profile.jpg"   # full-size source of about-profile-sd.jpg
+  - "assets/img/bg.jpg"              # full-size source of bg-sd.jpg
   - "assets/img/s3/*.uml"    # PlantUML sources of the S3 post diagrams
+  # Brand guidelines (/brand-guidelines/): off by default. Remove these two lines to publish them.
+  - "brand-guidelines"
+  - "assets/css/guidelines.scss"

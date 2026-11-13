@@ -1,0 +1,14 @@
+---
+# Compiled by Jekyll into /assets/css/main.css (minified: see `sass.style` in _config.yml)
+---
+// Site stylesheet. Order matters: layout primitives → brand → site chrome → pages.
+@import "bootstrap-subset";
+@import "brand/mixins";
+@import "brand/fonts";
+@import "brand/tokens";
+@import "brand/base";
+@import "brand/components";
+@import "site";
+@import "syntax";
+@import "home";
+@import "about";

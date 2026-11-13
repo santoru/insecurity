@@ -4,69 +4,15 @@
 {% include head.html %}
 
 <body>
-
     {% include nav.html %}
 
     {{ content }}
 
     {% include footer.html %}
 
-    <a href="#" id="scrollTop" aria-label="Scroll to top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m18 15-6-6-6 6"/>
-        </svg>
-    </a>
+    <a href="#" id="scrollTop" aria-label="Scroll to top">{% include icon.html name="chevron-up" size="20" %}</a>
 
     {% include ga.html %}
-
-    <script>
-    // Mobile navbar toggle (replaces bootstrap.bundle.js collapse)
-    (function() {
-        var toggler = document.querySelector('.navbar-toggler');
-        if (!toggler) return;
-        var target = document.getElementById(toggler.getAttribute('aria-controls'));
-        if (!target) return;
-        toggler.addEventListener('click', function() {
-            var open = target.classList.toggle('show');
-            toggler.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-    })();
-
-    // Solid navbar + scroll-to-top button once past the header
-    (function() {
-        var nav = document.getElementById('mainNav');
-        var header = document.querySelector('.intro-header');
-        var btn = document.getElementById('scrollTop');
-        if (!nav || !header) return;
-
-        var raf;
-
-        function update() {
-            var scrolled = window.scrollY > header.offsetHeight - nav.offsetHeight;
-            nav.classList.toggle('nav-scrolled', scrolled);
-            if (btn) btn.classList.toggle('visible', scrolled);
-        }
-
-        window.addEventListener('scroll', function() {
-            if (raf) return;
-            raf = requestAnimationFrame(function() {
-                update();
-                raf = null;
-            });
-        });
-        update();
-
-        if (btn) {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Smoothness comes from the CSS scroll-behavior, which honours prefers-reduced-motion
-                window.scrollTo({ top: 0 });
-            });
-        }
-    })();
-    </script>
-
 </body>
 
 </html>

@@ -1,0 +1,108 @@
+// Brand tokens — the single source of truth for colour, type, shape and depth.
+/* ---------- Tokens ---------- */
+:root {
+  color-scheme: light;
+  /* Ink — the dark base */
+  --ink-950: #0B110E;
+  --ink-900: #111915;
+  --ink-800: #1A2420;
+  --ink-700: #2A3530;
+  --ink-300: #9AA8A1;
+  --ink-50: #E4ECE8;      /* body text on ink */
+
+  /* Moss — heritage primary. Signal — the accent that marks what matters */
+  --moss: #306951;
+  --moss-hover: #3A7B60;   /* slightly brighter on hover */
+  --moss-soft: #E6F1EB;
+  --moss-text: #24573F;
+  --moss-fill: #306951;         /* solid fills (primary button); same in both themes */
+  --moss-fill-hover: #3A7B60;
+  --signal: #3DDC97;
+  --signal-soft: rgba(61, 220, 151, 0.16);
+  --signal-hover: #5CE6AB;
+
+  /* Neutrals (green-tinted) */
+  --text: #18201C;
+  --text-muted: #526059;
+  --text-subtle: #7C8781;  /* decorative / large text only */
+  --border: #DDE3DF;
+  --border-strong: #C5CEC9;
+  --surface: #F3F6F4;
+  --paper: #FAFBFA;
+  --white: #FFFFFF;
+
+  /* Theme surfaces (flip in dark mode; --white stays white for text on ink/moss) */
+  --bg: #FFFFFF;          /* page */
+  --card: #FFFFFF;        /* raised: cards, menus, banner */
+  --nav-solid: rgba(255, 255, 255, .96);
+  --code-border: transparent;
+
+  /* Status */
+  --info: #2F6FEB;      --info-bg: #EBF2FE;      --info-text: #1F5BD1;
+  --success: #306951;   --success-bg: #E6F1EB;   --success-text: #24573F;
+  --warning: #D9932A;   --warning-bg: #FDF4E2;   --warning-text: #8A5A0E;
+  --critical: #C9302F;  --critical-bg: #FDEDED;  --critical-text: #B42328;
+  --critical-hover: #D8423F;
+  --high-bg: #FDEEE5;    --high-text: #A63F12;    /* "high" severity badge */
+
+  /* Code on ink (pre blocks + Rouge theme) */
+  --code-text: #D7E2DC;
+  --code-comment: #6B7A73;
+  --code-string: #F2C572;
+  --code-number: #F2A86B;
+  --code-name: #8EC5FF;
+  --code-tag: #F28B82;
+
+  /* Type */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --display-weight: 600;   /* Space Grotesk; 700 on small screens, where 600 reads thin */
+
+  /* Shape & depth */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(11, 17, 14, 0.06);
+  --shadow: 0 6px 20px rgba(11, 17, 14, 0.08), 0 1px 3px rgba(11, 17, 14, 0.05);
+  --shadow-lg: 0 20px 50px rgba(11, 17, 14, 0.14), 0 2px 6px rgba(11, 17, 14, 0.05);
+  --focus: 0 0 0 3px var(--signal-soft), 0 0 0 1px var(--moss);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+@media (max-width: 767.98px) {
+  :root { --display-weight: 700; }
+}
+
+/* ---------- Dark theme ---------- */
+@include dark-root {
+  color-scheme: dark;
+  --bg: #0F1613;
+  --card: #151E1A;
+  --paper: #131B17;
+  --surface: #1B2621;
+  --border: #26332D;
+  --border-strong: #34443C;
+  --nav-solid: rgba(15, 22, 19, .92);
+  --code-border: #26332D;
+
+  --text: #E4ECE8;
+  --text-muted: #A3B1AA;
+  --text-subtle: #7F8C86;
+
+  --moss: #4FBF8C;              /* links & accents, brightened for dark backgrounds */
+  --moss-hover: #6BD3A3;
+  --moss-soft: rgba(79, 191, 140, .14);
+  --moss-text: #7FD6AE;
+
+  --info-bg: #16233A;     --info-text: #8DB4FF;
+  --success-bg: rgba(79, 191, 140, .12);  --success-text: #7FD6AE;
+  --warning-bg: #2A2416;  --warning-text: #F0C27A;
+  --critical-bg: #2C1718; --critical-text: #F5A3A3;
+  --high-bg: #2B1D16;     --high-text: #F4A97F;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow: 0 6px 20px rgba(0, 0, 0, .35), 0 1px 3px rgba(0, 0, 0, .3);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, .5), 0 2px 6px rgba(0, 0, 0, .3);
+}

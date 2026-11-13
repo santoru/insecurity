@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<!-- Home hero (keeps .intro-header so the navbar/scroll script keeps working) -->
+<header class="intro-header brand-header home-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+                <div class="home-hero-inner">
+                    <span class="label">Security research blog</span>
+                    <h1 class="display home-title">Signal in<br>the noise.</h1>
+                    <p class="home-lead">{{ site.home_intro | default: site.description }}</p>
+                    <div class="home-cta">
+                        <a class="btn btn-signal btn-lg" href="{{ '/about/' | relative_url }}">About me {% include icon.html name="arrow" size="16" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{{ content }}

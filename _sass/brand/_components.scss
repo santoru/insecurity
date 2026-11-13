@@ -1,0 +1,69 @@
+// Components used by the site: logo, buttons (primary, secondary, signal, outline-light), tags, figures.
+/* ---------- Logo ---------- */
+.logo { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; }
+.logo:hover { color: var(--text); }
+.logo-word { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 20px; letter-spacing: -0.02em; }
+.logo-word .paren { color: var(--moss); font-weight: 500; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 18px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s, border-color .2s, color .2s, box-shadow .2s, transform .2s var(--ease);
+}
+.btn svg { width: 16px; height: 16px; flex: none; }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { box-shadow: var(--focus); border-radius: var(--radius); }
+
+.btn-primary { background: var(--moss-fill); color: var(--white); }
+.btn-primary:hover { background: var(--moss-fill-hover); color: var(--white); }
+
+.btn-secondary { background: var(--card); border-color: var(--border-strong); color: var(--text); }
+.btn-secondary:hover { border-color: var(--moss); color: var(--moss); }
+
+
+
+.btn-signal { background: var(--signal); color: var(--ink-950); }
+.btn-signal:hover { background: var(--signal-hover); color: var(--ink-950); }
+.btn-outline-light { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.28); color: var(--white); }
+.btn-outline-light:hover { background: rgba(255,255,255,.1); border-color: var(--white); color: var(--white); }
+
+.btn-sm { height: 34px; padding: 0 13px; font-size: 14px; border-radius: 8px; }
+.btn-lg { height: 50px; padding: 0 24px; font-size: 16px; }
+.btn-icon { width: 42px; padding: 0; }
+.btn[disabled] { opacity: .45; pointer-events: none; }
+
+/* ---------- Tags ---------- */
+.tag {
+  display: inline-flex; align-items: center;
+  height: 26px; padding: 0 10px;
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 13px; font-weight: 500;
+  text-decoration: none;
+}
+a.tag:hover { background: var(--moss-soft); color: var(--moss-text); }
+
+/* ---------- Figures ---------- */
+.figure { margin: 0 0 1.6em; }
+.figure img { border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+.figure figcaption { margin-top: 12px; font-size: 14px; color: var(--text-muted); }
+.figure figcaption b { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--moss); margin-right: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,14 @@
+// Dark theme hooks. Dark applies when the visitor picked it (data-theme="dark" on <html>)
+// or when their system prefers dark and they haven't picked light.
+
+// Token overrides on :root
+@mixin dark-root {
+  :root[data-theme="dark"] { @content; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { @content; } }
+}
+
+// Component tweaks: use inside a rule, e.g. `.x { @include dark { color: red; } }`
+@mixin dark {
+  :root[data-theme="dark"] & { @content; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) & { @content; } }
+}
