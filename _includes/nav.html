@@ -4,8 +4,8 @@
         <a class="navbar-brand logo" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
             <span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span>
         </a>
-        <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Open menu">
+            {% include icon.html name="menu" size="24" class="icon-menu" %}{% include icon.html name="close" size="24" class="icon-close" %}
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">

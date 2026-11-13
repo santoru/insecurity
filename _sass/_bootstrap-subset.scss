@@ -152,26 +152,8 @@ summary { display: list-item; cursor: pointer; }
 .navbar-collapse { flex-basis: 100%; flex-grow: 1; align-items: center; }
 .collapse:not(.show) { display: none; }
 
-.navbar-toggler {
-  padding: .25rem .75rem;
-  font-size: 1.25rem;
-  line-height: 1;
-  background-color: transparent;
-  border: 1px solid;
-  border-radius: .375rem;
-  transition: box-shadow .15s ease-in-out;
-}
-.navbar-toggler:hover { text-decoration: none; }
+.navbar-toggler { background-color: transparent; border: 0; }
 .navbar-toggler:focus-visible { outline: 0; box-shadow: var(--focus); }
-.navbar-toggler-icon {
-  display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: middle;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
-}
 
 @media (min-width: 992px) {
   .navbar-expand-lg { flex-wrap: nowrap; justify-content: flex-start; }
@@ -182,7 +164,7 @@ summary { display: list-item; cursor: pointer; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nav-link, .navbar-toggler { transition: none; }
+  .nav-link { transition: none; }
 }
 
 /* ---------- Utilities ---------- */

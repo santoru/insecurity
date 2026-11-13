@@ -76,6 +76,7 @@
 .post-row-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
 .post-row-arrow { padding-top: 2px; font-size: 20px; color: var(--moss); opacity: 0; transform: translateX(-6px); }
 .post-row:hover .post-row-arrow, .post-row:focus .post-row-arrow { opacity: 1; transform: none; }
+.post-row-cta { display: none; }  /* phones only: no hover there, so show the row is a link */
 
 /* Pager */
 .home-main .pager { display: flex; justify-content: space-between; margin: 40px 0 0; padding: 0; list-style: none; }
@@ -101,4 +102,6 @@
   .post-row-date { padding-top: 0; }
   .post-row-title { font-size: 21px; }
   .post-row-arrow { display: none; }
+  .post-row-cta { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; font-weight: 600; font-size: 14px; color: var(--moss); }
+  .post-row:active { background: var(--paper); }
 }
