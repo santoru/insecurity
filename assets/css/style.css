@@ -153,6 +153,10 @@ article h3::after {
   border-radius: 1px;
 }
 
+/* Home post list: subtitles are h3s, but shouldn't get the green section-heading style above */
+.post-preview .post-subtitle { color: inherit; }
+.post-preview .post-subtitle::after { content: none; }
+
 /* Timeline */
 .timeline-list {
   list-style: none;
@@ -506,4 +510,57 @@ body.toc-sidebar-open article {
   .toc-sidebar { display: none !important; }
   .toc-inline-toggle { display: none; }
   body.toc-sidebar-open article { margin-left: 0; }
+}
+
+/* Analytics consent banner (see _includes/ga.html) */
+.consent {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 1040;
+  max-width: 340px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid rgba(48, 105, 81, 0.25);
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #404040;
+}
+.consent[hidden] { display: none; }
+.consent-text { margin: 0 0 10px; }
+.consent-text a { color: #306951; text-decoration: underline; }
+.consent-actions { display: flex; gap: 8px; justify-content: flex-end; }
+/* Both buttons share one style on purpose: refusing must be as easy as accepting */
+.consent-btn {
+  flex: 1;
+  padding: 6px 14px;
+  background: #fff;
+  border: 1.5px solid #306951;
+  border-radius: 6px;
+  color: #306951;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+}
+.consent-btn:hover, .consent-btn:focus-visible { background: #306951; color: #fff; }
+.consent-btn:focus-visible { outline: 2px solid #306951; outline-offset: 2px; }
+
+.consent-open {
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+}
+.consent-open:hover { color: #306951; }
+
+@media (max-width: 576px) {
+  .consent { left: 12px; right: 12px; bottom: 12px; max-width: none; }
 }

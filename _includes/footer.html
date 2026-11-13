@@ -68,6 +68,7 @@
                     {% endif %}
                 </ul>
                 <p class="copyright text-muted">Copyright &copy; {{ site.copyright_name }} {{ site.time | date: '%Y' }}
+                {% if site.google_tracking_id %}· <button type="button" class="consent-open">Analytics settings</button>{% endif %}
                 </p>
                 <a rel="me" href="https://mstdn.social/@santoru" aria-label="Mastodon" style="display:none;"></a>
             </div>

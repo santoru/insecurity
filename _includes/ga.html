@@ -1,9 +1,99 @@
 {% if site.google_tracking_id %}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_tracking_id }}"></script>
+{%- comment -%}
+Consent-gated Google Analytics.
+- Visitors in the EU/EEA, UK and Switzerland see a small banner; GA is loaded only after "OK".
+- Everyone else gets GA without a banner. Country comes from Cloudflare's same-origin /cdn-cgi/trace.
+- If the country can't be determined (blocked, local dev), we fall back to asking.
+- The choice is kept in localStorage; "Analytics settings" in the footer reopens the banner.
+{%- endcomment -%}
+<div id="consent" class="consent" role="region" aria-label="Analytics consent" hidden>
+    <p class="consent-text">
+        Can I use Google Analytics to count visits? It sets cookies and shares usage data with Google.
+        <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Details</a>
+    </p>
+    <div class="consent-actions">
+        <button type="button" class="consent-btn" data-consent="denied">No thanks</button>
+        <button type="button" class="consent-btn" data-consent="granted">OK</button>
+    </div>
+</div>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', '{{ site.google_tracking_id }}');
+(function () {
+    var GA_ID = '{{ site.google_tracking_id }}';
+    var KEY = 'analytics-consent'; // 'granted' | 'denied'
+    var GEO_KEY = 'visitor-country';
+    // EU-27 + EEA (IS, LI, NO) + UK + CH
+    var ASK = ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU',
+               'MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'];
+
+    var banner = document.getElementById('consent');
+    var loaded = false;
+
+    function read(store, k) { try { return window[store].getItem(k); } catch (e) { return null; } }
+    function write(store, k, v) { try { window[store].setItem(k, v); } catch (e) {} }
+
+    function loadGA() {
+        if (loaded) { window['ga-disable-' + GA_ID] = false; return; }
+        loaded = true;
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+        document.head.appendChild(s);
+    }
+
+    function stopGA() {
+        window['ga-disable-' + GA_ID] = true;
+        document.cookie.split(';').forEach(function (c) {
+            var name = c.split('=')[0].trim();
+            if (!/^_ga/.test(name)) return;
+            ['', location.hostname, '.' + location.hostname.replace(/^www\./, '')].forEach(function (d) {
+                document.cookie = name + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
+            });
+        });
+    }
+
+    function show() { banner.hidden = false; }
+    function hide() { banner.hidden = true; }
+
+    banner.addEventListener('click', function (e) {
+        var choice = e.target.getAttribute && e.target.getAttribute('data-consent');
+        if (!choice) return;
+        write('localStorage', KEY, choice);
+        if (choice === 'granted') loadGA(); else stopGA();
+        hide();
+    });
+
+    document.addEventListener('click', function (e) {
+        if (e.target.closest && e.target.closest('.consent-open')) { e.preventDefault(); show(); }
+    });
+
+    function country() {
+        var cached = read('sessionStorage', GEO_KEY);
+        if (cached) return Promise.resolve(cached);
+        var ctrl = window.AbortController ? new AbortController() : null;
+        var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 2000);
+        return fetch('/cdn-cgi/trace', { cache: 'no-store', signal: ctrl && ctrl.signal })
+            .then(function (r) { return r.ok ? r.text() : ''; })
+            .then(function (t) {
+                clearTimeout(timer);
+                var m = /^loc=([A-Z]{2})$/m.exec(t);
+                if (m) write('sessionStorage', GEO_KEY, m[1]);
+                return m ? m[1] : null;
+            })
+            .catch(function () { clearTimeout(timer); return null; });
+    }
+
+    var choice = read('localStorage', KEY);
+    if (choice === 'granted') { loadGA(); return; }
+    if (choice === 'denied') return;
+
+    country().then(function (cc) {
+        if (cc && ASK.indexOf(cc) === -1) loadGA(); // outside EU/EEA/UK/CH: no banner needed
+        else show();                                 // EU/EEA/UK/CH, or unknown: ask first
+    });
+})();
 </script>
 {% endif %}
