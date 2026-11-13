@@ -5,7 +5,6 @@ subtitle: "developing an application to monitor file system accesses and activit
 date:   2017-07-02 21:05:24 +0100
 author: "santoru"
 visible: 1
-comments: true
 
 ---
 
@@ -144,8 +143,8 @@ In order to use the auditpipe we need to configure it with <span class="mon">ioc
 
 ### filewatcher - a simple auditing utility for macOS
 I wrote a small utility to monitor file or process activities using the <i>auditpipe</i> and the functions I explained.<br/>
-You can find it <a href="https://github.com/santoru/filewatcher" target="_blank">directly on GitHub</a><br/>
-To configure the <i>auditpipe</i> I used an example found <a href="https://github.com/ashish-gehani/SPADE/blob/master/src/spade/reporter/spadeOpenBSM.c" target="_blank">here</a>.<br/> To parse the token's structure I used the open source code from <a href="https://github.com/openbsm/bsmtrace/blob/master/bsm.c" target="_blank">OpenBSM</a>.<br/>
+You can find it <a href="https://github.com/santoru/filewatcher" target="_blank" rel="noopener noreferrer">directly on GitHub</a><br/>
+To configure the <i>auditpipe</i> I used an example found <a href="https://github.com/ashish-gehani/SPADE/blob/master/src/spade/reporter/spadeOpenBSM.c" target="_blank" rel="noopener noreferrer">here</a>.<br/> To parse the token's structure I used the open source code from <a href="https://github.com/openbsm/bsmtrace/blob/master/bsm.c" target="_blank" rel="noopener noreferrer">OpenBSM</a>.<br/>
 The code is still pretty messy but it works!
 There are not many options at the moment, but my goal is to improve it to have a fully-working auditing tool.
 At the moment it is possible to specify which process or which file to monitor.
@@ -176,12 +175,13 @@ Usage: ./bin/filewatcher [OPTIONS]
 {% include image.html 
     url="assets/img/filewatcher/screenshotsmall.png" 
     description="Figure 1 - An example of the output" 
+    width="818" height="588"
 %}
 
 
 ## References
-- <a href="https://github.com/santoru/filewatcher" target="_blank">filewatcher</a>
-- <a href="http://www.trustedbsd.org/" target="_blank">TrustedBSD</a>
-- <a href="https://github.com/openbsm/openbsm" target="_blank">OpenBSM - GitHub</a>
-- <a href="https://www.freebsd.org/cgi/man.cgi?query=auditpipe" target="_blank">Auditpipe ioctls</a>
-- <a href="https://objective-see.com/blog/blog_0x0F.html" target="_blank">Towards Generic Ransomware Detection</a>
+- <a href="https://github.com/santoru/filewatcher" target="_blank" rel="noopener noreferrer">filewatcher</a>
+- <a href="http://www.trustedbsd.org/" target="_blank" rel="noopener noreferrer">TrustedBSD</a>
+- <a href="https://github.com/openbsm/openbsm" target="_blank" rel="noopener noreferrer">OpenBSM - GitHub</a>
+- <a href="https://www.freebsd.org/cgi/man.cgi?query=auditpipe" target="_blank" rel="noopener noreferrer">Auditpipe ioctls</a>
+- <a href="https://objective-see.com/blog/blog_0x0F.html" target="_blank" rel="noopener noreferrer">Towards Generic Ransomware Detection</a>
