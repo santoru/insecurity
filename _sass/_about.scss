@@ -42,6 +42,7 @@
 
 /* ---------- Bio ---------- */
 .about-bio { padding-top: 64px; }
+.about-bio-inner { max-width: 700px; margin-left: 224px; }  /* aligned with the section content below */
 .about-bio .lead { font-family: var(--font-display); font-size: 24px; line-height: 1.45; letter-spacing: -.01em; color: var(--text); margin-bottom: 1.2em; }
 .about-bio strong { font-weight: 600; }
 
@@ -145,7 +146,7 @@
 /* ---------- Responsive ---------- */
 @media (max-width: 991.98px) {
   .about-section-head { grid-template-columns: 1fr; gap: 4px; }
-  .about-section-intro, .timeline, .cve-list, .project-grid, .ack-list { margin-left: 0; }
+  .about-bio-inner, .about-section-intro, .timeline, .cve-list, .project-grid, .ack-list { margin-left: 0; }
   .about-section-intro { margin-top: -8px; }
   .timeline { margin-left: 8px; }
 }
