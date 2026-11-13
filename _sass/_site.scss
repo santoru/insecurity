@@ -19,7 +19,7 @@ body { background: var(--white); }
   transition: background-color .3s, border-color .3s, padding .3s;
 }
 .navbar-custom .navbar-brand { margin-right: 0; padding: 0; }
-.navbar-custom .logo, .navbar-custom .logo:hover { color: #fff; }
+.navbar-custom .logo, .navbar-custom .logo:hover { color: var(--white); }
 .navbar-custom .logo-word .paren { color: var(--signal); }
 .navbar-custom .nav-link { color: rgba(255, 255, 255, .78); padding: 8px 10px; border-radius: 8px; }
 .navbar-custom .nav-link:hover, .navbar-custom .nav-link:focus { color: var(--signal); }
@@ -56,10 +56,10 @@ body { background: var(--white); }
   background-color: var(--ink-950);
   background-image:
     linear-gradient(180deg, rgba(11, 17, 14, .66) 0%, rgba(11, 17, 14, .84) 100%),
-    url('/assets/img/bg.jpg');
+    url('/assets/img/bg-sd.jpg');
   background-size: cover;
   background-position: center 40%;
-  color: #fff;
+  color: var(--white);
 }
 .brand-header::before { /* moss glow */
   content: '';
@@ -81,7 +81,7 @@ body { background: var(--white); }
 .brand-header > * { position: relative; z-index: 1; }
 .header-inner { padding-top: 150px; padding-bottom: 72px; }
 .header-kicker { display: inline-block; margin-bottom: 18px; color: var(--signal); }
-.brand-header h1 { color: #fff; margin-bottom: 16px; }
+.brand-header h1 { color: var(--white); margin-bottom: 16px; }
 .header-lead { margin: 0 0 22px; font-size: 20px; line-height: 1.55; color: var(--ink-300); }
 .header-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; font-size: 14.5px; color: var(--ink-300); }
 /* ---------- Post & page body ---------- */

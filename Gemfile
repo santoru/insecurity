@@ -1,8 +1,5 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-group :jekyll_plugins do
-  gem "jekyll-paginate"
-  gem "jekyll-feed"
-  gem "jekyll-sitemap"
-  gem "jekyll"
-end
+# Same Jekyll, plugins and Sass converter versions GitHub Pages uses to build the site.
+gem "github-pages", group: :jekyll_plugins
+gem "webrick"   # needed by `jekyll serve` on Ruby 3+

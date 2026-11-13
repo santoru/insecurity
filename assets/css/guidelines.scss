@@ -2,9 +2,9 @@
 # Compiled by Jekyll into /assets/css/guidelines.css — used only by /brand-guidelines/
 ---
 // Every brand component (including ones the site doesn't use yet) + the guidelines page chrome.
+@import "brand/fonts";
 @import "brand/tokens";
 @import "brand/base";
 @import "brand/components";
 @import "brand/components-extra";
-@import "syntax";
 @import "guidelines";

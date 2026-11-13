@@ -1,4 +1,4 @@
-// Base elements and type utilities (.display, .lead, .label, .small, .muted).
+// Base elements and type utilities (.display, .lead, .label).
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -29,8 +29,6 @@ h3 { font-size: 23px; line-height: 1.3; }
 h4 { font-size: 18px; line-height: 1.4; letter-spacing: -0.01em; }
 p { margin: 0 0 1em; }
 .lead { font-size: 20px; line-height: 1.6; color: var(--text-muted); }
-.small { font-size: 14px; }
-.muted { color: var(--text-muted); }
 .label {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -59,15 +57,12 @@ pre {
   overflow-x: auto;
   border-radius: var(--radius);
   background: var(--ink-950);
-  color: #D7E2DC;
+  color: var(--code-text);
   font-family: var(--font-mono);
   font-size: 14px;
   line-height: 1.7;
 }
 pre code { padding: 0; background: none; border: 0; color: inherit; font-size: inherit; }
-pre .c { color: #6B7A73; }         /* comment */
-pre .k { color: var(--signal); }   /* keyword / prompt */
-pre .s { color: #F2C572; }         /* string */
 
 blockquote {
   margin: 0 0 1.4em;
@@ -81,9 +76,5 @@ blockquote {
 }
 blockquote cite { display: block; margin-top: 8px; font-family: var(--font-mono); font-size: 12px; font-style: normal; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
 
-ul.list, ol.list { margin: 0 0 1.2em; padding-left: 1.3em; }
-ul.list li::marker { color: var(--moss); }
-ol.list li::marker { font-family: var(--font-mono); font-size: .85em; color: var(--moss); }
-ul.list li, ol.list li { padding-left: 4px; margin-bottom: 4px; }
 
 hr { border: 0; height: 1px; background: var(--border); margin: 2em 0; }

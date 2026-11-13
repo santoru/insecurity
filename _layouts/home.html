@@ -12,8 +12,7 @@ layout: default
                     <h1 class="display home-title">Signal in<br>the noise.</h1>
                     <p class="home-lead">{{ site.home_intro | default: site.description }}</p>
                     <div class="home-cta">
-                        <a class="btn btn-signal btn-lg" href="{{ '/about/' | relative_url }}">About me
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                        <a class="btn btn-signal btn-lg" href="{{ '/about/' | relative_url }}">About me {% include icon.html name="arrow" size="16" %}
                         </a>
                     </div>
                 </div>

@@ -7,6 +7,7 @@
   --ink-800: #1A2420;
   --ink-700: #2A3530;
   --ink-300: #9AA8A1;
+  --ink-50: #E4ECE8;      /* body text on ink */
 
   /* Moss — heritage primary. Signal — the accent that marks what matters */
   --moss: #306951;
@@ -15,6 +16,7 @@
   --moss-text: #24573F;
   --signal: #3DDC97;
   --signal-soft: rgba(61, 220, 151, 0.16);
+  --signal-hover: #5CE6AB;
 
   /* Neutrals (green-tinted) */
   --text: #18201C;
@@ -31,6 +33,16 @@
   --success: #306951;   --success-bg: #E6F1EB;   --success-text: #24573F;
   --warning: #D9932A;   --warning-bg: #FDF4E2;   --warning-text: #8A5A0E;
   --critical: #C9302F;  --critical-bg: #FDEDED;  --critical-text: #B42328;
+  --critical-hover: #D8423F;
+  --high-bg: #FDEEE5;    --high-text: #A63F12;    /* "high" severity badge */
+
+  /* Code on ink (pre blocks + Rouge theme) */
+  --code-text: #D7E2DC;
+  --code-comment: #6B7A73;
+  --code-string: #F2C572;
+  --code-number: #F2A86B;
+  --code-name: #8EC5FF;
+  --code-tag: #F28B82;
 
   /* Type */
   --font-display: 'Space Grotesk', system-ui, sans-serif;

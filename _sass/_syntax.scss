@@ -1,39 +1,39 @@
 /* Rouge syntax theme on brand ink. Blocks get their shape from `pre` in brand.css. */
 div.highlight { background: none; }
-.highlight pre, pre.highlight { color: #D7E2DC; }
+.highlight pre, pre.highlight { color: var(--code-text); }
 .highlight pre code { white-space: pre; overflow-wrap: normal; }
 
 /* Comments */
 .highlight .c, .highlight .ch, .highlight .cm, .highlight .cp, .highlight .cpf,
-.highlight .c1, .highlight .cs, .highlight .gu { color: #6B7A73; }
+.highlight .c1, .highlight .cs, .highlight .gu { color: var(--code-comment); }
 
 /* Keywords — signal */
 .highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp,
-.highlight .kr, .highlight .kt, .highlight .ow { color: #3DDC97; }
+.highlight .kr, .highlight .kt, .highlight .ow { color: var(--signal); }
 
 /* Strings */
 .highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd,
 .highlight .s2, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr,
-.highlight .s1, .highlight .ss, .highlight .ld { color: #F2C572; }
+.highlight .s1, .highlight .ss, .highlight .ld { color: var(--code-string); }
 
 /* Numbers & literals */
 .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il,
-.highlight .mo, .highlight .l { color: #F2A86B; }
+.highlight .mo, .highlight .l { color: var(--code-number); }
 
 /* Functions, classes, attributes, builtins */
 .highlight .nf, .highlight .fm, .highlight .nc, .highlight .na, .highlight .nd, .highlight .ne,
-.highlight .nx, .highlight .nb, .highlight .bp, .highlight .no { color: #8EC5FF; }
+.highlight .nx, .highlight .nb, .highlight .bp, .highlight .no { color: var(--code-name); }
 
 /* Tags, operators, punctuation, plain names */
-.highlight .nt { color: #F28B82; }
-.highlight .o, .highlight .p { color: #9AA8A1; }
+.highlight .nt { color: var(--code-tag); }
+.highlight .o, .highlight .p { color: var(--ink-300); }
 .highlight .n, .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .py,
-.highlight .nl, .highlight .nn, .highlight .ni, .highlight .w { color: #D7E2DC; }
+.highlight .nl, .highlight .nn, .highlight .ni, .highlight .w { color: var(--code-text); }
 
 /* Diffs & emphasis */
-.highlight .gd { color: #F28B82; }
-.highlight .gi { color: #3DDC97; }
+.highlight .gd { color: var(--code-tag); }
+.highlight .gi { color: var(--signal); }
 .highlight .ge { font-style: italic; }
 .highlight .gs { font-weight: 600; }
-.highlight .err { color: #F28B82; background: none; }
-.highlight .hll { background: rgba(61, 220, 151, .1); }
+.highlight .err { color: var(--code-tag); background: none; }
+.highlight .hll { background: var(--signal-soft); }

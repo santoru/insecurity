@@ -1,11 +1,9 @@
-// Components used by the site: logo, buttons, tags, figures, avatar.
+// Components used by the site: logo, buttons (primary, secondary, signal, outline-light), tags, figures.
 /* ---------- Logo ---------- */
 .logo { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; }
 .logo:hover { color: var(--text); }
 .logo-word { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 20px; letter-spacing: -0.02em; }
 .logo-word .paren { color: var(--moss); font-weight: 500; }
-.on-ink .logo, .on-ink .logo:hover { color: #fff; }
-.on-ink .logo-word .paren { color: var(--signal); }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -30,27 +28,23 @@
 .btn:active { transform: translateY(1px); }
 .btn:focus-visible { box-shadow: var(--focus); border-radius: var(--radius); }
 
-.btn-primary { background: var(--moss); color: #fff; }
-.btn-primary:hover { background: var(--moss-hover); color: #fff; }
+.btn-primary { background: var(--moss); color: var(--white); }
+.btn-primary:hover { background: var(--moss-hover); color: var(--white); }
 
 .btn-secondary { background: var(--white); border-color: var(--border-strong); color: var(--text); }
 .btn-secondary:hover { border-color: var(--moss); color: var(--moss); }
 
-.btn-ghost { background: transparent; color: var(--moss); }
-.btn-ghost:hover { background: var(--moss-soft); color: var(--moss-text); }
 
-.btn-danger { background: var(--critical); color: #fff; }
-.btn-danger:hover { background: #D8423F; color: #fff; }
 
 .btn-signal { background: var(--signal); color: var(--ink-950); }
-.btn-signal:hover { background: #5CE6AB; color: var(--ink-950); }
-.btn-outline-light { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.28); color: #fff; }
-.btn-outline-light:hover { background: rgba(255,255,255,.1); border-color: #fff; color: #fff; }
+.btn-signal:hover { background: var(--signal-hover); color: var(--ink-950); }
+.btn-outline-light { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.28); color: var(--white); }
+.btn-outline-light:hover { background: rgba(255,255,255,.1); border-color: var(--white); color: var(--white); }
 
 .btn-sm { height: 34px; padding: 0 13px; font-size: 14px; border-radius: 8px; }
 .btn-lg { height: 50px; padding: 0 24px; font-size: 16px; }
 .btn-icon { width: 42px; padding: 0; }
-.btn[disabled], .btn.is-disabled { opacity: .45; pointer-events: none; }
+.btn[disabled] { opacity: .45; pointer-events: none; }
 
 /* ---------- Tags ---------- */
 .tag {
@@ -64,13 +58,11 @@
 }
 a.tag:hover { background: var(--moss-soft); color: var(--moss-text); }
 
-/* ---------- Figures & avatar ---------- */
+/* ---------- Figures ---------- */
 .figure { margin: 0 0 1.6em; }
 .figure img { border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow); }
 .figure figcaption { margin-top: 12px; font-size: 14px; color: var(--text-muted); }
 .figure figcaption b { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--moss); margin-right: 6px; }
-.avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--signal); }
-.avatar-lg { width: 96px; height: 96px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }

@@ -19,20 +19,17 @@
     <meta property="og:url" content="{{ page.url | absolute_url }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@{{ site.twitter_username }}" />
-    <link rel="icon" href="{{ "/assets/img/brand-icon-32.png" | prepend: site.baseurl }}" type="image/png" sizes="32x32" />
+    <link rel="icon" href="{{ "/assets/img/brand-icon-32.png" | relative_url }}" type="image/png" sizes="32x32" />
     <link rel="icon" href="{{ "/favicon.ico" | relative_url }}" sizes="48x48" />
-    <link rel="apple-touch-icon" href="{{ "/assets/img/brand-icon-180.png" | prepend: site.baseurl }}" />
+    <link rel="apple-touch-icon" href="{{ "/assets/img/brand-icon-180.png" | relative_url }}" />
     <meta name="theme-color" content="#0B110E" />
     <title>{{ meta_title | strip_html | escape }}</title>
 
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
 
-    <!-- Fonts: Space Grotesk (display), Inter (body), JetBrains Mono (labels & code) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
-        rel="stylesheet">
+    <!-- Self-hosted brand fonts (declared in _sass/brand/_fonts.scss); preload the two used above the fold -->
+    <link rel="preload" href="{{ '/assets/fonts/inter-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/space-grotesk-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
     <!-- One stylesheet, compiled and minified by Jekyll from _sass/ (see assets/css/main.scss) -->
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
