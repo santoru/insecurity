@@ -518,37 +518,60 @@ body.toc-sidebar-open article {
   left: 20px;
   bottom: 20px;
   z-index: 1040;
-  max-width: 340px;
-  padding: 14px 16px;
+  width: 360px;
+  max-width: calc(100vw - 24px);
+  padding: 16px 18px;
   background: #fff;
-  border: 1px solid rgba(48, 105, 81, 0.25);
-  border-radius: 10px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.14), 0 1px 3px rgba(0, 0, 0, 0.06);
   font-family: 'Fira Sans', sans-serif;
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.5;
   color: #404040;
 }
-.consent[hidden] { display: none; }
-.consent-text { margin: 0 0 10px; }
-.consent-text a { color: #306951; text-decoration: underline; }
-.consent-actions { display: flex; gap: 8px; justify-content: flex-end; }
-/* Both buttons share one style on purpose: refusing must be as easy as accepting */
-.consent-btn {
-  flex: 1;
-  padding: 6px 14px;
-  background: #fff;
-  border: 1.5px solid #306951;
-  border-radius: 6px;
-  color: #306951;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  transition: background 0.2s, color 0.2s;
+.consent:not([hidden]) { animation: consent-in 0.3s ease-out; }
+@keyframes consent-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
 }
-.consent-btn:hover, .consent-btn:focus-visible { background: #306951; color: #fff; }
+@media (prefers-reduced-motion: reduce) {
+  .consent:not([hidden]) { animation: none; }
+}
+.consent[hidden] { display: none; }
+
+.consent-text { margin: 0 0 14px; }
+.consent-text a { color: #888; font-size: 13px; text-decoration: underline; white-space: nowrap; }
+.consent-text a:hover { color: #306951; }
+
+.consent-actions { display: flex; gap: 10px; justify-content: flex-end; }
+.consent-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+  height: 36px;
+  padding: 2px 16px 0; /* optical vertical centering for Fira Sans */
+  border-radius: 8px;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  transition: opacity 0.3s, background-color 0.2s, border-color 0.2s;
+}
+/* Same size for both buttons: declining must stay as easy as accepting */
+.consent-btn[data-consent="denied"] {
+  background: #fff;
+  border: 1.5px solid #d5d9d7;
+  color: #404040;
+}
+.consent-btn[data-consent="denied"]:hover { border-color: #306951; color: #306951; }
+.consent-btn[data-consent="granted"] {
+  background: #306951;
+  border: 1.5px solid #306951;
+  color: #fff;
+}
+/* Same hover as the back-to-top button */
+.consent-btn[data-consent="granted"]:hover { opacity: 0.8; }
 .consent-btn:focus-visible { outline: 2px solid #306951; outline-offset: 2px; }
 
 .consent-open {
@@ -562,5 +585,6 @@ body.toc-sidebar-open article {
 .consent-open:hover { color: #306951; }
 
 @media (max-width: 576px) {
-  .consent { left: 12px; right: 12px; bottom: 12px; max-width: none; }
+  .consent { left: 12px; right: 12px; bottom: 12px; width: auto; }
+  .consent-btn { flex: 1; }
 }
