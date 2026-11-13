@@ -9,7 +9,7 @@ sitemap: false
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
     <title>Brand — (in)security</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B110E'/%3E%3Cpath d='M12 7c-4 4.5-4 13.5 0 18M20 7c4 4.5 4 13.5 0 18' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='2.8' fill='%233DDC97'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" href="../assets/img/brand-icon-32.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
@@ -22,11 +22,12 @@ sitemap: false
         .logo-tile.moss { background: var(--moss); border-color: var(--moss); }
         .logo-tile .cap { position: absolute; left: 16px; bottom: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-subtle); }
         .logo-tile.ink .cap, .logo-tile.moss .cap { color: rgba(255,255,255,.55); }
-        .logo-xl .logo-mark { width: 56px; height: 56px; }
         .logo-xl .logo-word { font-size: 40px; }
         .logo-tile.moss .logo, .logo-tile.moss .logo:hover { color: #fff; }
         .logo-tile.moss .logo-word .paren { color: var(--signal); }
         .app-icons { display: flex; align-items: end; gap: 18px; }
+        .monogram { display: inline-grid; place-items: center; width: var(--s); height: var(--s); border-radius: calc(var(--s) * .24); background: var(--ink-950); color: #fff; font-family: var(--font-display); font-weight: 600; font-size: calc(var(--s) * .4); letter-spacing: -.04em; line-height: 1; }
+        .monogram .paren { color: var(--signal); font-weight: 500; }
         .clearspace { display: inline-grid; place-items: center; padding: 28px; border: 1.5px dashed rgba(61,220,151,.5); border-radius: 12px; position: relative; }
         .clearspace::after { content: 'x'; position: absolute; top: 6px; left: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--signal); }
 
@@ -63,23 +64,15 @@ sitemap: false
             .specimen { grid-template-columns: 1fr; gap: 8px; }
             .specimen-aa { font-size: 64px; }
             .logo-xl .logo-word { font-size: 30px; }
-            .logo-xl .logo-mark { width: 44px; height: 44px; }
         }
     </style>
 </head>
 
 <body>
-    <!-- Reusable logo mark -->
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-        <symbol id="mark" viewBox="0 0 32 32">
-            <path d="M12 6c-4.6 4.8-4.6 15.2 0 20M20 6c4.6 4.8 4.6 15.2 0 20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
-            <circle cx="16" cy="16" r="3" fill="#3DDC97" />
-        </symbol>
-    </svg>
 
     <nav class="bp-nav">
         <div class="bp-wrap">
-            <a class="logo" href="./"><svg class="logo-mark"><use href="#mark" /></svg><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></a>
+            <a class="logo" href="./"><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></a>
             <div class="bp-nav-links">
                 <a href="./" aria-current="page">Identity</a>
                 <a href="brand-ui/">UI kit</a>
@@ -110,8 +103,8 @@ sitemap: false
                     <div>
                         <h2>The parentheses are the brand.</h2>
                         <p>The name already contains the idea: <em>security</em>, with an <em>(in)</em> that reminds us nothing is fully secure.
-                            The mark keeps just the brackets — a scope, a lens — and puts a single green dot inside: the finding,
-                            the signal you are looking for in a sea of noise.</p>
+                            The wordmark sets the brackets in the signal colour, so the eye lands on the <em>(in)</em> first — a scope,
+                            a lens, the finding you are looking for in a sea of noise.</p>
                     </div>
                 </div>
                 <div class="bp-grid-3">
@@ -129,28 +122,28 @@ sitemap: false
                     <span class="label">02 — Logo</span>
                     <div>
                         <h2>Wordmark &amp; mark</h2>
-                        <p>Space Grotesk SemiBold, tight tracking. The parentheses take the brand green on light backgrounds and the signal mint on dark ones. The mark works alone from 16px.</p>
+                        <p>Space Grotesk SemiBold, tight tracking. The parentheses take the brand green on light backgrounds and the signal mint on dark ones. Where the full wordmark does not fit — favicon, app icon — use the <em>(in)</em> monogram.</p>
                     </div>
                 </div>
                 <div class="bp-grid-2">
-                    <div class="logo-tile"><span class="logo logo-xl"><svg class="logo-mark"><use href="#mark" /></svg><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">Primary · on white</span></div>
-                    <div class="logo-tile ink on-ink"><span class="logo logo-xl"><svg class="logo-mark"><use href="#mark" /></svg><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">Primary · on ink</span></div>
-                    <div class="logo-tile moss"><span class="logo logo-xl"><svg class="logo-mark"><use href="#mark" /></svg><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">On moss</span></div>
+                    <div class="logo-tile"><span class="logo logo-xl"><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">Primary · on white</span></div>
+                    <div class="logo-tile ink on-ink"><span class="logo logo-xl"><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">Primary · on ink</span></div>
+                    <div class="logo-tile moss"><span class="logo logo-xl"><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">On moss</span></div>
                     <div class="logo-tile">
                         <div class="app-icons">
-                            <svg width="72" height="72" viewBox="0 0 32 32" aria-label="App icon 72px"><rect width="32" height="32" rx="8" fill="#0B110E" /><path d="M12 7c-4 4.5-4 13.5 0 18M20 7c4 4.5 4 13.5 0 18" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" /><circle cx="16" cy="16" r="2.8" fill="#3DDC97" /></svg>
-                            <svg width="44" height="44" viewBox="0 0 32 32" aria-label="App icon 44px"><rect width="32" height="32" rx="8" fill="#0B110E" /><path d="M12 7c-4 4.5-4 13.5 0 18M20 7c4 4.5 4 13.5 0 18" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" /><circle cx="16" cy="16" r="2.8" fill="#3DDC97" /></svg>
-                            <svg width="24" height="24" viewBox="0 0 32 32" aria-label="Favicon 24px"><rect width="32" height="32" rx="8" fill="#0B110E" /><path d="M12 7c-4 4.5-4 13.5 0 18M20 7c4 4.5 4 13.5 0 18" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" /><circle cx="16" cy="16" r="3.2" fill="#3DDC97" /></svg>
-                            <svg width="16" height="16" viewBox="0 0 32 32" aria-label="Favicon 16px"><rect width="32" height="32" rx="7" fill="#0B110E" /><path d="M12 7c-4 4.5-4 13.5 0 18M20 7c4 4.5 4 13.5 0 18" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" /><circle cx="16" cy="16" r="3.6" fill="#3DDC97" /></svg>
+                            <span class="monogram" style="--s:72px"><span class="paren">(</span>in<span class="paren">)</span></span>
+                            <span class="monogram" style="--s:44px"><span class="paren">(</span>in<span class="paren">)</span></span>
+                            <span class="monogram" style="--s:24px"><span class="paren">(</span>in<span class="paren">)</span></span>
+                            <span class="monogram" style="--s:16px"><span class="paren">(</span>in<span class="paren">)</span></span>
                         </div>
-                        <span class="cap">App icon &amp; favicon · 72 / 44 / 24 / 16</span>
+                        <span class="cap">Monogram · app icon &amp; favicon · 72 / 44 / 24 / 16</span>
                     </div>
                 </div>
                 <div class="bp-demo on-ink" style="margin-top:16px">
                     <span class="label bp-demo-title">Clear space &amp; minimum size</span>
                     <div class="bp-row" style="gap:32px">
-                        <span class="clearspace"><span class="logo"><svg class="logo-mark"><use href="#mark" /></svg><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span></span>
-                        <p class="small" style="margin:0;max-width:440px;color:var(--ink-300)">Keep at least one mark-height (<b style="color:#fff">x</b>) of space around the logo. Minimum wordmark width: 120px. Below that, use the mark alone.</p>
+                        <span class="clearspace"><span class="logo"><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span></span>
+                        <p class="small" style="margin:0;max-width:440px;color:var(--ink-300)">Keep clear space equal to the cap height (<b style="color:#fff">x</b>) around the wordmark. Minimum width: 120px. Below that, use the <em>(in)</em> monogram.</p>
                     </div>
                 </div>
             </div>

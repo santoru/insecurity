@@ -145,7 +145,6 @@ hr { border: 0; height: 1px; background: var(--border); margin: 2em 0; }
 /* ---------- Logo ---------- */
 .logo { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; }
 .logo:hover { color: var(--text); }
-.logo-mark { width: 28px; height: 28px; flex: none; }
 .logo-word { font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.02em; }
 .logo-word .paren { color: var(--moss); font-weight: 500; }
 .on-ink .logo, .on-ink .logo:hover { color: #fff; }
