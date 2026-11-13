@@ -17,7 +17,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3, h4, .display {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: var(--display-weight);
   color: var(--text);
   letter-spacing: -0.02em;
   margin: 0 0 0.4em;

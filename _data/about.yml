@@ -6,10 +6,9 @@ headline: "Hi, I'm Alessio."
 role: Senior Application Security Engineer on the EC2 Security team at AWS. Breaking, securing and rethinking complex systems.
 photo: /assets/img/about-profile-sd.jpg
 
-# Key numbers under the header. The CVE count is computed from the list below.
+# Key numbers under the header. CVE count and years of experience are computed at build time.
+career_start: "2017-04"  # first security job (YYYY-MM), used for "N+ years in security"
 stats:
-  - value: "2017"
-    label: In security since
   - value: OSCP · GXPN
     label: Certifications
   - value: AWS

@@ -36,14 +36,13 @@
 .about-stats > div { padding: 24px 26px; }
 .about-stats > div + div { border-left: 1px solid var(--border); }
 .about-stats dt { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
-.about-stats dd { margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 30px; line-height: 1.15; letter-spacing: -.02em; color: var(--text); }
+.about-stats dd { margin: 0 0 4px; font-family: var(--font-display); font-weight: var(--display-weight); font-size: 30px; line-height: 1.15; letter-spacing: -.02em; color: var(--text); }
 .about-stats > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; }
-.about-stats > div:first-child dd { color: var(--moss); }
+.about-stats > div:first-child dd { color: var(--moss); }  /* years of experience */
 
 /* ---------- Bio ---------- */
 .about-bio { padding-top: 64px; }
 .about-bio-inner { max-width: 700px; margin-left: 224px; }  /* aligned with the section content below */
-.about-bio .lead { font-family: var(--font-display); font-size: 24px; line-height: 1.45; letter-spacing: -.01em; color: var(--text); margin-bottom: 1.2em; }
 .about-bio strong { font-weight: 600; }
 
 /* ---------- Sections ---------- */
@@ -105,7 +104,7 @@
 }
 .project:hover { color: var(--text-muted); border-color: transparent; box-shadow: var(--shadow); transform: translateY(-3px); }
 .project-icon { display: inline-grid; place-items: center; width: 36px; height: 36px; margin-bottom: 14px; border-radius: 10px; background: var(--ink-950); color: var(--signal); }
-.project-name { font-family: var(--font-display); font-weight: 600; font-size: 19px; letter-spacing: -.01em; color: var(--text); transition: color .2s; }
+.project-name { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 19px; letter-spacing: -.01em; color: var(--text); transition: color .2s; }
 .project:hover .project-name { color: var(--moss); }
 .project-text { margin: 6px 0 16px; font-size: 14.5px; line-height: 1.6; }
 .project-more { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; font-weight: 600; font-size: 14px; color: var(--moss); }
@@ -158,8 +157,7 @@
   .about-stats > div:nth-child(n+3) { border-top: 1px solid var(--border); }
   .about-stats dd { font-size: 24px; }
   .about-bio { padding-top: 48px; }
-  .about-bio .lead { font-size: 21px; }
-  .about-section { margin-top: 64px; }
+    .about-section { margin-top: 64px; }
   .about-section-head h2 { font-size: 25px; }
   .cve { grid-template-columns: 1fr 18px; gap: 4px 12px; }
   .cve-id { grid-column: 1; }

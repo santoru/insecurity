@@ -6,7 +6,6 @@ description: Security researcher, vulnerability hunter, tool builder.
 ---
 
 I'm Alessio — a Senior Application Security Engineer with a decade of experience breaking, securing, and rethinking complex systems.
-{: .lead}
 
 I currently work as a Senior Application Security Engineer on the EC2 Security team at Amazon Web Services, where I lead security reviews and build automation tooling to drive the secure expansion of AWS Edge infrastructure — including Outposts and Local Zones — across the globe.
 

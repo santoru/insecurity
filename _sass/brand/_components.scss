@@ -2,7 +2,7 @@
 /* ---------- Logo ---------- */
 .logo { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; }
 .logo:hover { color: var(--text); }
-.logo-word { font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.02em; }
+.logo-word { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 20px; letter-spacing: -0.02em; }
 .logo-word .paren { color: var(--moss); font-weight: 500; }
 .on-ink .logo, .on-ink .logo:hover { color: #fff; }
 .on-ink .logo-word .paren { color: var(--signal); }

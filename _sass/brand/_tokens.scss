@@ -36,6 +36,7 @@
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --display-weight: 600;   /* Space Grotesk; 700 on small screens, where 600 reads thin */
 
   /* Shape & depth */
   --radius-sm: 6px;
@@ -47,4 +48,8 @@
   --shadow-lg: 0 20px 50px rgba(11, 17, 14, 0.14), 0 2px 6px rgba(11, 17, 14, 0.05);
   --focus: 0 0 0 3px var(--signal-soft), 0 0 0 1px var(--moss);
   --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+@media (max-width: 767.98px) {
+  :root { --display-weight: 700; }
 }

@@ -25,6 +25,13 @@ layout: default
     <!-- Key numbers; overlaps the header, so the navbar turns solid when it reaches it -->
     <div class="wide">
         <dl class="about-stats" data-overlaps-header>
+            {%- assign start_y = a.career_start | slice: 0, 4 | plus: 0 -%}
+            {%- assign start_m = a.career_start | slice: 5, 2 | plus: 0 -%}
+            {%- assign now_y = site.time | date: "%Y" | plus: 0 -%}
+            {%- assign now_m = site.time | date: "%-m" | plus: 0 -%}
+            {%- assign years = now_y | minus: start_y -%}
+            {%- if now_m < start_m %}{% assign years = years | minus: 1 %}{% endif %}
+            <div><dt>Years in security</dt><dd>{{ years }}+</dd></div>
             <div><dt>Published CVEs</dt><dd>{{ a.cves.size }}</dd></div>
             {% for s in a.stats %}<div><dt>{{ s.label }}</dt><dd>{{ s.value }}</dd></div>{% endfor %}
         </dl>

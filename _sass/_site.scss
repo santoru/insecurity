@@ -164,7 +164,7 @@ body { background: var(--white); }
 }
 .post-nav-link:hover { color: var(--text); border-color: transparent; box-shadow: var(--shadow); transform: translateY(-2px); }
 .post-nav-link.is-next { text-align: right; }
-.post-nav-title { font-family: var(--font-display); font-weight: 600; font-size: 17px; line-height: 1.35; letter-spacing: -.01em; transition: color .2s; }
+.post-nav-title { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 17px; line-height: 1.35; letter-spacing: -.01em; transition: color .2s; }
 .post-nav-link:hover .post-nav-title { color: var(--moss); }
 /* ---------- Table of contents (inline + pinned sidebar) ---------- */
 #markdown-toc {

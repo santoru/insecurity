@@ -18,17 +18,21 @@
     var overlap = document.querySelector('[data-overlaps-header]');
     var raf;
 
+    // Below 992px the hero text runs under the navbar, so go solid as soon as the page scrolls.
+    var compact = window.matchMedia('(max-width: 991.98px)');
+
     function update() {
         var darkEnd = header.offsetTop + header.offsetHeight;
         if (overlap) darkEnd = Math.min(darkEnd, overlap.getBoundingClientRect().top + window.scrollY);
-        var scrolled = window.scrollY > darkEnd - nav.offsetHeight;
-        nav.classList.toggle('nav-scrolled', scrolled);
-        if (btn) btn.classList.toggle('visible', scrolled);
+        var pastDark = window.scrollY > darkEnd - nav.offsetHeight;
+        nav.classList.toggle('nav-scrolled', compact.matches ? window.scrollY > 0 : pastDark);
+        if (btn) btn.classList.toggle('visible', pastDark);
     }
 
     window.addEventListener('scroll', function () {
         if (!raf) raf = requestAnimationFrame(function () { update(); raf = null; });
     }, { passive: true });
+    window.addEventListener('resize', update);
     update();
 
     if (btn) {
