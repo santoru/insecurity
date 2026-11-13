@@ -2,7 +2,7 @@
 title: "(in)security"
 email: santoru@pm.me
 copyright_name: "santoru"
-description: "Yet another blog with some security related posts."
+description: "Security research, vulnerability write-ups and notes on breaking and securing systems."
 home_intro: "Notes from a decade of breaking and securing systems: vulnerability research, offensive security and cloud."
 baseurl: ""
 url: "https://insecurity.blog"
