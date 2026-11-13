@@ -21,7 +21,7 @@ body { background: var(--bg); }
 .navbar-custom .navbar-brand { margin-right: 0; padding: 0; }
 .navbar-custom .logo, .navbar-custom .logo:hover { color: var(--white); }
 .navbar-custom .logo-word .paren { color: var(--signal); }
-.navbar-custom .nav-link { color: rgba(255, 255, 255, .78); padding: 8px 10px; border-radius: 8px; }
+.navbar-custom .nav-link { display: inline-flex; align-items: center; color: rgba(255, 255, 255, .78); padding: 8px 10px; border-radius: 8px; }
 .navbar-custom .nav-link:hover, .navbar-custom .nav-link:focus { color: var(--signal); }
 .navbar-custom .navbar-toggler { border-color: rgba(255, 255, 255, .3); }
 .navbar-custom .navbar-toggler-icon {
@@ -302,6 +302,7 @@ body { background: var(--bg); }
 }
 #scrollTop.visible { opacity: 1; pointer-events: auto; }
 #scrollTop:hover { opacity: .85; color: var(--signal); }
+#scrollTop { @include dark { background: var(--card); border: 1px solid var(--border-strong); } }
 @media (max-width: 767.98px) {
   #scrollTop { right: 18px; bottom: 18px; width: 40px; height: 40px; }
 }
