@@ -33,9 +33,11 @@
     <link rel="preload" href="{{ '/assets/fonts/inter-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/space-grotesk-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
-    <!-- One stylesheet, compiled and minified by Jekyll from _sass/ (see assets/css/main.scss) -->
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-    <script src="{{ "/assets/js/site.js" | relative_url }}" defer></script>
+    <!-- One stylesheet, compiled and minified by Jekyll from _sass/ (see assets/css/main.scss).
+         ?v= changes on every build, so a deploy is never served stale CSS/JS from browser or CDN caches. -->
+    {%- assign v = site.time | date: "%s" %}
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}?v={{ v }}">
+    <script src="{{ "/assets/js/site.js" | relative_url }}?v={{ v }}" defer></script>
 
     {% feed_meta %}
 
