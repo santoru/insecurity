@@ -187,12 +187,12 @@ sitemap: false
                 </div>
                 <div style="margin-top:20px">
                     <div class="scale-row"><span class="label">Display</span><span class="display" style="font-size:56px;margin:0">Signal</span></div>
-                    <div class="scale-row"><span class="label">H1 · 46</span><h1 style="margin:0">Signal in the noise</h1></div>
-                    <div class="scale-row"><span class="label">H2 · 32</span><h2 style="margin:0">Signal in the noise</h2></div>
-                    <div class="scale-row"><span class="label">H3 · 23</span><h3 style="margin:0">Signal in the noise</h3></div>
-                    <div class="scale-row"><span class="label">Lead · 20</span><p class="lead" style="margin:0">Signal in the noise</p></div>
-                    <div class="scale-row"><span class="label">Body · 17</span><p style="margin:0">Signal in the noise</p></div>
-                    <div class="scale-row"><span class="label">Label · 12</span><span class="label">Signal in the noise</span></div>
+                    <div class="scale-row"><span class="label">H1 · 46</span><h1 style="margin:0">Signal over noise</h1></div>
+                    <div class="scale-row"><span class="label">H2 · 32</span><h2 style="margin:0">Signal over noise</h2></div>
+                    <div class="scale-row"><span class="label">H3 · 23</span><h3 style="margin:0">Signal over noise</h3></div>
+                    <div class="scale-row"><span class="label">Lead · 20</span><p class="lead" style="margin:0">Signal over noise</p></div>
+                    <div class="scale-row"><span class="label">Body · 17</span><p style="margin:0">Signal over noise</p></div>
+                    <div class="scale-row"><span class="label">Label · 12</span><span class="label">Signal over noise</span></div>
                 </div>
             </div>
         </section>
@@ -425,17 +425,12 @@ url = s3.generate_presigned_url(<span class="s">"put_object"</span>, ExpiresIn=<
                         </div>
                     </a>
                 </div>
-                <div class="bp-demo" style="margin-top:32px">
-                    <span class="label bp-demo-title">Author</span>
-                    <code class="bp-ref">.author-box · .avatar · .avatar-lg</code>
-                    <div class="bp-row" style="gap:16px">
-                        <img class="avatar avatar-lg" src="../assets/img/avatar.jpg" alt="Alessio">
-                        <div>
-                            <h4 style="margin:0">Alessio</h4>
-                            <p class="small muted" style="margin:0 0 10px">Senior Application Security Engineer</p>
-                            <div class="bp-row" style="gap:8px"><a class="btn btn-secondary btn-sm" href="#images">About me</a><a class="btn btn-ghost btn-sm" href="#images"><svg><use href="#i-rss" /></svg> RSS</a></div>
-                        </div>
-                    </div>
+                <div class="bp-demo" style="margin-top:32px;background:var(--bg)">
+                    <span class="label bp-demo-title">Author box</span>
+                    <code class="bp-ref">{% raw %}{% include author.html %}{% endraw %} · .author-box · .is-compact</code>
+                    {% include author.html %}
+                    <div style="max-width:380px">{% include author.html compact=true %}</div>
+                    <p class="bp-note">Closes every post, above Previous / Next. Photo, name and bio come from <code>_data/about.yml</code>, links from <code>_config.yml</code>. Below 576px it stacks; <code>.is-compact</code> forces the stacked layout. The ring gap matches the card (<code>--paper</code>), not the page.</p>
                 </div>
             </div>
         </section>

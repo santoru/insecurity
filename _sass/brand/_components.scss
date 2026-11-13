@@ -51,6 +51,44 @@
 .btn-icon { width: 42px; padding: 0; }
 .btn[disabled] { opacity: .45; pointer-events: none; }
 
+/* ---------- Author box ---------- */
+// Wide: photo | name | links, bio underneath. Compact (phones or .is-compact): stacked rows.
+@mixin author-compact {
+  grid-template-columns: 56px 1fr;
+  grid-template-areas: "avatar head" "bio bio" "links links";
+  column-gap: 16px;
+  padding: 20px;
+  .avatar { width: 56px; height: 56px; align-self: center; }
+  .author-bio { margin-top: 14px; }
+  .author-links { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+}
+.author-box {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  grid-template-areas: "avatar head links" "avatar bio bio";
+  column-gap: 22px;
+  margin-top: 56px;
+  padding: 26px 28px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  .avatar { grid-area: avatar; align-self: start; width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--signal); }
+  .label { display: block; margin-bottom: 2px; }
+  &.is-compact { @include author-compact; }
+}
+.author-head { grid-area: head; align-self: center; }
+.author-name { margin: 0; font-family: var(--font-display); font-weight: var(--display-weight); font-size: 21px; line-height: 1.3; letter-spacing: -.015em; }
+.author-name a { color: var(--text); text-decoration: none; }
+.author-name a:hover { color: var(--moss); }
+.author-bio { grid-area: bio; margin: 8px 0 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted); }
+.author-more { display: inline-flex; align-items: center; gap: 5px; margin-left: 4px; font-weight: 600; color: var(--moss); text-decoration: none; white-space: nowrap; }
+.author-more svg { transition: transform .2s var(--ease); }
+.author-more:hover svg { transform: translateX(3px); }
+.author-links { grid-area: links; align-self: center; display: flex; gap: 6px; }
+.author-links .btn { width: 36px; height: 36px; padding: 0; color: var(--text-muted); }
+.author-links .btn:hover { color: var(--moss); }
+@media (max-width: 575.98px) { .author-box { @include author-compact; } }
+
 /* ---------- Tags ---------- */
 .tag {
   display: inline-flex; align-items: center;
