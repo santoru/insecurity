@@ -42,8 +42,14 @@
 
         var raf;
 
+        // Content that overlaps the header (e.g. the home "Latest post" card) ends the dark area early,
+        // so switch to the solid navbar when the navbar reaches it, not when the header ends.
+        var overlap = document.querySelector('[data-overlaps-header]');
+
         function update() {
-            var scrolled = window.scrollY > header.offsetHeight - nav.offsetHeight;
+            var darkEnd = header.offsetTop + header.offsetHeight;
+            if (overlap) darkEnd = Math.min(darkEnd, overlap.getBoundingClientRect().top + window.scrollY);
+            var scrolled = window.scrollY > darkEnd - nav.offsetHeight;
             nav.classList.toggle('nav-scrolled', scrolled);
             if (btn) btn.classList.toggle('visible', scrolled);
         }

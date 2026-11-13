@@ -56,7 +56,7 @@ body { background: var(--white); }
   /* Photo behind a dark ink filter; glow and dot grid sit on top */
   background-color: var(--ink-950);
   background-image:
-    linear-gradient(180deg, rgba(11, 17, 14, .78) 0%, rgba(11, 17, 14, .9) 100%),
+    linear-gradient(180deg, rgba(11, 17, 14, .66) 0%, rgba(11, 17, 14, .84) 100%),
     url('/assets/img/bg.jpg');
   background-size: cover;
   background-position: center 40%;

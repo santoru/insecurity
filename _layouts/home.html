@@ -15,12 +15,6 @@ layout: default
                         <a class="btn btn-signal btn-lg" href="{{ '/about/' | relative_url }}">About me
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                         </a>
-                        <a class="btn btn-outline-light btn-lg" href="{{ '/feed.xml' | relative_url }}">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M4 11a9 9 0 0 1 9 9" /><path d="M4 4a16 16 0 0 1 16 16" /><circle cx="5" cy="19" r="1" />
-                            </svg>
-                            RSS
-                        </a>
                     </div>
                 </div>
             </div>
@@ -28,7 +22,7 @@ layout: default
     </div>
 </header>
 
-<main class="container home-main">
+<main class="container home-main" data-overlaps-header>
     <div class="row">
         <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">
             {{ content }}
