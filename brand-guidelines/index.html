@@ -1,0 +1,513 @@
+---
+# Internal brand reference: not linked from the site, not in the sitemap, not indexed.
+sitemap: false
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Brand guidelines — (in)security</title>
+    <link rel="icon" type="image/png" href="../assets/img/brand-icon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/guidelines.css">
+</head>
+
+<body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <!-- Icons (Lucide, ISC licence) -->
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-rss" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9" /><path d="M4 4a16 16 0 0 1 16 16" /><circle cx="5" cy="19" r="1" /></g></symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></g></symbol>
+        <symbol id="i-trash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" /></g></symbol>
+        <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+        <symbol id="i-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" /><path d="m16 6-4-4-4 4M12 2v13" /></g></symbol>
+        <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></g></symbol>
+        <symbol id="i-ok" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></g></symbol>
+        <symbol id="i-warn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3Z" /><path d="M12 9v4M12 17h.01" /></g></symbol>
+        <symbol id="i-crit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="M12 8v4M12 16h.01" /></g></symbol>
+    </svg>
+
+    <nav class="bp-nav">
+        <div class="bp-wrap">
+            <span class="logo"><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span>
+            <div class="bp-nav-links">
+                <a href="#concept">Concept</a>
+                <a href="#logo">Logo</a>
+                <a href="#color">Colour</a>
+                <a href="#type">Type</a>
+                <a href="#voice">Voice</a>
+                <a href="#buttons">Buttons</a>
+                <a href="#alerts">Alerts</a>
+                <a href="#dropdowns">Inputs</a>
+                <a href="#badges">Badges</a>
+                <a href="#text">Text</a>
+                <a href="#images">Media</a>
+                <a href="#implementation">Code</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bp-hero on-ink">
+        <div class="bp-wrap">
+            <span class="label">Brand guidelines · v1.1 · internal reference</span>
+            <h1 class="display" style="margin-top:18px">Signal in<br>the noise.</h1>
+            <p class="lead">Identity, voice and every UI component of (in)security in one place.
+                Use it as the reference before changing the site: if a pattern is here, reuse it; if it isn't, add it here first.</p>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="bp-section" id="concept">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">01 — Concept</span>
+                    <div>
+                        <h2>The parentheses are the brand.</h2>
+                        <p>The name already contains the idea: <em>security</em>, with an <em>(in)</em> that reminds us nothing is fully secure.
+                            The wordmark sets the brackets in the signal colour, so the eye lands on the <em>(in)</em> first — a scope,
+                            a lens, the finding you are looking for in a sea of noise.</p>
+                    </div>
+                </div>
+                <div class="bp-grid-3">
+                    <div class="voice-card"><span class="label">Scope</span><h3 style="margin-top:8px">( )</h3><p class="muted small" style="margin:0">Brackets frame the work: a target, a boundary, a test case. Used as the mark and as a quiet typographic device.</p></div>
+                    <div class="voice-card"><span class="label">Signal</span><h3 style="margin-top:8px">●</h3><p class="muted small" style="margin:0">One bright mint accent, used sparingly: the active state, the key number, the focus ring. Never as a background for long text.</p></div>
+                    <div class="voice-card"><span class="label">Ink</span><h3 style="margin-top:8px">■</h3><p class="muted small" style="margin:0">A near-black with a hint of green. Gives the brand its terminal-at-night calm without the hacker clichés.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bp-section" id="logo">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">02 — Logo</span>
+                    <div>
+                        <h2>Wordmark &amp; mark</h2>
+                        <p>Space Grotesk SemiBold, tight tracking. The parentheses take the brand green on light backgrounds and the signal mint on dark ones. Where the full wordmark does not fit — favicon, app icon — use the <em>(in)</em> monogram.</p>
+                    </div>
+                </div>
+                <p class="bp-ref-line"><code class="bp-ref">.logo > .logo-word > .paren — on dark parents use .on-ink</code></p>
+                <div class="bp-grid-2">
+                    <div class="logo-tile"><span class="logo logo-xl"><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">Primary · on white</span></div>
+                    <div class="logo-tile ink on-ink"><span class="logo logo-xl"><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">Primary · on ink</span></div>
+                    <div class="logo-tile moss"><span class="logo logo-xl"><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span><span class="cap">On moss</span></div>
+                    <div class="logo-tile">
+                        <div class="app-icons">
+                            <span class="monogram" style="--s:72px"><span class="paren">(</span>in<span class="paren">)</span></span>
+                            <span class="monogram" style="--s:44px"><span class="paren">(</span>in<span class="paren">)</span></span>
+                            <span class="monogram" style="--s:24px"><span class="paren">(</span>in<span class="paren">)</span></span>
+                            <span class="monogram" style="--s:16px"><span class="paren">(</span>in<span class="paren">)</span></span>
+                        </div>
+                        <span class="cap">Monogram · app icon &amp; favicon · 72 / 44 / 24 / 16</span>
+                    </div>
+                </div>
+                <div class="bp-demo on-ink" style="margin-top:16px">
+                    <span class="label bp-demo-title">Clear space &amp; minimum size</span>
+                    <div class="bp-row" style="gap:32px">
+                        <span class="clearspace"><span class="logo"><span class="logo-word"><span class="paren">(</span>in<span class="paren">)</span>security</span></span></span>
+                        <p class="small" style="margin:0;max-width:440px;color:var(--ink-300)">Keep clear space equal to the cap height (<b style="color:#fff">x</b>) around the wordmark. Minimum width: 120px. Below that, use the <em>(in)</em> monogram.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bp-section" id="color">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">03 — Colour</span>
+                    <div>
+                        <h2>Ink, moss &amp; one signal</h2>
+                        <p>Mostly white and ink, moss for actions and links, signal for emphasis. Status colours are reserved for alerts and severity. Click a swatch to copy its hex.</p>
+                    </div>
+                </div>
+                <div class="bp-grid-3">
+                    <button class="swatch" data-hex="#0B110E"><div class="swatch-chip" style="background:#0B110E;color:#fff"><span>Base · 60%</span></div><div class="swatch-info"><span class="swatch-name">Ink</span><span class="swatch-hex">#0B110E</span></div></button>
+                    <button class="swatch" data-hex="#306951"><div class="swatch-chip" style="background:#306951;color:#fff"><span>Primary · 30%</span></div><div class="swatch-info"><span class="swatch-name">Moss</span><span class="swatch-hex">#306951</span></div></button>
+                    <button class="swatch" data-hex="#3DDC97"><div class="swatch-chip" style="background:#3DDC97;color:#0B110E"><span>Accent · 10%</span></div><div class="swatch-info"><span class="swatch-name">Signal</span><span class="swatch-hex">#3DDC97</span></div></button>
+                </div>
+                <h4 style="margin:40px 0 14px">Neutrals</h4>
+                <div class="mini-swatches">
+                    <button class="swatch" data-hex="#18201C"><div class="swatch-chip" style="background:#18201C"></div><div class="swatch-info"><span class="swatch-name">Text</span><span class="swatch-hex">#18201C</span></div></button>
+                    <button class="swatch" data-hex="#526059"><div class="swatch-chip" style="background:#526059"></div><div class="swatch-info"><span class="swatch-name">Muted</span><span class="swatch-hex">#526059</span></div></button>
+                    <button class="swatch" data-hex="#7C8781"><div class="swatch-chip" style="background:#7C8781"></div><div class="swatch-info"><span class="swatch-name">Subtle</span><span class="swatch-hex">#7C8781</span></div></button>
+                    <button class="swatch" data-hex="#DDE3DF"><div class="swatch-chip" style="background:#DDE3DF"></div><div class="swatch-info"><span class="swatch-name">Border</span><span class="swatch-hex">#DDE3DF</span></div></button>
+                    <button class="swatch" data-hex="#F3F6F4"><div class="swatch-chip" style="background:#F3F6F4"></div><div class="swatch-info"><span class="swatch-name">Surface</span><span class="swatch-hex">#F3F6F4</span></div></button>
+                    <button class="swatch" data-hex="#FFFFFF"><div class="swatch-chip" style="background:#FFFFFF;border-bottom:1px solid var(--border)"></div><div class="swatch-info"><span class="swatch-name">White</span><span class="swatch-hex">#FFFFFF</span></div></button>
+                </div>
+                <h4 style="margin:32px 0 14px">Status</h4>
+                <div class="mini-swatches">
+                    <button class="swatch" data-hex="#2F6FEB"><div class="swatch-chip" style="background:#2F6FEB"></div><div class="swatch-info"><span class="swatch-name">Info</span><span class="swatch-hex">#2F6FEB</span></div></button>
+                    <button class="swatch" data-hex="#306951"><div class="swatch-chip" style="background:#306951"></div><div class="swatch-info"><span class="swatch-name">Success</span><span class="swatch-hex">#306951</span></div></button>
+                    <button class="swatch" data-hex="#D9932A"><div class="swatch-chip" style="background:#D9932A"></div><div class="swatch-info"><span class="swatch-name">Warning</span><span class="swatch-hex">#D9932A</span></div></button>
+                    <button class="swatch" data-hex="#C9302F"><div class="swatch-chip" style="background:#C9302F"></div><div class="swatch-info"><span class="swatch-name">Critical</span><span class="swatch-hex">#C9302F</span></div></button>
+                </div>
+                <p class="bp-note">All text pairings meet WCAG AA (4.5:1). <em>Subtle</em> is for decorative or large text only.</p>
+            </div>
+        </section>
+
+        <section class="bp-section" id="type">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">04 — Typography</span>
+                    <div>
+                        <h2>Three voices, one rhythm</h2>
+                        <p>A geometric grotesk for headlines, a neutral sans for reading, and a mono for labels, code and data. All free on Google Fonts.</p>
+                    </div>
+                </div>
+                <div class="specimen">
+                    <div class="specimen-aa" style="font-family:var(--font-display);font-weight:600">Aa</div>
+                    <div><div class="specimen-meta"><strong>Space Grotesk</strong>Display &amp; headings · 500 / 600 · tracking −2%</div>
+                        <p style="font-family:var(--font-display);font-size:28px;line-height:1.3;letter-spacing:-.02em;margin:12px 0 0">Hacking into a router with a command injection</p></div>
+                </div>
+                <div class="specimen">
+                    <div class="specimen-aa" style="font-family:var(--font-body);font-weight:500">Aa</div>
+                    <div><div class="specimen-meta"><strong>Inter</strong>Body &amp; UI · 400 / 500 / 600 · 17px / 1.7</div>
+                        <p style="margin:12px 0 0;max-width:640px">Presigned URLs are authenticated on behalf of the credentials that generated them, so whoever holds the link holds the access — until it expires.</p></div>
+                </div>
+                <div class="specimen">
+                    <div class="specimen-aa" style="font-family:var(--font-mono);font-weight:500;letter-spacing:-.02em">Aa</div>
+                    <div><div class="specimen-meta"><strong>JetBrains Mono</strong>Labels, code &amp; data · 500 / 600 · uppercase labels +8%</div>
+                        <p style="font-family:var(--font-mono);font-size:15px;margin:12px 0 0">CVE-2018-20122 · <span style="color:var(--moss)">GET /status.cgi?nvget=pc_list</span></p></div>
+                </div>
+                <div style="margin-top:20px">
+                    <div class="scale-row"><span class="label">Display</span><span class="display" style="font-size:56px;margin:0">Signal</span></div>
+                    <div class="scale-row"><span class="label">H1 · 46</span><h1 style="margin:0">Signal in the noise</h1></div>
+                    <div class="scale-row"><span class="label">H2 · 32</span><h2 style="margin:0">Signal in the noise</h2></div>
+                    <div class="scale-row"><span class="label">H3 · 23</span><h3 style="margin:0">Signal in the noise</h3></div>
+                    <div class="scale-row"><span class="label">Lead · 20</span><p class="lead" style="margin:0">Signal in the noise</p></div>
+                    <div class="scale-row"><span class="label">Body · 17</span><p style="margin:0">Signal in the noise</p></div>
+                    <div class="scale-row"><span class="label">Label · 12</span><span class="label">Signal in the noise</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bp-section" id="voice">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">05 — Voice</span>
+                    <div>
+                        <h2>How it sounds</h2>
+                        <p>Written by a practitioner for practitioners. Clear first, clever second.</p>
+                    </div>
+                </div>
+                <div class="bp-grid-3">
+                    <div class="voice-card"><h3>Direct</h3><p class="muted small">Lead with the finding. Short sentences, active voice.</p>
+                        <div class="say"><div class="yes">The login page runs your input as a shell command.</div><div class="no">It could potentially be argued that input handling may be suboptimal.</div></div></div>
+                    <div class="voice-card"><h3>Technical, not cryptic</h3><p class="muted small">Show the request, the payload, the fix. Explain jargon once.</p>
+                        <div class="say"><div class="yes">A presigned URL is a link that carries its own credentials.</div><div class="no">Leverage SigV4 PUT semantics for ephemeral object ACLs.</div></div></div>
+                    <div class="voice-card"><h3>Honest about risk</h3><p class="muted small">No fear-mongering, no hype. Say what is affected and what is not.</p>
+                        <div class="say"><div class="yes">Fixed in the latest firmware. Older versions are still exposed.</div><div class="no">This terrifying bug could destroy the internet!!!</div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bp-section" id="buttons">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">06 — Buttons</span>
+                    <div><h2>Actions</h2><p>One primary action per view. Secondary for alternatives, ghost for low-emphasis actions, danger only for destructive ones. Hover brightens; press nudges down 1px.</p></div>
+                </div>
+                <div class="bp-demo">
+                    <span class="label bp-demo-title">Hierarchy</span>
+                    <code class="bp-ref">.btn + .btn-primary · .btn-secondary · .btn-ghost · .btn-danger</code>
+                    <div class="bp-row">
+                        <a class="btn btn-primary" href="#buttons">Read the post <svg><use href="#i-arrow" /></svg></a>
+                        <button class="btn btn-secondary" type="button"><svg><use href="#i-rss" /></svg> Subscribe</button>
+                        <button class="btn btn-ghost" type="button">Learn more</button>
+                        <button class="btn btn-danger" type="button"><svg><use href="#i-trash" /></svg> Delete</button>
+                    </div>
+                </div>
+                <div class="bp-demo">
+                    <span class="label bp-demo-title">Sizes, icon-only &amp; disabled</span>
+                    <code class="bp-ref">.btn-sm · .btn-lg · .btn-icon · [disabled]</code>
+                    <div class="bp-row">
+                        <button class="btn btn-primary btn-sm" type="button">Small</button>
+                        <button class="btn btn-primary" type="button">Default</button>
+                        <button class="btn btn-primary btn-lg" type="button">Large</button>
+                        <button class="btn btn-secondary btn-icon" type="button" aria-label="Copy link"><svg><use href="#i-copy" /></svg></button>
+                        <button class="btn btn-secondary btn-icon" type="button" aria-label="Share"><svg><use href="#i-share" /></svg></button>
+                        <button class="btn btn-primary" type="button" disabled>Disabled</button>
+                    </div>
+                </div>
+                <div class="bp-demo on-ink">
+                    <span class="label bp-demo-title">On ink</span>
+                    <code class="bp-ref">.btn-signal · .btn-outline-light</code>
+                    <div class="bp-row">
+                        <button class="btn btn-signal" type="button">Get the PoC <svg><use href="#i-arrow" /></svg></button>
+                        <button class="btn btn-outline-light" type="button">View on GitHub</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bp-section" id="alerts">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">07 — Alerts</span>
+                    <div><h2>Callouts</h2><p>For notes inside posts and feedback in the UI. Tinted background, matching border, icon carries the colour; the text stays readable.</p></div>
+                </div>
+                <p class="bp-ref-line"><code class="bp-ref">.alert + .alert-info · .alert-success · .alert-warning · .alert-critical — children: svg, .alert-title, p</code></p>
+                <div class="bp-stack">
+                    <div class="alert alert-info" role="note"><svg><use href="#i-info" /></svg><div><span class="alert-title">Note</span><p>All tests were run against my own device, on my own network.</p></div></div>
+                    <div class="alert alert-success" role="status"><svg><use href="#i-ok" /></svg><div><span class="alert-title">Fixed</span><p>The vendor shipped a patched firmware. Update before reading further.</p></div></div>
+                    <div class="alert alert-warning" role="note"><svg><use href="#i-warn" /></svg><div><span class="alert-title">Heads up</span><p>Presigned URLs can be reused until they expire — keep the expiry short.</p></div></div>
+                    <div class="alert alert-critical" role="alert"><svg><use href="#i-crit" /></svg><div><span class="alert-title">Critical</span><p>Unauthenticated command injection in the login page. Remote code execution as root.</p></div></div>
+                </div>
+                <div class="bp-demo on-ink" style="margin-top:16px">
+                    <span class="label bp-demo-title">Toast on ink</span>
+                    <code class="bp-ref">.alert.alert-ink</code>
+                    <div class="alert alert-ink ink-toast" role="status"><svg><use href="#i-check" /></svg><div><span class="alert-title">Link copied</span><p style="color:var(--ink-300)">Share it with your team.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bp-section" id="dropdowns">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">08 — Dropdowns &amp; inputs</span>
+                    <div><h2>Choices</h2><p>A menu built on <code>&lt;details&gt;</code> (works without JavaScript), and native form controls dressed in the brand. Focus always shows the signal ring.</p></div>
+                </div>
+                <div class="bp-grid-2">
+                    <div class="bp-demo" style="min-height:330px">
+                        <span class="label bp-demo-title">Menu</span>
+                    <code class="bp-ref">details.dropdown > summary.btn + .dropdown-menu > .dropdown-item (.is-active, .is-danger), .dropdown-sep</code>
+                        <div class="bp-row">
+                            <details class="dropdown">
+                                <summary class="btn btn-secondary">Sort by <svg class="chev"><use href="#i-chev" /></svg></summary>
+                                <div class="dropdown-menu" role="menu">
+                                    <button class="dropdown-item is-active" role="menuitem" type="button"><svg><use href="#i-check" /></svg> Newest first</button>
+                                    <button class="dropdown-item" role="menuitem" type="button"><svg></svg> Oldest first</button>
+                                    <button class="dropdown-item" role="menuitem" type="button"><svg></svg> Reading time</button>
+                                </div>
+                            </details>
+                            <details class="dropdown">
+                                <summary class="btn btn-primary">Share <svg class="chev"><use href="#i-chev" /></svg></summary>
+                                <div class="dropdown-menu" role="menu">
+                                    <button class="dropdown-item" role="menuitem" type="button"><svg><use href="#i-copy" /></svg> Copy link <kbd>⌘C</kbd></button>
+                                    <a class="dropdown-item" role="menuitem" href="#dropdowns"><svg><use href="#i-share" /></svg> Share on Mastodon</a>
+                                    <a class="dropdown-item" role="menuitem" href="#dropdowns"><svg><use href="#i-rss" /></svg> RSS feed</a>
+                                    <div class="dropdown-sep"></div>
+                                    <button class="dropdown-item is-danger" role="menuitem" type="button"><svg><use href="#i-trash" /></svg> Report an issue</button>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                    <div class="bp-demo">
+                        <span class="label bp-demo-title">Form controls</span>
+                    <code class="bp-ref">.field > .field-label + .input / .select</code>
+                        <div class="bp-stack">
+                            <label class="field"><span class="field-label">Email</span><input class="input" type="email" placeholder="you@example.com"></label>
+                            <label class="field"><span class="field-label">Topic</span>
+                                <select class="select">
+                                    <option>All topics</option><option>Cloud security</option><option>IoT</option><option>macOS</option>
+                                </select>
+                            </label>
+                            <button class="btn btn-primary" type="button" style="justify-self:start">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bp-section" id="badges">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">09 — Badges &amp; tags</span>
+                    <div><h2>Labels</h2><p>Severity badges use the mono face and a status dot — like a finding in a report. Tags are soft pills for topics.</p></div>
+                </div>
+                <div class="bp-demo">
+                    <span class="label bp-demo-title">Severity</span>
+                    <code class="bp-ref">.badge + .badge-critical · .badge-high · .badge-medium · .badge-low · .badge-fixed</code>
+                    <div class="bp-row">
+                        <span class="badge badge-critical">Critical</span>
+                        <span class="badge badge-high">High</span>
+                        <span class="badge badge-medium">Medium</span>
+                        <span class="badge badge-low">Low</span>
+                        <span class="badge badge-fixed">Fixed</span>
+                    </div>
+                </div>
+                <div class="bp-demo">
+                    <span class="label bp-demo-title">Topic tags</span>
+                    <code class="bp-ref">.tag (span or a)</code>
+                    <div class="bp-row" style="gap:8px">
+                        <a class="tag" href="#badges">AWS</a><a class="tag" href="#badges">Cloud security</a><a class="tag" href="#badges">IoT</a><a class="tag" href="#badges">Exploitation</a><a class="tag" href="#badges">macOS</a><a class="tag" href="#badges">Tooling</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bp-section" id="text">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">10 — Text</span>
+                    <div><h2>Reading</h2><p>A 680px measure, 17px Inter at 1.7 line-height. Headlines in Space Grotesk, labels and code in JetBrains Mono.</p></div>
+                </div>
+                <p class="bp-ref-line"><code class="bp-ref">Base elements + .lead · .label · .small · .muted · ul.list / ol.list · pre/code · blockquote > cite</code></p>
+                <article class="prose">
+                    <span class="label">Cloud security · 16 min read</span>
+                    <h1 style="margin-top:12px">Securing your S3 presigned URLs</h1>
+                    <p class="lead">Presigned URLs are convenient, fast and easy to get wrong. Here is what to check before you ship one.</p>
+                    <p>A presigned URL is a link that carries its own credentials. Whoever holds it can <a href="#text">read or write the object</a> on behalf of the identity that signed it, until it expires. That makes the <strong>signing service</strong> the real security boundary, not the bucket policy.</p>
+                    <h2>Keep the expiry short</h2>
+                    <p>There is no built-in way to revoke a single URL. Set <code>ExpiresIn</code> to the shortest value your users can live with:</p>
+                    <pre><code><span class="k">$</span> aws s3 presign s3://my-bucket/upload.png <span class="k">--expires-in</span> 300
+<span class="c"># → valid for 5 minutes, then useless</span>
+url = s3.generate_presigned_url(<span class="s">"put_object"</span>, ExpiresIn=<span class="s">300</span>)</code></pre>
+                    <h3>Checklist</h3>
+                    <ul class="list">
+                        <li>Sign with a dedicated, least-privilege role</li>
+                        <li>Sanitise the object key — path traversal is a thing</li>
+                        <li>Enable server access logging on exposed buckets</li>
+                    </ul>
+                    <ol class="list">
+                        <li>Generate the URL server-side</li>
+                        <li>Return it to the client</li>
+                        <li>Upload directly to S3</li>
+                    </ol>
+                    <blockquote>Security is a process, not a product.<cite>— Bruce Schneier</cite></blockquote>
+                    <p class="small muted">Small text — captions, footnotes and metadata. Updated March 6, 2021.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="bp-section" id="images">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">11 — Images &amp; cards</span>
+                    <div><h2>Media</h2><p>Screenshots get a 12px radius, a hairline border and a soft shadow. Captions start with a mono figure label. Cards lift on hover.</p></div>
+                </div>
+                <p class="bp-ref-line"><code class="bp-ref">figure.figure > img + figcaption > b · a.card > img.card-cover + .card-body > .card-meta / .card-title / .card-text</code></p>
+                <div class="prose">
+                    <figure class="figure">
+                        <img src="../assets/img/fastgate/login.png" width="895" height="666" alt="FASTGate router login panel">
+                        <figcaption><b>Fig. 1</b>The FASTGate login panel — the entry point for the command injection.</figcaption>
+                    </figure>
+                </div>
+                <div class="bp-grid-3" style="margin-top:32px">
+                    <a class="card" href="#images">
+                        <img class="card-cover" src="../assets/img/bg.jpg" alt="" loading="lazy">
+                        <div class="card-body">
+                            <div class="card-meta"><span class="badge badge-fixed">Fixed</span><span>Oct 2018</span></div>
+                            <h3 class="card-title">Hacking into a FASTGate router</h3>
+                            <p class="card-text">Missing authentication, command injection in the login page and a buffer overflow.</p>
+                        </div>
+                    </a>
+                    <a class="card" href="#images">
+                        <img class="card-cover" src="../assets/img/s3/upload_scenario.png" alt="" loading="lazy" style="object-fit:contain;background:var(--white);padding:16px;border-bottom:1px solid var(--border)">
+                        <div class="card-body">
+                            <div class="card-meta"><span class="tag">AWS</span><span>Mar 2021 · 16 min</span></div>
+                            <h3 class="card-title">Securing S3 presigned URLs</h3>
+                            <p class="card-text">Security tips for designing upload features with presigned URLs.</p>
+                        </div>
+                    </a>
+                    <a class="card" href="#images">
+                        <img class="card-cover" src="../assets/img/filewatcher/screenshotsmall.png" alt="" loading="lazy">
+                        <div class="card-body">
+                            <div class="card-meta"><span class="tag">macOS</span><span>Jul 2017 · 7 min</span></div>
+                            <h3 class="card-title">Real-time auditing on macOS</h3>
+                            <p class="card-text">Monitoring file system access for every application with OpenBSM.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="bp-demo" style="margin-top:32px">
+                    <span class="label bp-demo-title">Author</span>
+                    <code class="bp-ref">.avatar · .avatar-lg</code>
+                    <div class="bp-row" style="gap:16px">
+                        <img class="avatar avatar-lg" src="../assets/img/about-profile-sd.jpg" alt="Alessio">
+                        <div>
+                            <h4 style="margin:0">Alessio</h4>
+                            <p class="small muted" style="margin:0 0 10px">Senior Application Security Engineer</p>
+                            <div class="bp-row" style="gap:8px"><a class="btn btn-secondary btn-sm" href="#images">About me</a><a class="btn btn-ghost btn-sm" href="#images"><svg><use href="#i-rss" /></svg> RSS</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bp-section" id="implementation">
+            <div class="bp-wrap">
+                <div class="bp-head">
+                    <span class="label">12 — Implementation</span>
+                    <div>
+                        <h2>Where things live</h2>
+                        <p>Change a token once and it updates everywhere. Jekyll compiles the Sass partials into two minified files.</p>
+                    </div>
+                </div>
+                <div class="bp-grid-2">
+                    <div class="bp-demo">
+                        <span class="label bp-demo-title">Files</span>
+                        <ul class="list small">
+                            <li><code>_sass/brand/_tokens.scss</code> — colours, fonts, radii, shadows (CSS custom properties)</li>
+                            <li><code>_sass/brand/_base.scss</code> — elements, <code>.display</code>, <code>.lead</code>, <code>.label</code></li>
+                            <li><code>_sass/brand/_components.scss</code> — logo, buttons, tags, figures, avatar (used by the site)</li>
+                            <li><code>_sass/brand/_components-extra.scss</code> — alerts, badges, dropdown, forms, cards (this page only)</li>
+                            <li><code>_sass/_site.scss</code>, <code>_home.scss</code>, <code>_about.scss</code>, <code>_syntax.scss</code> — site chrome &amp; pages</li>
+                            <li><code>assets/css/main.scss</code> → <code>main.css</code> (site) · <code>guidelines.scss</code> → <code>guidelines.css</code> (this page)</li>
+                            <li><code>_includes/icon.html</code> — stroke icons: home, x, github, info, mail, rss, linkedin, arrow, external, chevron-up, close</li>
+                        </ul>
+                    </div>
+                    <div class="bp-demo">
+                        <span class="label bp-demo-title">Key tokens</span>
+                        <table class="bp-tokens">
+                            <tr><td><span class="dot" style="background:var(--ink-950)"></span><code>--ink-950</code></td><td>Base dark, headers, code</td></tr>
+                            <tr><td><span class="dot" style="background:var(--moss)"></span><code>--moss</code></td><td>Primary actions, links</td></tr>
+                            <tr><td><span class="dot" style="background:var(--signal)"></span><code>--signal</code></td><td>Accent on dark, focus ring</td></tr>
+                            <tr><td><span class="dot" style="background:var(--text)"></span><code>--text</code> / <code>--text-muted</code></td><td>Body / secondary text</td></tr>
+                            <tr><td><span class="dot" style="background:var(--border)"></span><code>--border</code> / <code>--surface</code></td><td>Hairlines / tinted panels</td></tr>
+                            <tr><td><code>--font-display</code></td><td>Space Grotesk</td></tr>
+                            <tr><td><code>--font-body</code></td><td>Inter</td></tr>
+                            <tr><td><code>--font-mono</code></td><td>JetBrains Mono</td></tr>
+                            <tr><td><code>--radius</code> · <code>--shadow</code></td><td>10px · soft two-layer shadow</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bp-footer">
+        <div class="bp-wrap">
+            <span>(in)security brand guidelines · v1.1</span>
+            <a href="../">Back to the site</a>
+        </div>
+    </footer>
+
+    <script>
+        // Click a swatch to copy its hex
+        document.querySelectorAll('.swatch').forEach(function (s) {
+            s.addEventListener('click', function () {
+                var hex = s.getAttribute('data-hex'), label = s.querySelector('.swatch-hex');
+                if (navigator.clipboard) navigator.clipboard.writeText(hex).catch(function () {});
+                s.classList.add('copied'); label.textContent = 'Copied ' + hex;
+                setTimeout(function () { s.classList.remove('copied'); label.textContent = hex; }, 1200);
+            });
+        });
+    </script>
+    <script>
+        // Dropdowns: one open at a time, close on outside click / Escape / item click
+        (function () {
+            var dds = document.querySelectorAll('.dropdown');
+            dds.forEach(function (d) {
+                d.addEventListener('toggle', function () {
+                    if (d.open) dds.forEach(function (o) { if (o !== d) o.open = false; });
+                });
+                d.querySelectorAll('.dropdown-item').forEach(function (i) {
+                    i.addEventListener('click', function () { d.open = false; d.querySelector('summary').focus(); });
+                });
+            });
+            document.addEventListener('click', function (e) {
+                dds.forEach(function (d) { if (!d.contains(e.target)) d.open = false; });
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key !== 'Escape') return;
+                dds.forEach(function (d) { if (d.open) { d.open = false; d.querySelector('summary').focus(); } });
+            });
+        })();
+    </script>
+</body>
+</html>

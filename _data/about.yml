@@ -1,0 +1,73 @@
+# Content for the About page (_layouts/about.html). The bio itself lives in about.md.
+# Text fields accept Markdown (links, *italics*).
+
+name: Alessio
+headline: "Hi, I'm Alessio."
+role: Senior Application Security Engineer on the EC2 Security team at AWS. Breaking, securing and rethinking complex systems.
+photo: /assets/img/about-profile-sd.jpg
+
+# Key numbers under the header. The CVE count is computed from the list below.
+stats:
+  - value: "2017"
+    label: In security since
+  - value: OSCP · GXPN
+    label: Certifications
+  - value: AWS
+    label: EC2 Security
+
+timeline:
+  - date: February 2026
+    text: Achieved the GIAC Exploit Researcher and Advanced Penetration Tester (GXPN) certification
+  - date: December 2022
+    text: Joined Amazon Web Services (AWS) as Senior Application Security Engineer
+  - date: October 2021
+    text: Joined Trade Republic (Berlin) as Senior Product Security Engineer
+  - date: November 2019
+    text: Joined N26 (Berlin) as Product Security Engineer
+  - date: October 2018
+    text: Became an Offensive Security Certified Professional (OSCP)
+  - date: July 2017
+    text: Presented [filewatcher](https://github.com/santoru/filewatcher) at the MacAdmins Meeting at the University of Utah
+  - date: April 2017
+    text: Joined Horizon Security as Security Consultant / Penetration Tester
+
+cves:
+  - id: CVE-2026-8355
+    url: https://www.ibm.com/support/pages/node/7285723
+    text: Server-side request forgery in IBM ContextForge MCP Gateway.
+  - id: CVE-2022-2903
+    url: https://wpscan.com/vulnerability/255b98ba-5da9-4424-a7e9-c438d8905864
+    text: PHP Object Injection in the NinjaForms WordPress plugin.
+  - id: CVE-2018-20122
+    url: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20122
+    text: Remote code execution in the Fastweb FASTgate router.
+  - id: CVE-2018-17172
+    url: https://securitydocs.business.xerox.com/wp-content/uploads/2018/12/cert_Security_Mini_Bulletin_XRX18AL_for_ALB80xx-C80xx_v1.1.pdf
+    text: Command injection in the Xerox AltaLink web application.
+  - id: CVE-2018-7064
+    url: https://www.arubanetworks.com/assets/alert/ARUBA-PSA-2019-001.txt
+    text: Reflected cross-site scripting (XSS) in the *Aruba Instant* web interface.
+  - id: CVE-2017-17663
+    url: https://acme.com/updates/archive/199.html
+    text: Buffer overflow in the *thttpd* and *mini_httpd* web servers.
+
+projects:
+  - name: filewatcher
+    url: https://github.com/santoru/filewatcher
+    text: A simple real-time auditing utility for macOS using OpenBSM.
+  - name: shcheck
+    url: https://github.com/santoru/shcheck
+    text: A basic tool to check HTTP security headers on web applications.
+  - name: pihole-dashboard
+    url: https://github.com/santoru/pihole-dashboard
+    text: A minimal and clean dashboard to visualize Pi-Hole stats on an E-Ink display.
+
+acknowledgments:
+  intro: Companies that have acknowledged my security research and responsible disclosure efforts.
+  list:
+    - name: Telecom Italia
+      url: https://www.gruppotim.it/it/footer/responsible-disclosure.html
+    - name: Fastweb
+      url: https://www.fastweb.it/corporate/responsible-disclosure/
+    - name: Broadcom
+      url: https://www.broadcom.com/support/security-center/security-thanks

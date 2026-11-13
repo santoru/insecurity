@@ -1,4 +1,4 @@
-/* Home page (loaded only by _layouts/home.html via head.html). Builds on brand.css + site.css. */
+// Home page: hero, latest-post card, post list.
 
 /* ---------- Hero ---------- */
 .home-hero-inner { padding: 160px 0 150px; }
@@ -8,7 +8,10 @@
 .home-cta { display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* ---------- Main ---------- */
-.home-main { position: relative; z-index: 960; margin-top: -76px; padding-bottom: 56px; }
+.home-main { position: relative; padding-top: 40px; padding-bottom: 56px; }
+/* Featured card overlaps the hero (z-index above .intro-header's 950) */
+.home-main.has-featured { z-index: 960; margin-top: -76px; padding-top: 0; }
+.home-main:not(.has-featured) .home-section { margin-top: 0; }
 
 /* Featured (latest) post — overlaps the hero */
 .featured-post {
@@ -87,7 +90,8 @@
 @media (max-width: 767.98px) {
   .home-hero-inner { padding: 120px 0 112px; }
   .home-lead { font-size: 17px; }
-  .home-main { margin-top: -56px; }
+  .home-main { padding-top: 24px; }
+  .home-main.has-featured { margin-top: -56px; padding-top: 0; }
   .featured-post { padding: 24px 22px 22px; border-radius: 16px; }
   .featured-subtitle { font-size: 16px; }
   .featured-footer .read-more { margin-left: 0; }

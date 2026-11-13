@@ -1,11 +1,11 @@
 /*!
- * bs-extracted.css — the subset of Bootstrap v5.3.3 this site actually uses.
+ * Bootstrap subset — the part of Bootstrap v5.3.3 this site actually uses.
  * Extracted from https://getbootstrap.com/ (MIT License, Copyright 2011-2024 The Bootstrap Authors)
  * CSS variables are resolved to their default light-theme values.
  *
  * Contents: reboot (base elements), container / grid (row, col-md-10, col-lg-10, offsets),
- * navbar (+ collapse), list-inline, and the utilities fixed-top, ms-auto, text-center, text-muted.
- * The navbar toggle behaviour (formerly bootstrap.bundle.js) lives in _layouts/default.html.
+ * navbar (+ collapse), and the utilities fixed-top and ms-auto.
+ * The navbar toggle behaviour (formerly bootstrap.bundle.js) lives in assets/js/site.js.
  */
 
 /* ---------- Reboot ---------- */
@@ -47,7 +47,7 @@ dt { font-weight: 700; }
 dd { margin-bottom: .5rem; margin-left: 0; }
 blockquote { margin: 0 0 1rem; }
 b, strong { font-weight: bolder; }
-small, .small { font-size: .875em; }
+small { font-size: .875em; }
 mark { padding: .1875em; color: #212529; background-color: #fff3cd; }
 sub, sup { position: relative; font-size: .75em; line-height: 0; vertical-align: baseline; }
 sub { bottom: -.25em; }
@@ -202,13 +202,6 @@ summary { display: list-item; cursor: pointer; }
   .nav-link, .navbar-toggler { transition: none; }
 }
 
-/* ---------- Lists ---------- */
-.list-inline { padding-left: 0; list-style: none; }
-.list-inline-item { display: inline-block; }
-.list-inline-item:not(:last-child) { margin-right: .5rem; }
-
 /* ---------- Utilities ---------- */
 .fixed-top { position: fixed; top: 0; right: 0; left: 0; z-index: 1030; }
 .ms-auto { margin-left: auto !important; }
-.text-center { text-align: center !important; }
-.text-muted { color: rgba(33, 37, 41, .75) !important; }

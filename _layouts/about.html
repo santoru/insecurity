@@ -1,0 +1,97 @@
+---
+layout: default
+---
+{%- assign a = site.data.about -%}
+{%- capture ext %} target="_blank" rel="noopener noreferrer"{% endcapture -%}
+
+<header class="intro-header brand-header about-hero">
+    <div class="wide header-inner about-hero-inner">
+        <img class="about-avatar" src="{{ a.photo | relative_url }}" alt="Portrait of {{ a.name }}" width="400" height="391">
+        <div>
+            <span class="label header-kicker">{{ page.kicker | default: "About" }}</span>
+            <h1>{{ a.headline }}</h1>
+            <p class="header-lead">{{ a.role }}</p>
+            <div class="about-actions">
+                {% if site.email %}<a class="btn btn-signal" href="mailto:{{ site.email }}">Get in touch {% include icon.html name="arrow" size="16" %}</a>{% endif %}
+                {% if site.github_username %}<a class="btn btn-outline-light btn-icon" href="https://github.com/{{ site.github_username }}" aria-label="GitHub">{% include icon.html name="github" size="18" %}</a>{% endif %}
+                {% if site.linkedin_username %}<a class="btn btn-outline-light btn-icon" href="https://www.linkedin.com/in/{{ site.linkedin_username }}" aria-label="LinkedIn">{% include icon.html name="linkedin" size="18" %}</a>{% endif %}
+                {% if site.twitter_username %}<a class="btn btn-outline-light btn-icon" href="https://x.com/{{ site.twitter_username }}" aria-label="X">{% include icon.html name="x" size="18" %}</a>{% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="about">
+    <!-- Key numbers; overlaps the header, so the navbar turns solid when it reaches it -->
+    <div class="wide">
+        <dl class="about-stats" data-overlaps-header>
+            <div><dt>Published CVEs</dt><dd>{{ a.cves.size }}</dd></div>
+            {% for s in a.stats %}<div><dt>{{ s.label }}</dt><dd>{{ s.value }}</dd></div>{% endfor %}
+        </dl>
+    </div>
+
+    <section class="measure about-bio">
+        {{ content }}
+    </section>
+
+    <section class="wide about-section" aria-labelledby="timeline">
+        <div class="about-section-head"><span class="label">Career</span><h2 id="timeline">Timeline</h2></div>
+        <ol class="timeline">
+            {% for t in a.timeline %}
+            <li><span class="timeline-date">{{ t.date }}</span><span class="timeline-text">{{ t.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span></li>
+            {% endfor %}
+        </ol>
+    </section>
+
+    <section class="wide about-section" aria-labelledby="cves">
+        <div class="about-section-head"><span class="label">Research</span><h2 id="cves">CVEs</h2></div>
+        <ul class="cve-list">
+            {% for c in a.cves %}
+            <li>
+                <a class="cve" href="{{ c.url }}"{{ ext }}>
+                    <span class="cve-id">{{ c.id }}</span>
+                    <span class="cve-text">{{ c.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>
+                    <span class="cve-arrow">{% include icon.html name="external" size="16" %}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="wide about-section" aria-labelledby="projects">
+        <div class="about-section-head"><span class="label">Open source</span><h2 id="projects">Projects</h2></div>
+        <ul class="project-grid">
+            {% for p in a.projects %}
+            <li>
+                <a class="project" href="{{ p.url }}"{{ ext }}>
+                    <span class="project-icon">{% include icon.html name="github" size="18" %}</span>
+                    <span class="project-name">{{ p.name }}</span>
+                    <span class="project-text">{{ p.text }}</span>
+                    <span class="project-more">View on GitHub {% include icon.html name="arrow" size="14" %}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="wide about-section" aria-labelledby="acks">
+        <div class="about-section-head"><span class="label">Disclosure</span><h2 id="acks">Acknowledgments</h2></div>
+        <p class="about-section-intro">{{ a.acknowledgments.intro }}</p>
+        <ul class="ack-list">
+            {% for k in a.acknowledgments.list %}<li><a href="{{ k.url }}"{{ ext }}>{{ k.name }}</a></li>{% endfor %}
+        </ul>
+    </section>
+
+    {% if site.email %}
+    <section class="wide">
+        <div class="about-cta">
+            <div>
+                <span class="label">Contact</span>
+                <h2>Let's talk security.</h2>
+                <p>Research, disclosure, or just a question about a post — my inbox is open.</p>
+            </div>
+            <a class="btn btn-signal btn-lg" href="mailto:{{ site.email }}">Send an email {% include icon.html name="arrow" size="16" %}</a>
+        </div>
+    </section>
+    {% endif %}
+</main>

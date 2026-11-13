@@ -8,9 +8,24 @@ layout: home
   {%- if post.visible == 1 -%}{%- assign visible_posts = visible_posts | push: post -%}{%- endif -%}
 {%- endfor -%}
 
-{%- if paginator.page == 1 -%}{%- assign rest_offset = 1 -%}{%- else -%}{%- assign rest_offset = 0 -%}{%- endif -%}
+{%- comment -%}
+The newest post gets the "Latest post" card only while it is less than a year old (checked at build time).
+Otherwise every post goes in the list, straight under the hero.
+{%- endcomment -%}
+{%- assign show_featured = false -%}
+{%- if paginator.page == 1 and visible_posts.size > 0 -%}
+  {%- assign newest_ts = visible_posts.first.date | date: "%s" | plus: 0 -%}
+  {%- assign year_ago_ts = site.time | date: "%s" | minus: 31536000 -%}
+  {%- if newest_ts > year_ago_ts -%}{%- assign show_featured = true -%}{%- endif -%}
+{%- endif -%}
+{%- if show_featured -%}{%- assign rest_offset = 1 -%}{%- else -%}{%- assign rest_offset = 0 -%}{%- endif %}
 
-{% if paginator.page == 1 and visible_posts.size > 0 %}
+{%- comment -%} data-overlaps-header: the navbar turns solid when it reaches the card, not the end of the hero {%- endcomment %}
+<main class="container home-main{% if show_featured %} has-featured{% endif %}"{% if show_featured %} data-overlaps-header{% endif %}>
+<div class="row">
+<div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">
+
+{% if show_featured %}
 {%- assign post = visible_posts.first -%}
 {%- assign minutes = post.content | number_of_words | divided_by: 200 | plus: 1 %}
 <a class="featured-post" href="{{ post.url | relative_url }}">
@@ -31,8 +46,8 @@ layout: home
 {% endif %}
 
 {% if visible_posts.size > rest_offset %}
-<section class="home-section" aria-labelledby="more-posts">
-    <h2 class="label home-section-title" id="more-posts">{% if paginator.page == 1 %}More posts{% else %}Older posts{% endif %}</h2>
+<section class="home-section"{% if show_featured %} aria-labelledby="more-posts"{% else %} aria-label="Posts"{% endif %}>
+    {% if show_featured %}<h2 class="label home-section-title" id="more-posts">More posts</h2>{% endif %}
     <ul class="post-list">
         {% for post in visible_posts offset: rest_offset %}
         {%- assign minutes = post.content | number_of_words | divided_by: 200 | plus: 1 %}
@@ -70,3 +85,7 @@ layout: home
     {% endif %}
 </ul>
 {% endif %}
+
+</div>
+</div>
+</main>

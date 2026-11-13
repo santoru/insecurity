@@ -9,6 +9,7 @@ url: "https://insecurity.blog"
 twitter_username: santoru_
 github_username:  santoru
 linkedin_username: santoru
+mastodon_url: https://mstdn.social/@santoru
 
 # Google Analytics
 # To enable google analytics, uncomment below line with a valid Google Tracking ID
@@ -22,6 +23,10 @@ paginate: 5
 
 plugins: [jekyll-paginate, jekyll-feed, jekyll-sitemap]
 
+# Compile assets/css/*.scss from _sass/ into minified CSS
+sass:
+  style: compressed
+
 kramdown:
   parse_block_html: true
 
@@ -32,4 +37,5 @@ exclude:
   - "README.md"
   - "docker-run.sh"
   - "assets/img/cover.png"   # only used by the GitHub README
+  - "assets/img/about-profile.jpg"   # full-size source of about-profile-sd.jpg
   - "assets/img/s3/*.uml"    # PlantUML sources of the S3 post diagrams

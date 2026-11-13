@@ -20,7 +20,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@{{ site.twitter_username }}" />
     <link rel="icon" href="{{ "/assets/img/brand-icon-32.png" | prepend: site.baseurl }}" type="image/png" sizes="32x32" />
-    <link rel="icon" href="{{ "/assets/img/brand-icon.ico" | prepend: site.baseurl }}" sizes="48x48" />
+    <link rel="icon" href="{{ "/favicon.ico" | relative_url }}" sizes="48x48" />
     <link rel="apple-touch-icon" href="{{ "/assets/img/brand-icon-180.png" | prepend: site.baseurl }}" />
     <meta name="theme-color" content="#0B110E" />
     <title>{{ meta_title | strip_html | escape }}</title>
@@ -34,12 +34,9 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap"
         rel="stylesheet">
 
-    <!-- Layout primitives (Bootstrap subset) → brand tokens & components → site chrome → code theme -->
-    <link rel="stylesheet" href="{{ "/assets/css/bs-extracted.css" | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ "/assets/css/brand.css" | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ "/assets/css/site.css" | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ "/assets/css/syntax.css" | prepend: site.baseurl }}">
-    {% if page.layout == 'home' %}<link rel="stylesheet" href="{{ "/assets/css/home.css" | prepend: site.baseurl }}">{% endif %}
+    <!-- One stylesheet, compiled and minified by Jekyll from _sass/ (see assets/css/main.scss) -->
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    <script src="{{ "/assets/js/site.js" | relative_url }}" defer></script>
 
     {% feed_meta %}
 
