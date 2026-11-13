@@ -3,6 +3,7 @@
 ---
 // Site stylesheet. Order matters: layout primitives → brand → site chrome → pages.
 @import "bootstrap-subset";
+@import "brand/mixins";
 @import "brand/fonts";
 @import "brand/tokens";
 @import "brand/base";

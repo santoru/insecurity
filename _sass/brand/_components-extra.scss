@@ -51,7 +51,7 @@
   padding: 0 14px;
   border: 1.5px solid var(--border-strong);
   border-radius: var(--radius);
-  background: var(--white);
+  background: var(--card);
   color: var(--text);
   font: 15px/1 var(--font-body);
   transition: border-color .2s, box-shadow .2s;
@@ -74,7 +74,7 @@
 .dropdown-menu {
   position: absolute; z-index: 20; top: calc(100% + 8px); left: 0;
   min-width: 230px; padding: 6px;
-  background: var(--white);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: var(--shadow-lg);
@@ -100,7 +100,7 @@
 .card {
   display: block;
   overflow: hidden;
-  background: var(--white);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   color: var(--text);
@@ -122,7 +122,7 @@ a.card:hover .card-title { color: var(--moss); }
 .btn-ghost:hover { background: var(--moss-soft); color: var(--moss-text); }
 .btn-danger { background: var(--critical); color: var(--white); }
 .btn-danger:hover { background: var(--critical-hover); color: var(--white); }
-.avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--signal); }
+.avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--signal); }
 .avatar-lg { width: 96px; height: 96px; }
 
 /* Utilities */

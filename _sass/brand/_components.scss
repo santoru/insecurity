@@ -28,10 +28,10 @@
 .btn:active { transform: translateY(1px); }
 .btn:focus-visible { box-shadow: var(--focus); border-radius: var(--radius); }
 
-.btn-primary { background: var(--moss); color: var(--white); }
-.btn-primary:hover { background: var(--moss-hover); color: var(--white); }
+.btn-primary { background: var(--moss-fill); color: var(--white); }
+.btn-primary:hover { background: var(--moss-fill-hover); color: var(--white); }
 
-.btn-secondary { background: var(--white); border-color: var(--border-strong); color: var(--text); }
+.btn-secondary { background: var(--card); border-color: var(--border-strong); color: var(--text); }
 .btn-secondary:hover { border-color: var(--moss); color: var(--moss); }
 
 

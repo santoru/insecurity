@@ -27,7 +27,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin: -64px 0 0;
-  background: var(--white);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 20px;
   box-shadow: var(--shadow-lg);
@@ -61,7 +61,7 @@
   left: -36px; top: 4px;
   width: 14px; height: 14px;
   border-radius: 50%;
-  background: var(--white);
+  background: var(--card);
   border: 2px solid var(--moss);
 }
 .timeline li:first-child::before { background: var(--signal); border-color: var(--signal); box-shadow: 0 0 0 5px var(--signal-soft); }

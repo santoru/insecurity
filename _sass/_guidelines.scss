@@ -3,7 +3,7 @@
    Brand-book page chrome (only for /brand pages)
    ========================================================================== */
 .bp-wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-.bp-nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.86); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); border-bottom: 1px solid var(--border); }
+.bp-nav { position: sticky; top: 0; z-index: 50; background: var(--nav-solid); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); border-bottom: 1px solid var(--border); }
 .bp-nav .bp-wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
 .bp-nav-links { display: flex; gap: 4px; }
 .bp-nav-links a { padding: 8px 12px; border-radius: 8px; color: var(--text-muted); font-size: 14.5px; font-weight: 500; text-decoration: none; }
@@ -62,8 +62,10 @@
 /* Specimens */
         /* Logo tiles */
         .logo-tile { display: grid; place-items: center; min-height: 220px; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--white); position: relative; }
+        .logo-tile:not(.ink):not(.moss) .logo { color: var(--ink-950); }  /* "on white" tile stays light in both themes */
+        .logo-tile:not(.ink):not(.moss) .logo-word .paren { color: var(--moss-fill); }
         .logo-tile.ink { background: var(--ink-950); border-color: var(--ink-950); }
-        .logo-tile.moss { background: var(--moss); border-color: var(--moss); }
+        .logo-tile.moss { background: var(--moss-fill); border-color: var(--moss-fill); }
         .logo-tile .cap { position: absolute; left: 16px; bottom: 12px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-subtle); }
         .logo-tile.ink .cap, .logo-tile.moss .cap { color: rgba(255,255,255,.55); }
         .logo-xl .logo-word { font-size: 40px; }
@@ -74,7 +76,7 @@
         .clearspace::after { content: 'x'; position: absolute; top: 6px; left: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--signal); }
 
         /* Swatches */
-        .swatch { border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; background: var(--white); cursor: pointer; text-align: left; padding: 0; font: inherit; color: inherit; transition: transform .2s var(--ease), box-shadow .2s; }
+        .swatch { border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; background: var(--card); cursor: pointer; text-align: left; padding: 0; font: inherit; color: inherit; transition: transform .2s var(--ease), box-shadow .2s; }
         .swatch:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
         .swatch-chip { height: 120px; display: flex; align-items: end; padding: 12px 14px; }
         .swatch-chip span { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
@@ -111,7 +113,7 @@
         .ink-toast { max-width: 420px; }
 
 /* Reference helpers */
-.bp-ref { display: inline-block; margin: 0 0 16px; padding: 3px 8px; border: 1px dashed var(--border-strong); background: var(--white); color: var(--text-muted); font-size: 12px; line-height: 1.6; white-space: normal; }
+.bp-ref { display: inline-block; margin: 0 0 16px; padding: 3px 8px; border: 1px dashed var(--border-strong); background: var(--card); color: var(--text-muted); font-size: 12px; line-height: 1.6; white-space: normal; }
 .bp-demo.on-ink .bp-ref { background: transparent; border-color: var(--ink-700); color: var(--ink-300); }
 .bp-ref-line { margin: -16px 0 24px; }
 .bp-tokens { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -126,3 +128,7 @@
 pre .c { color: var(--code-comment); }
 pre .k { color: var(--signal); }
 pre .s { color: var(--code-string); }
+
+/* Theme toggle in the guidelines nav */
+.bp-nav .theme-toggle { margin-left: 4px; color: var(--text-muted); }
+.bp-nav .theme-toggle:hover { color: var(--text); background: var(--surface); }

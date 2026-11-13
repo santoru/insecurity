@@ -1,9 +1,9 @@
 {%- comment -%}
 Stroke icons (Lucide-style, 24×24, 2.5 stroke; X drawn to match).
-Usage: {% include icon.html name="github" %}  ·  optional size="20"
+Usage: {% include icon.html name="github" %}  ·  optional size="20" class="..."
 {%- endcomment -%}
 {%- assign s = include.size | default: 24 -%}
-<svg xmlns="http://www.w3.org/2000/svg" width="{{ s }}" height="{{ s }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg"{% if include.class %} class="{{ include.class }}"{% endif %} width="{{ s }}" height="{{ s }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 {%- case include.name -%}
 {%- when "home" -%}<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
 {%- when "x" -%}<path d="M3.5 3.5h5L20.5 20.5h-5z"/><path d="M20.5 3.5l-5.6 5.6M9.1 14.9l-5.6 5.6"/>
@@ -15,6 +15,8 @@ Usage: {% include icon.html name="github" %}  ·  optional size="20"
 {%- when "arrow" -%}<path d="M5 12h14M13 6l6 6-6 6"/>
 {%- when "external" -%}<path d="M7 17 17 7M8 7h9v9"/>
 {%- when "chevron-up" -%}<path d="m18 15-6-6-6 6"/>
+{%- when "moon" -%}<path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>
+{%- when "sun" -%}<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
 {%- when "close" -%}<path d="M18 6 6 18"/><path d="m6 6 12 12"/>
 {%- endcase -%}
 </svg>

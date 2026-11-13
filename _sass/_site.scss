@@ -4,7 +4,7 @@
    ========================================================================== */
 
 html { scroll-padding-top: 96px; }
-body { background: var(--white); }
+body { background: var(--bg); }
 
 /* Reading column and wide content column */
 .measure { max-width: 760px; margin: 0 auto; padding: 0 24px; }
@@ -31,7 +31,7 @@ body { background: var(--white); }
 /* Scrolled past the header: frosted white */
 .navbar-custom.nav-scrolled {
   padding-top: 8px; padding-bottom: 8px;
-  background: rgba(255, 255, 255, .96);
+  background: var(--nav-solid);
   -webkit-backdrop-filter: saturate(1.4) blur(12px);
   backdrop-filter: saturate(1.4) blur(12px);
   border-bottom-color: var(--border);
@@ -44,6 +44,22 @@ body { background: var(--white); }
 .navbar-custom.nav-scrolled .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2824, 32, 28, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
+.navbar-custom.nav-scrolled .navbar-toggler-icon {
+  @include dark {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28228, 236, 232, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+}
+
+/* Theme toggle: shows the moon in light mode, the sun in dark mode */
+.theme-toggle { display: inline-flex; align-items: center; padding: 8px 10px; border: 0; border-radius: 8px; background: none; color: inherit; line-height: 0; cursor: pointer; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle {
+  @include dark {
+    .icon-sun { display: inline; }
+    .icon-moon { display: none; }
+  }
+}
+
 @media (max-width: 991.98px) {
   .navbar-custom .navbar-nav { flex-direction: row; justify-content: center; gap: 6px; padding-top: 8px; }
 }
@@ -297,7 +313,7 @@ body { background: var(--white); }
   width: 360px;
   max-width: calc(100vw - 24px);
   padding: 16px 18px;
-  background: var(--white);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 14px;
   box-shadow: var(--shadow-lg);

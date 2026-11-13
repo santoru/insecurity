@@ -1,6 +1,7 @@
 // Brand tokens — the single source of truth for colour, type, shape and depth.
 /* ---------- Tokens ---------- */
 :root {
+  color-scheme: light;
   /* Ink — the dark base */
   --ink-950: #0B110E;
   --ink-900: #111915;
@@ -14,6 +15,8 @@
   --moss-hover: #3A7B60;   /* slightly brighter on hover */
   --moss-soft: #E6F1EB;
   --moss-text: #24573F;
+  --moss-fill: #306951;         /* solid fills (primary button); same in both themes */
+  --moss-fill-hover: #3A7B60;
   --signal: #3DDC97;
   --signal-soft: rgba(61, 220, 151, 0.16);
   --signal-hover: #5CE6AB;
@@ -27,6 +30,12 @@
   --surface: #F3F6F4;
   --paper: #FAFBFA;
   --white: #FFFFFF;
+
+  /* Theme surfaces (flip in dark mode; --white stays white for text on ink/moss) */
+  --bg: #FFFFFF;          /* page */
+  --card: #FFFFFF;        /* raised: cards, menus, banner */
+  --nav-solid: rgba(255, 255, 255, .96);
+  --code-border: transparent;
 
   /* Status */
   --info: #2F6FEB;      --info-bg: #EBF2FE;      --info-text: #1F5BD1;
@@ -64,4 +73,36 @@
 
 @media (max-width: 767.98px) {
   :root { --display-weight: 700; }
+}
+
+/* ---------- Dark theme ---------- */
+@include dark-root {
+  color-scheme: dark;
+  --bg: #0F1613;
+  --card: #151E1A;
+  --paper: #131B17;
+  --surface: #1B2621;
+  --border: #26332D;
+  --border-strong: #34443C;
+  --nav-solid: rgba(15, 22, 19, .92);
+  --code-border: #26332D;
+
+  --text: #E4ECE8;
+  --text-muted: #A3B1AA;
+  --text-subtle: #7F8C86;
+
+  --moss: #4FBF8C;              /* links & accents, brightened for dark backgrounds */
+  --moss-hover: #6BD3A3;
+  --moss-soft: rgba(79, 191, 140, .14);
+  --moss-text: #7FD6AE;
+
+  --info-bg: #16233A;     --info-text: #8DB4FF;
+  --success-bg: rgba(79, 191, 140, .12);  --success-text: #7FD6AE;
+  --warning-bg: #2A2416;  --warning-text: #F0C27A;
+  --critical-bg: #2C1718; --critical-text: #F5A3A3;
+  --high-bg: #2B1D16;     --high-text: #F4A97F;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow: 0 6px 20px rgba(0, 0, 0, .35), 0 1px 3px rgba(0, 0, 0, .3);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, .5), 0 2px 6px rgba(0, 0, 0, .3);
 }

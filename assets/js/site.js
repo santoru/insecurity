@@ -9,6 +9,22 @@
         });
     }
 
+    // Light/dark toggle. No saved choice = follow the system; the <head> script applies a saved one before paint.
+    var root = document.documentElement;
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    function theme() { return root.getAttribute('data-theme') || (prefersDark.matches ? 'dark' : 'light'); }
+    document.querySelectorAll('.theme-toggle').forEach(function (b) {
+        function label() { b.setAttribute('aria-label', theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'); }
+        b.addEventListener('click', function () {
+            var next = theme() === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem('theme', next); } catch (e) {}
+            label();
+        });
+        if (prefersDark.addEventListener) prefersDark.addEventListener('change', label);
+        label();
+    });
+
     // Solid navbar + scroll-to-top button once the navbar leaves the dark header.
     // Content marked [data-overlaps-header] (home "Latest post" card, about stats) ends the dark area early.
     var nav = document.getElementById('mainNav');

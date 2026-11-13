@@ -10,7 +10,10 @@ sitemap: false
     <meta name="robots" content="noindex, nofollow">
     <title>Brand guidelines — (in)security</title>
     <link rel="icon" type="image/png" href="../assets/img/brand-icon-32.png">
+    <meta name="color-scheme" content="light dark">
+    <script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
     <link rel="stylesheet" href="../assets/css/guidelines.css">
+    <script src="../assets/js/site.js" defer></script>
 </head>
 
 <body>
@@ -45,6 +48,7 @@ sitemap: false
                 <a href="#text">Text</a>
                 <a href="#images">Media</a>
                 <a href="#implementation">Code</a>
+                <button class="theme-toggle" type="button" aria-label="Switch colour theme"><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></button>
             </div>
         </div>
     </nav>
@@ -143,7 +147,17 @@ sitemap: false
                     <button class="swatch" data-hex="#D9932A"><div class="swatch-chip" style="background:#D9932A"></div><div class="swatch-info"><span class="swatch-name">Warning</span><span class="swatch-hex">#D9932A</span></div></button>
                     <button class="swatch" data-hex="#C9302F"><div class="swatch-chip" style="background:#C9302F"></div><div class="swatch-info"><span class="swatch-name">Critical</span><span class="swatch-hex">#C9302F</span></div></button>
                 </div>
-                <p class="bp-note">All text pairings meet WCAG AA (4.5:1). <em>Subtle</em> is for decorative or large text only.</p>
+                <p class="bp-note">All text pairings meet WCAG AA (4.5:1) in both themes. <em>Subtle</em> is for decorative or large text only.</p>
+                <h4 style="margin:32px 0 10px">Dark mode</h4>
+                <p class="bp-note" style="margin-top:0">Neutrals, links (<code>--moss</code>), status colours and shadows have dark values in <code>_tokens.scss</code>; ink, signal and the moss button fill (<code>--moss-fill</code>) stay the same.
+                    The theme follows the system until the visitor uses the moon/sun toggle, which is saved in <code>localStorage</code>. Try it in the nav above.</p>
+                <div class="mini-swatches">
+                    <button class="swatch" data-hex="#0F1613"><div class="swatch-chip" style="background:#0F1613"></div><div class="swatch-info"><span class="swatch-name">Dark bg</span><span class="swatch-hex">#0F1613</span></div></button>
+                    <button class="swatch" data-hex="#151E1A"><div class="swatch-chip" style="background:#151E1A"></div><div class="swatch-info"><span class="swatch-name">Dark card</span><span class="swatch-hex">#151E1A</span></div></button>
+                    <button class="swatch" data-hex="#26332D"><div class="swatch-chip" style="background:#26332D"></div><div class="swatch-info"><span class="swatch-name">Dark border</span><span class="swatch-hex">#26332D</span></div></button>
+                    <button class="swatch" data-hex="#E4ECE8"><div class="swatch-chip" style="background:#E4ECE8"></div><div class="swatch-info"><span class="swatch-name">Dark text</span><span class="swatch-hex">#E4ECE8</span></div></button>
+                    <button class="swatch" data-hex="#4FBF8C"><div class="swatch-chip" style="background:#4FBF8C"></div><div class="swatch-info"><span class="swatch-name">Dark link</span><span class="swatch-hex">#4FBF8C</span></div></button>
+                </div>
             </div>
         </section>
 
@@ -446,7 +460,7 @@ url = s3.generate_presigned_url(<span class="s">"put_object"</span>, ExpiresIn=<
                             <li><code>_sass/_site.scss</code>, <code>_home.scss</code>, <code>_about.scss</code>, <code>_syntax.scss</code> — site chrome &amp; pages</li>
                             <li><code>assets/css/main.scss</code> → <code>main.css</code> (site) · <code>guidelines.scss</code> → <code>guidelines.css</code> (this page)</li>
                             <li><code>assets/img/brand-icon-512.png</code> — "(in)" monogram master; <code>-180.png</code> (phone home screen), <code>-32.png</code> + <code>/favicon.ico</code> (browser tab). Never used in the navbar.</li>
-                            <li><code>_includes/icon.html</code> — stroke icons: home, x, github, info, mail, rss, linkedin, arrow, external, chevron-up, close</li>
+                            <li><code>_includes/icon.html</code> — stroke icons: home, x, github, info, mail, rss, linkedin, arrow, external, chevron-up, close, moon, sun</li>
                         </ul>
                     </div>
                     <div class="bp-demo">
@@ -458,6 +472,8 @@ url = s3.generate_presigned_url(<span class="s">"put_object"</span>, ExpiresIn=<
                             <tr><td><span class="dot" style="background:var(--text)"></span><code>--text</code> / <code>--text-muted</code></td><td>Body / secondary text</td></tr>
                             <tr><td><span class="dot" style="background:var(--border)"></span><code>--border</code> / <code>--surface</code></td><td>Hairlines / tinted panels</td></tr>
                             <tr><td><code>--font-display</code></td><td>Space Grotesk</td></tr>
+                            <tr><td><code>--bg</code> · <code>--card</code></td><td>Page / raised surfaces (theme-aware)</td></tr>
+                            <tr><td><code>--moss-fill</code></td><td>Primary button fill, same in both themes</td></tr>
                             <tr><td><code>--display-weight</code></td><td>600 · 700 below 768px (600 reads thin on phones)</td></tr>
                             <tr><td><code>--font-body</code></td><td>Inter</td></tr>
                             <tr><td><code>--font-mono</code></td><td>JetBrains Mono</td></tr>

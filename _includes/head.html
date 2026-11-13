@@ -23,6 +23,8 @@
     <link rel="icon" href="{{ "/favicon.ico" | relative_url }}" sizes="48x48" />
     <link rel="apple-touch-icon" href="{{ "/assets/img/brand-icon-180.png" | relative_url }}" />
     <meta name="theme-color" content="#0B110E" />
+    <meta name="color-scheme" content="light dark">
+    <script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
     <title>{{ meta_title | strip_html | escape }}</title>
 
     <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">

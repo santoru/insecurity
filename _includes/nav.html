@@ -14,6 +14,7 @@
                 {% if site.github_username %}<li class="nav-item"><a class="nav-link" href="https://github.com/{{ site.github_username }}" aria-label="GitHub">{% include icon.html name="github" size="21" %}</a></li>{% endif %}
                 <li class="nav-item"><a class="nav-link" href="{{ '/about/' | relative_url }}" aria-label="About">{% include icon.html name="info" size="21" %}</a></li>
                 {% if site.email %}<li class="nav-item"><a class="nav-link" href="mailto:{{ site.email }}" aria-label="Email">{% include icon.html name="mail" size="21" %}</a></li>{% endif %}
+                <li class="nav-item"><button class="nav-link theme-toggle" type="button" aria-label="Switch colour theme">{% include icon.html name="moon" size="21" class="icon-moon" %}{% include icon.html name="sun" size="21" class="icon-sun" %}</button></li>
             </ul>
         </div>
     </div>

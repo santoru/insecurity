@@ -5,7 +5,7 @@ html { -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 body {
   margin: 0;
-  background: var(--white);
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 17px;
@@ -57,6 +57,7 @@ pre {
   overflow-x: auto;
   border-radius: var(--radius);
   background: var(--ink-950);
+  border: 1px solid var(--code-border);
   color: var(--code-text);
   font-family: var(--font-mono);
   font-size: 14px;
