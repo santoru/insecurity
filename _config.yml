@@ -40,3 +40,6 @@ exclude:
   - "assets/img/about-profile.jpg"   # full-size source of about-profile-sd.jpg
   - "assets/img/bg.jpg"              # full-size source of bg-sd.jpg
   - "assets/img/s3/*.uml"    # PlantUML sources of the S3 post diagrams
+  # Brand guidelines (/brand-guidelines/): off by default. Remove these two lines to publish them.
+  - "brand-guidelines"
+  - "assets/css/guidelines.scss"
