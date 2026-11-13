@@ -9,6 +9,7 @@ body { background: var(--bg); }
 /* Reading column and wide content column */
 /* Posts/pages share the home column's text width (Bootstrap container × col-md/lg-10, minus gutters) */
 .measure { --measure: 100%; max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+@media (min-width: 576px)  { .measure { --measure: 540px; } }
 @media (min-width: 768px)  { .measure { --measure: 624px; } }
 @media (min-width: 992px)  { .measure { --measure: 824px; } }
 @media (min-width: 1200px) { .measure { --measure: 974px; } }
@@ -346,7 +347,8 @@ body { background: var(--bg); }
 }
 /* ---------- Responsive ---------- */
 @media (max-width: 767.98px) {
-  .measure, .wide { padding: 0 18px; }
+  .measure { padding: 0 12px; }
+  .wide { padding: 0 18px; }
   .header-inner { padding-top: 120px; padding-bottom: 52px; }
   .header-lead { font-size: 18px; }
   .post-body, .page-body { padding-top: 40px; }
