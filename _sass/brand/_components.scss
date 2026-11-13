@@ -4,6 +4,8 @@
 .logo:hover { color: var(--text); }
 .logo-word { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 20px; letter-spacing: -0.02em; }
 .logo-word .paren { color: var(--moss); font-weight: 500; }
+// Wordmark set as a display headline on ink (home hero, guidelines cover)
+.display .paren { color: var(--signal); font-weight: 500; }
 
 /* ---------- Buttons ---------- */
 .btn {

@@ -293,8 +293,7 @@ body { background: var(--bg); }
 /* ---------- Footer ---------- */
 .site-footer { padding: 56px 0 64px; border-top: 1px solid var(--border); background: var(--paper); text-align: center; }
 .footer-logo { justify-content: center; }
-.footer-tagline { margin: 6px 0 22px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-subtle); }
-.footer-nav { display: flex; justify-content: center; gap: 6px; margin: 0 0 18px; padding: 0; list-style: none; }
+.footer-nav { display: flex; justify-content: center; gap: 6px; margin: 18px 0; padding: 0; list-style: none; }
 .footer-nav a { display: inline-flex; padding: 8px; border-radius: 10px; color: var(--text-muted); transition: color .2s, background-color .2s; }
 .footer-nav a:hover { color: var(--moss); background: var(--moss-soft); }
 .copyright { margin: 0; font-size: 13.5px; color: var(--text-muted); }
