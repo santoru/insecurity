@@ -54,7 +54,7 @@ body { background: var(--bg); }
 }
 
 /* Mobile menu button: hamburger cross-fades into an X */
-.navbar-custom .navbar-toggler { display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border-radius: 10px; color: var(--white); cursor: pointer; }
+.navbar-custom .navbar-toggler { place-items: center; width: 42px; height: 42px; padding: 0; border-radius: 10px; color: var(--white); cursor: pointer; }
 .navbar-custom.nav-scrolled .navbar-toggler { color: var(--text); }
 .navbar-toggler svg { grid-row: 1; grid-column: 1; transition: opacity .2s, transform .3s var(--ease); }
 .navbar-toggler .icon-close { opacity: 0; transform: rotate(-90deg) scale(.8); }
@@ -62,6 +62,7 @@ body { background: var(--bg); }
 .navbar-toggler[aria-expanded="true"] .icon-close { opacity: 1; transform: none; }
 
 @media (max-width: 991.98px) {
+  .navbar-custom .navbar-toggler { display: grid; }
   /* Animated open/close: the row grows from 0fr to 1fr; hidden links can't be tabbed to */
   .navbar-custom .navbar-collapse {
     display: grid;
