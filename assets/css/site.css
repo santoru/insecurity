@@ -31,7 +31,7 @@ body { background: var(--white); }
 /* Scrolled past the header: frosted white */
 .navbar-custom.nav-scrolled {
   padding-top: 8px; padding-bottom: 8px;
-  background: rgba(255, 255, 255, .9);
+  background: rgba(255, 255, 255, .96);
   -webkit-backdrop-filter: saturate(1.4) blur(12px);
   backdrop-filter: saturate(1.4) blur(12px);
   border-bottom-color: var(--border);
