@@ -1,7 +1,16 @@
 {%- comment -%}
-Usage: {% include image.html url="assets/img/x.png" description="Figure 1 - ..." width="800" height="600" %}
+Usage: {% include image.html url="assets/img/x.png" description="Figure 1 - Login panel" width="800" height="600" %}
 width/height are the image's intrinsic size: they let the browser reserve space before it loads (no layout shift).
+A "Figure N - text" description renders as a mono "FIG. N" label followed by the text.
+Kept on one line with markdown="0" so kramdown leaves the HTML alone.
 {%- endcomment -%}
-{:.full-width}
-![{{ include.description }}](/{{ include.url }}){:.image{% if include.width %} width="{{ include.width }}"{% endif %}{% if include.height %} height="{{ include.height }}"{% endif %} loading="lazy" decoding="async"}
-*{{ include.description }}*
+{%- assign desc_parts = include.description | split: " - " -%}
+{%- assign desc_first = desc_parts | first -%}
+{%- if desc_parts.size > 1 and desc_first contains "Figure" -%}
+{%- assign fig_label = desc_first | replace: "Figure", "Fig." -%}
+{%- assign fig_text = include.description | remove_first: desc_first | remove_first: " - " -%}
+{%- else -%}
+{%- assign fig_label = "" -%}
+{%- assign fig_text = include.description -%}
+{%- endif -%}
+<figure class="figure" markdown="0"><img src="{{ include.url | prepend: '/' | relative_url }}" alt="{{ fig_text | strip_html | escape }}"{% if include.width %} width="{{ include.width }}"{% endif %}{% if include.height %} height="{{ include.height }}"{% endif %} loading="lazy" decoding="async"><figcaption>{% if fig_label != "" %}<b>{{ fig_label }}</b>{% endif %}{{ fig_text }}</figcaption></figure>

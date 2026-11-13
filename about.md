@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About me
+kicker: About
 description: Security researcher, vulnerability hunter, tool builder.
 ---
 

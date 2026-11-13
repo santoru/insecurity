@@ -3,19 +3,20 @@ layout: default
 ---
 
 <!-- Home hero (keeps .intro-header so the navbar/scroll script keeps working) -->
-<header class="intro-header home-hero" style="background-image: url('{{ site.baseurl }}/{{ site.header-img }}')">
+<header class="intro-header brand-header home-hero">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">
                 <div class="home-hero-inner">
-                    <p class="home-eyebrow">Security research blog</p>
-                    <h1 class="home-title">{{ site.title }}</h1>
+                    <span class="label">Security research blog</span>
+                    <h1 class="display home-title">Signal in<br>the noise.</h1>
                     <p class="home-lead">{{ site.home_intro | default: site.description }}</p>
                     <div class="home-cta">
-                        <a class="home-btn home-btn-primary" href="{{ '/about/' | relative_url }}">About me</a>
-                        <a class="home-btn home-btn-ghost" href="{{ '/feed.xml' | relative_url }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <a class="btn btn-signal btn-lg" href="{{ '/about/' | relative_url }}">About me
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                        </a>
+                        <a class="btn btn-outline-light btn-lg" href="{{ '/feed.xml' | relative_url }}">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M4 11a9 9 0 0 1 9 9" /><path d="M4 4a16 16 0 0 1 16 16" /><circle cx="5" cy="19" r="1" />
                             </svg>
                             RSS

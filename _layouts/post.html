@@ -1,22 +1,19 @@
 ---
 layout: default
 ---
-
-<!-- Post Header -->
-<header class="intro-header"
-    style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">
-                <div class="post-heading">
-                    <h1>{{ page.title }}</h1>
-                    {% if page.subtitle %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
-                    {% endif %}
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif
-                        %} on {{ page.date | date: "%B %-d, %Y" }} · {{ content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
-                </div>
-            </div>
+{%- assign minutes = content | number_of_words | divided_by: 200 | plus: 1 %}
+<!-- Post Header (keeps .intro-header for the navbar/TOC scripts) -->
+<header class="intro-header brand-header">
+    <div class="measure header-inner">
+        <span class="label header-kicker">{% if page.tags.size > 0 %}{{ page.tags | join: " · " }}{% else %}Post{% endif %}</span>
+        <h1>{{ page.title }}</h1>
+        {% if page.subtitle %}<p class="header-lead">{{ page.subtitle }}</p>{% endif %}
+        <div class="header-meta">
+            <span>{{ page.author | default: site.title }}</span>
+            <span aria-hidden="true">·</span>
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+            <span aria-hidden="true">·</span>
+            <span>{{ minutes }} min read</span>
         </div>
     </div>
 </header>
@@ -24,30 +21,26 @@ layout: default
 {% include toc-sidebar.html %}
 
 <!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1">
-                {{ content }}
-                <hr>
-                <nav aria-label="Post navigation">
-                    <ul class="pager">
-                        {% if page.previous.url %}
-                        <li class="previous">
-                            <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}"
-                                title="{{page.previous.title}}">&larr; Previous Post</a>
-                        </li>
-                        {% endif %}
-                        {% if page.next.url %}
-                        <li class="next">
-                            <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}"
-                                title="{{page.next.title}}">Next Post &rarr;</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<article class="post">
+    <div class="measure post-body">
+        {{ content }}
+
+        {% if page.previous.url or page.next.url %}
+        <nav class="post-nav" aria-label="Post navigation">
+            {% if page.previous.url %}
+            <a class="post-nav-link" href="{{ page.previous.url | relative_url }}">
+                <span class="label">&larr; Previous</span>
+                <span class="post-nav-title">{{ page.previous.title }}</span>
+            </a>
+            {% else %}<span></span>{% endif %}
+            {% if page.next.url %}
+            <a class="post-nav-link is-next" href="{{ page.next.url | relative_url }}">
+                <span class="label">Next &rarr;</span>
+                <span class="post-nav-title">{{ page.next.title }}</span>
+            </a>
+            {% endif %}
+        </nav>
+        {% endif %}
     </div>
 </article>
 
