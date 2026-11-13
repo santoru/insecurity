@@ -7,7 +7,12 @@ html { scroll-padding-top: 96px; }
 body { background: var(--bg); }
 
 /* Reading column and wide content column */
-.measure { max-width: 840px; margin: 0 auto; padding: 0 24px; }
+/* Posts/pages share the home column's text width (Bootstrap container × col-md/lg-10, minus gutters) */
+.measure { --measure: 100%; max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+@media (min-width: 768px)  { .measure { --measure: 624px; } }
+@media (min-width: 992px)  { .measure { --measure: 824px; } }
+@media (min-width: 1200px) { .measure { --measure: 974px; } }
+@media (min-width: 1400px) { .measure { --measure: 1124px; } }
 .wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
 /* ---------- Navbar ---------- */
@@ -267,7 +272,11 @@ body { background: var(--bg); }
 
 @media (min-width: 992px) {
   body.toc-sidebar-open #markdown-toc { display: none; }
-  body.toc-sidebar-open .post-body { margin-left: unquote("max(370px, calc(50% - 420px))"); }
+  /* Pinned TOC: keep the column centred when there's room, otherwise start right of the sidebar and shrink to fit */
+  body.toc-sidebar-open .post-body {
+    margin-left: unquote("max(370px, calc(50% - var(--measure) / 2))");
+    max-width: unquote("min(var(--measure), calc(100% - 390px))");
+  }
 }
 @media (max-width: 991.98px) {
   .toc-sidebar { display: none !important; }
