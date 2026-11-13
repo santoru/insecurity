@@ -1,0 +1,13 @@
+{%- assign a = site.data.about -%}
+<aside class="author-box" aria-label="About the author">
+    <img class="avatar avatar-lg" src="{{ a.avatar | relative_url }}" alt="" width="96" height="96" loading="lazy" decoding="async">
+    <div>
+        <span class="label">Written by</span>
+        <p class="author-name">{{ a.name }}</p>
+        <p class="author-role">{{ a.title }}</p>
+        <div class="author-actions">
+            <a class="btn btn-secondary btn-sm" href="{{ '/about/' | relative_url }}">About me</a>
+            <a class="btn btn-ghost btn-sm" href="{{ '/feed.xml' | relative_url }}">{% include icon.html name="rss" size="16" %} RSS</a>
+        </div>
+    </div>
+</aside>

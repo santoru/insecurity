@@ -25,6 +25,8 @@ layout: default
     <div class="measure post-body">
         {{ content }}
 
+        {% include author.html %}
+
         {% if page.previous.url or page.next.url %}
         <nav class="post-nav" aria-label="Post navigation">
             {% if page.previous.url %}

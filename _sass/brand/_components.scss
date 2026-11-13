@@ -42,6 +42,11 @@
 .btn-outline-light:hover { background: rgba(255,255,255,.1); border-color: var(--white); color: var(--white); }
 
 .btn-sm { height: 34px; padding: 0 13px; font-size: 14px; border-radius: 8px; }
+.btn-ghost { background: transparent; color: var(--moss); }
+.btn-ghost:hover { background: var(--moss-soft); color: var(--moss-text); }
+
+.avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--signal); }
+.avatar-lg { width: 96px; height: 96px; }
 .btn-lg { height: 50px; padding: 0 24px; font-size: 16px; }
 .btn-icon { width: 42px; padding: 0; }
 .btn[disabled] { opacity: .45; pointer-events: none; }

@@ -118,12 +118,8 @@ a.card:hover .card-title { color: var(--moss); }
 /* ---------- Not used by the site yet ---------- */
 .on-ink .logo, .on-ink .logo:hover { color: var(--white); }
 .on-ink .logo-word .paren { color: var(--signal); }
-.btn-ghost { background: transparent; color: var(--moss); }
-.btn-ghost:hover { background: var(--moss-soft); color: var(--moss-text); }
 .btn-danger { background: var(--critical); color: var(--white); }
 .btn-danger:hover { background: var(--critical-hover); color: var(--white); }
-.avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--signal); }
-.avatar-lg { width: 96px; height: 96px; }
 
 /* Utilities */
 .small { font-size: 14px; }
