@@ -2,7 +2,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     {%- assign meta_description = page.subtitle | default: page.description | default: site.description -%}
     {%- if page.title -%}
     {%- assign meta_title = page.title | append: " - " | append: site.title -%}
