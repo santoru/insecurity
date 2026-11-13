@@ -7,7 +7,7 @@ html { scroll-padding-top: 96px; }
 body { background: var(--bg); }
 
 /* Reading column and wide content column */
-.measure { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+.measure { max-width: 840px; margin: 0 auto; padding: 0 24px; }
 .wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
 /* ---------- Navbar ---------- */
@@ -267,7 +267,7 @@ body { background: var(--bg); }
 
 @media (min-width: 992px) {
   body.toc-sidebar-open #markdown-toc { display: none; }
-  body.toc-sidebar-open .post-body { margin-left: unquote("max(370px, calc(50% - 380px))"); }
+  body.toc-sidebar-open .post-body { margin-left: unquote("max(370px, calc(50% - 420px))"); }
 }
 @media (max-width: 991.98px) {
   .toc-sidebar { display: none !important; }
