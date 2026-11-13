@@ -5,14 +5,13 @@ subtitle: "Security tips to consider while designing user's upload features usin
 date:   2021-03-06 18:20:24 +0100
 author: "santoru"
 visible: 1
-comments: true
 
 ---
 
 * table of contents
 {:toc}
 
-# Abstract
+## Abstract
 With the advent of the cloud, [Amazon AWS S3](https://aws.amazon.com/s3/)
 (Simple Storage Service) has become widely used in most companies to store
 objects, files or more generally data in a persistent and easily accessible way.
@@ -108,6 +107,7 @@ where they can be directly used to **read** or **write** the "signed" resource (
 {% include image.html 
     url="assets/img/s3/upload_scenario.png" 
     description="Figure 1 - A very simplified schema that shows how presigned URLs are used" 
+    width="490" height="319"
 %}
 
 But let's go next with the recommendations, not sorted in any specific order.
@@ -238,6 +238,7 @@ specific file, not for a generic one (Fig. 2).
 {% include image.html 
     url="assets/img/s3/upload_md5.png" 
     description="Figure 2 - Presigned URL generation by enforcing the MD5 hash" 
+    width="967" height="361"
 %}
 
 Keep in mind that this will not protect from a customer that want to upload
@@ -321,7 +322,7 @@ before sending them, and will block JavaScript from reading responses to simple
 requests (e.g., GET). In either case, your bucket remains inaccessible to
 unauthorized web origins.
 
-# Conclusion
+## Conclusion
 With this blog post I hope that I gave you an idea about what to keep in mind
 while designing a user upload feature with presigned URLs. As you can see,
 depending on your threat model, the things to keep in mind can be different.
@@ -345,20 +346,20 @@ If you enjoyed this post, you can
 or
 [check out my GitHub profile](https://github.com/santoru).
 
-# References
-- <a href="https://aws.amazon.com/s3/" target="_blank">Amazon AWS S3</a>
-- <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html" target="_blank">AWS Docs | Sharing an object with a presigned URL</a>
-- <a href="https://aws.amazon.com/secrets-manager/" target="_blank">Amazon AWS Secret Manager</a>
-- <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html" target="_blank">AWS Docs | Logging requests using server access logging</a>
-- <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html" target="_blank">AWS Docs | Enabling Amazon S3 server access logging</a>
-- <a href="https://hackerone.com/reports/94087" target="_blank">Arbitrary read on s3://shopify-delivery-app-storage/files</a>
-- <a href="https://hackerone.com/reports/254200" target="_blank">Escaping images directory in S3 bucket when saving new avatar, using Path Traversal in filename</a>
-- <a href="https://github.com/aws/aws-sdk-net/issues/424" target="_blank">Limit an upload filesize with a Pre-signed URL</a>
-- <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html" target="_blank">AWS Docs | Uploading objects using presigned URLs</a>
-- <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-HTTPPOSTConstructPolicy.html" target="_blank">AWS Docs | Creating a POST Policy</a>
-- <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-HTTPPOSTConstructPolicy.html#sigv4-PolicyConditions" target="_blank">AWS Docs | Creating a POST Policy - Conditions</a>
-- <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-post-example.html" target="_blank">AWS Docs | Example: Browser-Based Upload using HTTP POST (Using AWS Signature Version 4)</a>
-- <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html" target="_blank">AWS Docs | Using cross-origin resource sharing (CORS)</a>
-- <a href="https://aws.amazon.com/premiumsupport/knowledge-center/secure-s3-resources/" target="_blank">How can I secure the files in my Amazon S3 bucket?</a>
-- <a href="https://twitter.com/santoru_" target="_blank">santoru_ | Twitter</a>
-- <a href="https://github.com/santoru" target="_blank">santoru | GitHub</a>
+## References
+- <a href="https://aws.amazon.com/s3/" target="_blank" rel="noopener noreferrer">Amazon AWS S3</a>
+- <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html" target="_blank" rel="noopener noreferrer">AWS Docs | Sharing an object with a presigned URL</a>
+- <a href="https://aws.amazon.com/secrets-manager/" target="_blank" rel="noopener noreferrer">Amazon AWS Secret Manager</a>
+- <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerLogs.html" target="_blank" rel="noopener noreferrer">AWS Docs | Logging requests using server access logging</a>
+- <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/enable-server-access-logging.html" target="_blank" rel="noopener noreferrer">AWS Docs | Enabling Amazon S3 server access logging</a>
+- <a href="https://hackerone.com/reports/94087" target="_blank" rel="noopener noreferrer">Arbitrary read on s3://shopify-delivery-app-storage/files</a>
+- <a href="https://hackerone.com/reports/254200" target="_blank" rel="noopener noreferrer">Escaping images directory in S3 bucket when saving new avatar, using Path Traversal in filename</a>
+- <a href="https://github.com/aws/aws-sdk-net/issues/424" target="_blank" rel="noopener noreferrer">Limit an upload filesize with a Pre-signed URL</a>
+- <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html" target="_blank" rel="noopener noreferrer">AWS Docs | Uploading objects using presigned URLs</a>
+- <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-HTTPPOSTConstructPolicy.html" target="_blank" rel="noopener noreferrer">AWS Docs | Creating a POST Policy</a>
+- <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-HTTPPOSTConstructPolicy.html#sigv4-PolicyConditions" target="_blank" rel="noopener noreferrer">AWS Docs | Creating a POST Policy - Conditions</a>
+- <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-post-example.html" target="_blank" rel="noopener noreferrer">AWS Docs | Example: Browser-Based Upload using HTTP POST (Using AWS Signature Version 4)</a>
+- <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html" target="_blank" rel="noopener noreferrer">AWS Docs | Using cross-origin resource sharing (CORS)</a>
+- <a href="https://aws.amazon.com/premiumsupport/knowledge-center/secure-s3-resources/" target="_blank" rel="noopener noreferrer">How can I secure the files in my Amazon S3 bucket?</a>
+- <a href="https://twitter.com/santoru_" target="_blank" rel="noopener noreferrer">santoru_ | Twitter</a>
+- <a href="https://github.com/santoru" target="_blank" rel="noopener noreferrer">santoru | GitHub</a>

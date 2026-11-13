@@ -34,8 +34,8 @@
     function openSidebar() {
         active = true;
         sidebar.classList.add('open');
+        // Hiding the inline TOC is done in CSS (desktop only), so it comes back if the window shrinks
         document.body.classList.add('toc-sidebar-open');
-        toc.style.display = 'none';
         positionSidebar();
         highlightCurrent();
     }
@@ -44,7 +44,6 @@
         active = false;
         sidebar.classList.remove('open');
         document.body.classList.remove('toc-sidebar-open');
-        toc.style.display = '';
     }
 
     openBtn.addEventListener('click', openSidebar);

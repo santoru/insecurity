@@ -2,10 +2,9 @@
 layout: page
 title: About me
 description: Security researcher, vulnerability hunter, tool builder.
-background: '/assets/img/bg-about.jpg'
 ---
 
-![Alessio](/assets/img/about-profile.jpg){: .about-photo}
+![Alessio](/assets/img/about-profile-sd.jpg){: .about-photo}
 
 Hi there!\
 I'm Alessio — a Senior Application Security Engineer with a decade of experience breaking, securing, and rethinking complex systems.

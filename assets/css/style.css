@@ -496,6 +496,11 @@ body.toc-sidebar-open article {
   z-index: 1100;
 }
 
+/* Inline TOC is replaced by the pinned sidebar on desktop only */
+@media (min-width: 992px) {
+  body.toc-sidebar-open #markdown-toc { display: none; }
+}
+
 /* Disable TOC sidebar on mobile */
 @media (max-width: 991px) {
   .toc-sidebar { display: none !important; }

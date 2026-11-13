@@ -21,21 +21,31 @@
     {% include ga.html %}
 
     <script>
+    // Mobile navbar toggle (replaces bootstrap.bundle.js collapse)
+    (function() {
+        var toggler = document.querySelector('.navbar-toggler');
+        if (!toggler) return;
+        var target = document.getElementById(toggler.getAttribute('aria-controls'));
+        if (!target) return;
+        toggler.addEventListener('click', function() {
+            var open = target.classList.toggle('show');
+            toggler.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+    })();
+
+    // Solid navbar + scroll-to-top button once past the header
     (function() {
         var nav = document.getElementById('mainNav');
         var header = document.querySelector('.intro-header');
         var btn = document.getElementById('scrollTop');
         if (!nav || !header) return;
 
-        var isScrollingToTop = false;
         var raf;
 
         function update() {
             var scrolled = window.scrollY > header.offsetHeight - nav.offsetHeight;
             nav.classList.toggle('nav-scrolled', scrolled);
-            if (btn && !isScrollingToTop) {
-                btn.classList.toggle('visible', scrolled);
-            }
+            if (btn) btn.classList.toggle('visible', scrolled);
         }
 
         window.addEventListener('scroll', function() {
@@ -50,23 +60,8 @@
         if (btn) {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                isScrollingToTop = true;
-                btn.classList.remove('visible');
-                nav.classList.remove('nav-scrolled');
-                window.scrollTo(0, 0);
-                // Re-enable after scroll settles
-                var check = setInterval(function() {
-                    if (window.scrollY === 0) {
-                        clearInterval(check);
-                        isScrollingToTop = false;
-                    }
-                }, 100);
-                // Safety fallback
-                setTimeout(function() {
-                    clearInterval(check);
-                    isScrollingToTop = false;
-                    update();
-                }, 1500);
+                // Smoothness comes from the CSS scroll-behavior, which honours prefers-reduced-motion
+                window.scrollTo({ top: 0 });
             });
         }
     })();
