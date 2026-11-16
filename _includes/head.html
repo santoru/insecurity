@@ -33,6 +33,9 @@
     <!-- Self-hosted brand fonts (declared in _sass/brand/_fonts.scss); preload the two used above the fold -->
     <link rel="preload" href="{{ '/assets/fonts/inter-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/space-grotesk-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    {%- if page.layout == "post" %}
+    <link rel="preload" href="{{ '/assets/fonts/source-serif-4-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+    {%- endif %}
 
     <!-- One stylesheet, compiled and minified by Jekyll from _sass/ (see assets/css/main.scss).
          ?v= changes on every build, so a deploy is never served stale CSS/JS from browser or CDN caches. -->

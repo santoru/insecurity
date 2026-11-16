@@ -12,6 +12,10 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
+// Long-form prose (.reading on the post body): Source Serif 4. Quotes, tables, notes and UI stay in --font-body.
+$reading-text: ".reading > p, .reading > ul:not(#markdown-toc), .reading > ol, .reading > dl";
+#{$reading-text} { font-family: var(--font-read); font-size: 18.5px; line-height: 1.7; }
+@media (max-width: 575.98px) { #{$reading-text} { font-size: 18px; } }
 ::selection { background: var(--signal); color: var(--ink-950); }
 img { max-width: 100%; height: auto; display: block; }
 

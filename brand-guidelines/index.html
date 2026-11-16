@@ -166,8 +166,8 @@ sitemap: false
                 <div class="bp-head">
                     <span class="label">04 — Typography</span>
                     <div>
-                        <h2>Three voices, one rhythm</h2>
-                        <p>A geometric grotesk for headlines, a neutral sans for reading, and a mono for labels, code and data. All free on Google Fonts.</p>
+                        <h2>Four voices, one rhythm</h2>
+                        <p>A geometric grotesk for headlines, a neutral sans for the interface, a screen serif for long-form reading, and a mono for labels, code and data. All free on Google Fonts.</p>
                     </div>
                 </div>
                 <div class="specimen">
@@ -177,8 +177,13 @@ sitemap: false
                 </div>
                 <div class="specimen">
                     <div class="specimen-aa" style="font-family:var(--font-body);font-weight:500">Aa</div>
-                    <div><div class="specimen-meta"><strong>Inter</strong>Body &amp; UI · 400 / 500 / 600 · 17px / 1.7</div>
-                        <p style="margin:12px 0 0;max-width:640px">Presigned URLs are authenticated on behalf of the credentials that generated them, so whoever holds the link holds the access — until it expires.</p></div>
+                    <div><div class="specimen-meta"><strong>Inter</strong>Interface &amp; short text · 400 / 500 / 600 · 17px / 1.7</div>
+                        <p style="margin:12px 0 0;max-width:640px">Navigation, buttons, cards, meta, quotes, tables and footnotes.</p></div>
+                </div>
+                <div class="specimen">
+                    <div class="specimen-aa" style="font-family:var(--font-read)">Aa</div>
+                    <div><div class="specimen-meta"><strong>Source Serif 4</strong>Post prose only (<code>.reading</code>) · 400 / 600, italic 400 · 18.5px / 1.7 (18px on phones)</div>
+                        <p style="font-family:var(--font-read);font-size:18.5px;margin:12px 0 0;max-width:640px">Presigned URLs are authenticated on behalf of the credentials that generated them, so whoever holds the link holds the access, <em>until it expires</em>.</p></div>
                 </div>
                 <div class="specimen">
                     <div class="specimen-aa" style="font-family:var(--font-mono);font-weight:500;letter-spacing:-.02em">Aa</div>
@@ -356,10 +361,10 @@ sitemap: false
             <div class="bp-wrap">
                 <div class="bp-head">
                     <span class="label">10 — Text</span>
-                    <div><h2>Reading</h2><p>Posts use the same column as the home page (926px of text on a laptop), 17px Inter at 1.7 line-height. Headlines in Space Grotesk, labels and code in JetBrains Mono.</p></div>
+                    <div><h2>Reading</h2><p>Posts use the same column as the home page (926px of text on a laptop). Paragraphs and lists are set in Source Serif 4 at 18.5px / 1.7 via <code>.reading</code>; quotes, tables and footnotes stay in Inter. Headlines in Space Grotesk, labels and code in JetBrains Mono.</p></div>
                 </div>
                 <p class="bp-ref-line"><code class="bp-ref">Base elements + .lead · .label · .small · .muted · ul.list / ol.list · pre/code · blockquote > cite</code></p>
-                <article class="prose">
+                <article class="prose reading">
                     <span class="label">Cloud security · 16 min read</span>
                     <h1 style="margin-top:12px">Securing your S3 presigned URLs</h1>
                     <p class="lead">Presigned URLs are convenient, fast and easy to get wrong. Here is what to check before you ship one.</p>
@@ -471,6 +476,7 @@ url = s3.generate_presigned_url(<span class="s">"put_object"</span>, ExpiresIn=<
                             <tr><td><code>--moss-fill</code></td><td>Primary button fill, same in both themes</td></tr>
                             <tr><td><code>--display-weight</code></td><td>600 · 700 below 768px (600 reads thin on phones)</td></tr>
                             <tr><td><code>--font-body</code></td><td>Inter</td></tr>
+                            <tr><td><code>--font-read</code></td><td>Source Serif 4 (post prose)</td></tr>
                             <tr><td><code>--font-mono</code></td><td>JetBrains Mono</td></tr>
                             <tr><td><code>--radius</code> · <code>--shadow</code></td><td>10px · soft two-layer shadow</td></tr>
                         </table>
