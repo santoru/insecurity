@@ -34,6 +34,7 @@ exclude:
   - "Gemfile"
   - "Gemfile.lock"
   - "*.gemspec"
+  - "vendor"                 # local Bundler install (bundle config path vendor/bundle)
   - "README.md"
   - "docker-run.sh"
   - "assets/img/cover.png"   # only used by the GitHub README
