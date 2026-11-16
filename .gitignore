@@ -4,3 +4,4 @@ Gemfile.lock
 .jekyll-cache/
 docker-run.sh
 .claude/
+_drafts/
