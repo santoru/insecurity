@@ -33,7 +33,7 @@
     <!-- Self-hosted brand fonts (declared in _sass/brand/_fonts.scss); preload the two used above the fold -->
     <link rel="preload" href="{{ '/assets/fonts/inter-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/space-grotesk-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-    {%- if page.layout == "post" %}
+    {%- if page.layout == "post" or page.layout == "about" %}
     <link rel="preload" href="{{ '/assets/fonts/source-serif-4-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
     {%- endif %}
 
